@@ -1,6 +1,48 @@
-.flex-centered {
+@mixin flex-center {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
+
+@mixin flex($direction: row, $align-items: center, $justify-content: space-between) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align-items;
+  justify-content: $justify-content;
+}
+
+.button {
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+/* margins and paddings */
+$max: 1;
+$offset: 0.25;
+$unit: 'rem';
+
+@mixin create_margin_padding($className, $styleName) {
+  $i: 0.25;
+  $name: 1;
+  @while $i <= $max {
+    #{$className + $name} {
+      #{$styleName}: #{$i + $unit};
+    }
+    $i: $i + $offset;
+    $name: $name + 1;
+  }
+}
+
+@include create_margin_padding('.p-', 'padding');
+@include create_margin_padding('.pl-', 'padding-left');
+@include create_margin_padding('.pr-', 'padding-right');
+@include create_margin_padding('.pt-', 'padding-top');
+@include create_margin_padding('.pb-', 'padding-bottom');
+@include create_margin_padding('.m-', 'margin');
+@include create_margin_padding('.ml-', 'margin-left');
+@include create_margin_padding('.mr-', 'margin-right');
+@include create_margin_padding('.mt-', 'margin-top');
+@include create_margin_padding('.mb-', 'margin-bottom');

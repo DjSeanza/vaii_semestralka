@@ -3,12 +3,14 @@
 *::before {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
-html {
-  font-size: 62.5%;
-}
+@import "scss/preferences";
+@import "scss/layout";
+@import "scss/colors";
 
 body {
-  font-size: 1.6rem;
+  background-color: $background-color;
+  color: $text-color;
 }
