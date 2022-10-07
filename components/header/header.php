@@ -12,7 +12,7 @@
             <div>
                 <input type="text" placeholder="Search" class="p-2">
                 <button class="button pl-4 pr-4">
-                    search
+                    <img src="img/search-icon.svg" alt="">
                 </button>
             </div>
         </form>
