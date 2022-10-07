@@ -1,0 +1,23 @@
+$small: 576px;
+$mid: 768px;
+$large: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+
+@mixin small-width {
+  @media screen and (max-width: #{$small - 1}) {
+    @content;
+  }
+}
+
+@mixin mid-width {
+  @media screen and (max-width: #{$mid - 1}) {
+    @content;
+  }
+}
+
+@mixin large-width {
+  @media screen and (max-width: #{$large - 1}) {
+    @content;
+  }
+}
