@@ -216,33 +216,36 @@ header.header div.header-left {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  column-gap: 0.5rem;
   min-width: clamp(250px, 30%, 400px);
+  overflow: hidden;
 }
 header.header div.header-left div.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
   width: 200px;
   height: 60px;
 }
 header.header div.header-left div.logo img {
   padding: 0.25rem;
-  height: 60px;
+  height: calc(60px - 0.5rem);
 }
 header.header div.header-left button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   width: 40px;
   height: 40px;
   background: transparent;
-  border: 2px solid #6c6c6c;
   position: relative;
   overflow: hidden;
   padding: 0;
 }
-header.header div.header-left button span {
-  width: calc(40px - 40%);
-  height: 2px;
-  background-color: #ffffff;
+header.header div.header-left button img {
+  width: calc(40px - 30%);
 }
 header.header div.header-mid {
   flex: 0 1 728px;

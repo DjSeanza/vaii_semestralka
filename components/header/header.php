@@ -1,12 +1,10 @@
 <header class="header flex-row p-2">
     <div class="header-left">
         <button class="button">
-            <span></span>
-            <span></span>
-            <span></span>
+            <img src="img/hamburger-menu.svg" alt="Hamburger menu">
         </button>
         <div class="logo">
-            <img src="img/logo.svg" alt="">
+            <img src="img/logo.svg" alt="Logo">
         </div>
     </div>
     <div class="header-mid">

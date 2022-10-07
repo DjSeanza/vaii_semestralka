@@ -34,32 +34,32 @@ header.header {
 
   div.header-left {
     @include flex(row, center, flex-start);
+    column-gap: $rem_mid;
     min-width: clamp(250px, 30%, 400px);
+    overflow: hidden;
 
     div.logo {
+      @include flex(row, center, flex-start);
       width: 200px;
       height: $header-height;
 
       img {
         padding: $rem-sm;
-        height: $header-height;
+        height: calc($header-height - $rem-mid);
       }
     }
 
     button {
-      @include flex(column, center, space-evenly);
+      @include flex(column, center, center);
       width: $button-menu-size;
       height: $button-menu-size;
       background: transparent;
-      border: 2px solid $light-secondary-color;
       position: relative;
       overflow: hidden;
       padding: 0;
 
-      span {
-        width: calc($button-menu-size - 40%);
-        height: 2px;
-        background-color: $white;
+      img {
+        width: calc($button-menu-size - 30%);
       }
     }
   }
