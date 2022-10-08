@@ -4,7 +4,7 @@
             <img src="<?php echo ROOT_PATH; ?>img/hamburger-menu.svg" alt="Hamburger menu">
         </button>
         <div class="logo">
-            <img src="img/logo.svg" alt="Logo">
+            <img src="<?php echo ROOT_PATH; ?>img/logo.svg" alt="Logo">
         </div>
     </div>
     <div class="header-mid">
