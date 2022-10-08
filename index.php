@@ -10,3 +10,4 @@ require "components/header/header.php";
     ?>
 </div>
 
+<?php require "components/page-ending.php"; ?>
