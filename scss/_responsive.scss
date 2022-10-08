@@ -4,20 +4,26 @@ $large: 992px;
 $xl: 1200px;
 $xxl: 1400px;
 
+@mixin small-width-up {
+  @media screen and (min-width: 0) and (max-width: #{$small - 1}) {
+    @content;
+  }
+}
+
 @mixin small-width {
-  @media screen and (max-device-width: #{$small - 1}) {
+  @media screen and (max-width: #{$small - 1}) {
     @content;
   }
 }
 
 @mixin mid-width {
-  @media screen and (max-device-width: #{$mid - 1}) {
+  @media screen and (max-width: #{$mid - 1}) {
     @content;
   }
 }
 
 @mixin large-width {
-  @media screen and (max-device-width: #{$large - 1}) {
+  @media screen and (max-width: #{$large - 1}) {
     @content;
   }
 }
