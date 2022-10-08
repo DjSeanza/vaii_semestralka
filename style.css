@@ -168,9 +168,15 @@
   margin-bottom: 1rem;
 }
 
+:root {
+  --small-breakpoint: 576px;
+  --mid-breakpoint: 768px;
+}
+
 body {
   background-color: #181818;
   color: #ffffff;
+  font-family: "Roboto", sans-serif;
 }
 
 .button {
@@ -458,13 +464,158 @@ main.login-main {
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2fr 2fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "image image color color";
+  position: relative;
+}
+@media screen and (max-width: 575px) {
+  main.login-main {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "image" "image";
+  }
 }
 main.login-main div.login-bg {
-  background: url("img/login-page-bg-landscape.jpg");
+  background-image: url("img/login-page-bg-landscape.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 30%;
+  grid-area: image;
+}
+@media screen and (max-width: 575px) {
+  main.login-main div.login-bg {
+    background-image: url("img/login-page-bg-portrait-test.png");
+  }
 }
 main.login-main div.login-bg-color {
   background-color: #180952;
+  grid-area: color;
+}
+@media screen and (max-width: 575px) {
+  main.login-main div.login-bg-color {
+    display: none;
+  }
+}
+main.login-main div.login-form-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 350px;
+  height: 400px;
+  background: #ffffff;
+  color: #000000;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  align-self: center;
+  position: absolute;
+  right: -175px;
+  border-radius: 20px;
+  padding: 2rem;
+}
+@media screen and (max-width: 575px) {
+  main.login-main div.login-form-div {
+    position: relative;
+    right: 0;
+    grid-area: 1/1;
+    justify-self: center;
+    background: transparent;
+    width: calc(100% - 1rem);
+    height: 200px;
+    padding: 0;
+    row-gap: 1rem;
+  }
+}
+main.login-main div.login-form-div h1 {
+  width: 100%;
+  text-align: center;
+  color: #271085;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+main.login-main div.login-form-div div.login-register-question a {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #271085;
+  transition: #4d26b7;
+  font-weight: bold;
+}
+main.login-main div.login-form-div div.login-register-question a:hover {
+  color: #4a1eff;
+}
+main.login-main div.login-form-div form.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-evenly;
+  row-gap: 1rem;
+  width: 100%;
+}
+main.login-main div.login-form-div form.login-form div.form-input-image-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 0.5rem;
+  width: 100%;
+}
+@media screen and (max-width: 575px) {
+  main.login-main div.login-form-div form.login-form div.form-input-image-div {
+    column-gap: 0;
+  }
+}
+main.login-main div.login-form-div form.login-form div.form-input-image-div label.input-image-div {
+  width: 30px;
+  height: 30px;
+}
+@media screen and (max-width: 575px) {
+  main.login-main div.login-form-div form.login-form div.form-input-image-div label.input-image-div {
+    height: 50px;
+    width: 50px;
+    background-color: #8d69fa;
+    padding: 0.5rem;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+}
+main.login-main div.login-form-div form.login-form div.form-input-image-div label.input-image-div picture, main.login-main div.login-form-div form.login-form div.form-input-image-div label.input-image-div picture img {
+  width: 100%;
+  height: 100%;
+}
+main.login-main div.login-form-div form.login-form div.form-input-image-div input {
+  height: 30px;
+  padding: 0.5rem;
+  border: none;
+  position: relative;
+  flex-grow: 1;
+}
+@media screen and (max-width: 575px) {
+  main.login-main div.login-form-div form.login-form div.form-input-image-div input {
+    height: 50px;
+    background: #8d69fa;
+    color: #ffffff;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  main.login-main div.login-form-div form.login-form div.form-input-image-div input::placeholder {
+    color: #ffffff;
+  }
+}
+main.login-main div.login-form-div form.login-form div.form-input-image-div input:focus {
+  border: 1px solid #271085;
+}
+main.login-main div.login-form-div form.login-form button {
+  text-transform: uppercase;
+  font-weight: bold;
+  background: #271085;
+  color: #ffffff;
+  transform: scale(1);
+  transition: all 0.15s ease-in;
+}
+main.login-main div.login-form-div form.login-form button:hover {
+  background: #4a1eff;
+  transform: scale(1.03);
 }
 
 .main {
