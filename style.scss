@@ -26,7 +26,8 @@ body {
 @import "components/header/header";
 @import "components/nav/nav";
 @import "components/sidebar/sidebar";
-@import "components/home/home";
+@import "pages/home/home";
+@import "pages/login/login";
 
 .main {
   width: calc(100% - $sidebar-width);

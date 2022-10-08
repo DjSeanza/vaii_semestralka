@@ -1,4 +1,5 @@
 <?php
+require "paths.php";
 require "components/head.php";
 require "components/header/header.php";
 ?>
@@ -6,7 +7,7 @@ require "components/header/header.php";
 <div class="main-container">
     <?php
         require "components/sidebar/sidebar.php";
-        require "components/home/home.php";
+        require "pages/home/home.php";
     ?>
 </div>
 

@@ -454,6 +454,19 @@ main.home-page-main section.home-page-section {
   height: 30vh;
 }
 
+main.login-main {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+main.login-main div.login-bg {
+  background: url("img/login-page-bg-landscape.jpg");
+}
+main.login-main div.login-bg-color {
+  background-color: #180952;
+}
+
 .main {
   width: calc(100% - 250px);
   margin-left: 250px;

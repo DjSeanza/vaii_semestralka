@@ -7,6 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>VAII</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="<?php echo ROOT_PATH; ?>style.css">
 </head>
 <body>
