@@ -1,5 +1,6 @@
 $scrollbar-width: 15px;
 $sidebar-width: 250px;
+$sidebar-width-small: calc($sidebar-width / 4);
 
 aside.sidebar {
   width: $sidebar-width;
@@ -8,9 +9,13 @@ aside.sidebar {
   overflow-x: hidden;
   overflow-y: scroll;
   padding-right: $scrollbar-width;
+  position: fixed;
+  left: 0;
+  top: $header-height;
+  z-index: 100;
 
   @include mid-width {
-    width: calc($sidebar-width / 4);
+    width: $sidebar-width-small;
     padding-right: 0;
   }
 

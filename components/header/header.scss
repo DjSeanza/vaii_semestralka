@@ -9,6 +9,9 @@ header.header {
   overflow: hidden;
   column-gap: 1rem;
   background-color: $secondary-color;
+  position: fixed;
+  top: 0;
+  z-index: 101;
 
   div.header-mid, div.header-left, div.header-right {
     height: 100%;

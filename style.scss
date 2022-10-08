@@ -16,6 +16,28 @@ body {
   color: $text-color;
 }
 
+.button {
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
 @import "components/header/header";
 @import "components/nav/nav";
 @import "components/sidebar/sidebar";
+@import "components/home/home";
+
+.main {
+  width: calc(100% - $sidebar-width);
+  margin-left: $sidebar-width;
+  margin-top: $header-height;
+
+  @include mid-width {
+    margin-left: $sidebar-width-small;
+  }
+
+  @include small-width-up {
+    margin-left: 0;
+  }
+}
