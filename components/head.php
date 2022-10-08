@@ -5,6 +5,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<!--    @TODO add meta tags for description and author -->
+
     <title>VAII</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
