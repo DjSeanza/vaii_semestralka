@@ -112,13 +112,13 @@ main.login-main {
           @include small-width {
             height: $login-input-height-small;
             width: $login-input-height-small;
-            background-color: $ultra-light-primary-color;
+            background-color: $white;
             padding: $rem-mid;
             border-top-left-radius: $border-input-radius-small;
             border-bottom-left-radius: $border-input-radius-small;
           }
 
-          picture, picture img {
+          img {
             width: 100%;
             height: 100%;
           }
@@ -133,14 +133,10 @@ main.login-main {
 
           @include small-width {
             height: $login-input-height-small;
-            background: $ultra-light-primary-color;
-            color: $white;
+            background: $white;
+            color: $black;
             border-top-right-radius: $border-input-radius-small;
             border-bottom-right-radius: $border-input-radius-small;
-
-            &::placeholder {
-              color: $white;
-            }
           }
 
           &:focus {

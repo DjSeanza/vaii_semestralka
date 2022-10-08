@@ -573,13 +573,13 @@ main.login-main div.login-form-div form.login-form div.form-input-image-div labe
   main.login-main div.login-form-div form.login-form div.form-input-image-div label.input-image-div {
     height: 50px;
     width: 50px;
-    background-color: #8d69fa;
+    background-color: #ffffff;
     padding: 0.5rem;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
   }
 }
-main.login-main div.login-form-div form.login-form div.form-input-image-div label.input-image-div picture, main.login-main div.login-form-div form.login-form div.form-input-image-div label.input-image-div picture img {
+main.login-main div.login-form-div form.login-form div.form-input-image-div label.input-image-div img {
   width: 100%;
   height: 100%;
 }
@@ -593,13 +593,10 @@ main.login-main div.login-form-div form.login-form div.form-input-image-div inpu
 @media screen and (max-width: 575px) {
   main.login-main div.login-form-div form.login-form div.form-input-image-div input {
     height: 50px;
-    background: #8d69fa;
-    color: #ffffff;
+    background: #ffffff;
+    color: #000000;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-  }
-  main.login-main div.login-form-div form.login-form div.form-input-image-div input::placeholder {
-    color: #ffffff;
   }
 }
 main.login-main div.login-form-div form.login-form div.form-input-image-div input:focus {

@@ -11,20 +11,13 @@ require "../../components/head.php";
         <form action="" class="login-form">
             <div class="form-input-image-div">
                 <label for="username" class="input-image-div">
-                    <picture>
-                        <source srcset="<?php echo ROOT_PATH;?>img/user-image-light.png" media="(max-width: 575px)">
-                        <img src="<?php echo ROOT_PATH;?>/img/user-image.png" alt="">
-                    </picture>
+                    <img src="<?php echo ROOT_PATH;?>/img/user-image.png" alt="">
                 </label>
                 <input type="text" id="username" name="username" placeholder="Používateľské meno" required>
             </div>
             <div class="form-input-image-div">
                 <label for="password" class="input-image-div">
-                    <picture>
-                        <source srcset="<?php echo ROOT_PATH;?>img/password-lock-light.svg" media="(max-width: 575px)">
-                        <img src="<?php echo ROOT_PATH; ?>/img/password-lock.svg" alt="">
-                    </picture>
-
+                    <img src="<?php echo ROOT_PATH; ?>/img/password-lock.svg" alt="">
                 </label>
                 <input type="password" id="password" name="password" placeholder="Heslo">
             </div>
