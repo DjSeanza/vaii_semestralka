@@ -1,0 +1,39 @@
+@import "../home/home";
+
+main.video-main {
+  padding: $rem-very-big;
+
+  h1.videos-h1 {
+    margin-bottom: $rem-big;
+  }
+}
+
+div.videos-container {
+  width: 100%;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($video-article-calculated-clamp-width, 1fr));
+  grid-gap: $rem-big $rem-big;
+  align-items: center;
+  justify-items: center;
+
+  article.video-page {
+    width: clamp($video-article-calculated-clamp-width, 100%, $video-article-calculated-clamp-width + 100px);
+
+    @include mid-width {
+      width: clamp($video-article-calculated-clamp-width - 35px, 100%, $video-article-calculated-clamp-width + 100px);
+    }
+
+    @include small-width-up {
+      width: clamp(150px, 100%, 100%);
+    }
+  }
+
+  @include mid-width {
+    grid-template-columns: repeat(auto-fit, minmax($video-article-calculated-clamp-width-mid, 1fr));
+  }
+
+  @include small-width-up {
+    grid-template-columns: repeat(auto-fit, minmax($video-article-calculated-clamp-width-sm-up, 1fr));
+  }
+}

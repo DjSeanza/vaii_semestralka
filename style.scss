@@ -34,6 +34,8 @@ body {
 @import "components/sidebar/sidebar";
 @import "pages/home/home";
 @import "pages/login/login";
+@import "pages/home/video-container";
+@import "pages/videos/videos";
 
 .main {
   width: calc(100% - $sidebar-width);
