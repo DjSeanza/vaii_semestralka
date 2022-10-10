@@ -54,12 +54,16 @@ header.header {
       width: 200px;
       height: $header-height;
 
-      img {
-        padding: $rem-sm;
-        height: calc($header-height - $rem-mid - 10px);
+      a {
+        @include flex();
 
-        @include mid-width {
-          width: 100px;
+        img {
+          padding: $rem-sm;
+          height: calc($header-height - $rem-mid - 10px);
+
+          @include mid-width {
+            width: 100px;
+          }
         }
       }
     }

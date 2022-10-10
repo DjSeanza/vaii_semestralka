@@ -4,7 +4,9 @@
             <img src="<?php echo ROOT_PATH; ?>img/hamburger-menu.svg" alt="Hamburger menu">
         </button>
         <div class="logo">
-            <img src="<?php echo ROOT_PATH; ?>img/logo.svg" alt="Logo">
+            <a href="<?php echo ROOT_PATH; ?>index.php">
+                <img src="<?php echo ROOT_PATH; ?>img/logo.svg" alt="Logo">
+            </a>
         </div>
     </div>
     <div class="header-mid">

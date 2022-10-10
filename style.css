@@ -248,12 +248,18 @@ header.header div.header-left div.logo {
   width: 200px;
   height: 60px;
 }
-header.header div.header-left div.logo img {
+header.header div.header-left div.logo a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+header.header div.header-left div.logo a img {
   padding: 0.25rem;
   height: calc(60px - 0.5rem - 10px);
 }
 @media screen and (max-width: 767px) {
-  header.header div.header-left div.logo img {
+  header.header div.header-left div.logo a img {
     width: 100px;
   }
 }
