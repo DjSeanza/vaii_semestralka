@@ -1,0 +1,130 @@
+$content-video-title-size: 1.5rem;
+$btn-img-width-height: 25px;
+$author-image: 50px;
+
+div.main-profile-container {
+  width: 90%;
+  min-height: 100px;
+  margin: calc($header-height + $rem-very-big) auto 0 auto;
+}
+
+div.profile-sidebar {
+  width: $sidebar-width;
+  height: $sidebar-height;
+  position: absolute;
+  left: -$sidebar-width;
+}
+
+main.profile-main {
+  @include flex(row, flex-start, space-between);
+  column-gap: $rem-big;
+
+  div.left-video {
+    flex: 1;
+
+    div.video-container {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+
+      video {
+        width: 100%;
+        height: 100%;
+        background: antiquewhite;
+      }
+    }
+  }
+}
+
+main.profile-main div.under-video-container {
+  width: 100%;
+  margin-top: $rem-big;
+
+  div.content-info {
+    width: 100%;
+    border-bottom: 1px solid $light-secondary-color;
+    padding-bottom: $rem-mid;
+
+    h1 {
+      @include line-clamp(2);
+      width: 100%;
+      min-height: $content-video-title-size;
+      max-height: calc($content-video-title-size * 2 + $rem-mid);
+      font-size: $content-video-title-size;
+    }
+
+    div.video-info {
+      @include flex(row, center, space-between);
+      font-size: $rem-big;
+
+      div.video-basic-info {
+        display: flex;
+        flex-direction: row;
+        column-gap: $rem-big;
+        color: $light-secondary-color;
+      }
+
+      div.like-dislike-buttons-container {
+        @include flex();
+        column-gap: $rem-mid;
+
+        button {
+          @include flex();
+          column-gap: $rem-mid;
+          background: transparent;
+          color: $text-color;
+          font-weight: bold;
+          font-size: 1.1rem;
+          transform: scale(1);
+          transition: $transition-transform;
+          position: relative;
+
+          &.like-button:hover {
+            transform: scale(1.05);
+          }
+
+          &.dislike-button:hover {
+            transform: scale(0.95);
+          }
+
+          img {
+            content: '';
+            width: $btn-img-width-height;
+            height: $btn-img-width-height;
+          }
+        }
+      }
+    }
+  }
+
+  div.author-description-info {
+    width: 100%;
+    margin: $rem-big 0;
+
+    div.video-author-container div.video-author {
+      @include flex(row, center, flex-start);
+      column-gap: $rem-mid;
+      margin-bottom: $rem-mid;
+
+      div.small-profile-image {
+        width: $author-image;
+        height: $author-image;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+      }
+
+      div.author-name {
+        a {
+          text-decoration: none;
+          color: $white;
+          transition: $transition-all;
+
+          &:hover {
+            color: $light-secondary-color;
+          }
+        }
+      }
+    }
+  }
+}

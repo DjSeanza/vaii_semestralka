@@ -12,6 +12,15 @@
   justify-content: $justify-content;
 }
 
+@mixin line-clamp($number_of_rows) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $number_of_rows;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* margins and paddings */
 $max: 1;
 $offset: 0.25;

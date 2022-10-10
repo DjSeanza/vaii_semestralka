@@ -39,16 +39,11 @@ article.video-article-container {
     row-gap: $rem-sm;
 
     h3.video-article-title {
+      @include line-clamp(2);
       width: 100%;
       height: 2.75rem;
       line-height: 1.4rem;
       font-size: 1.2rem;
-      overflow: hidden;
-      -webkit-line-clamp: 2;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      text-overflow: ellipsis;
-      white-space: normal;
 
       @include mid-width {
         font-size: 1rem;

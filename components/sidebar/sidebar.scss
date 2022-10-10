@@ -1,10 +1,11 @@
 $scrollbar-width: 15px;
 $sidebar-width: 250px;
+$sidebar-height: calc(100vh - $header-height);
 $sidebar-width-small: calc($sidebar-width / 4);
 
 aside.sidebar {
   width: $sidebar-width;
-  height: calc(100vh - $header-height);
+  height: $sidebar-height;
   background: $secondary-color;
   overflow-x: hidden;
   overflow-y: scroll;
