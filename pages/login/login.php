@@ -8,7 +8,7 @@ require "../../components/head.php";
     <div class="login-bg-color"></div>
     <div class="login-form-div">
         <h1>Prihlásenie</h1>
-        <form action="" class="login-form">
+        <form action="#" class="login-form">
             <div class="form-input-image-div">
                 <label for="username" class="input-image-div">
                     <img src="<?php echo ROOT_PATH;?>/img/user-image.png" alt="">
