@@ -50,8 +50,11 @@ article.video-article-container {
       }
     }
 
+    a.video-article-author {
+      @include a-hover-gray-white();
+    }
+
     a.video-article-author, span.video-article-views {
-      text-decoration: none;
       color: $light-secondary-color;
 
       @include mid-width {

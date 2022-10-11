@@ -11,7 +11,7 @@ require "../../components/header/header.php";
     <main class="profile-main">
         <div class="left-video">
             <div class="video-container">
-                <video src=""></video>
+                <video src="#"></video>
             </div>
             <div class="under-video-container">
                 <div class="content-info">
@@ -37,7 +37,7 @@ require "../../components/header/header.php";
                     <div class="video-author-container">
                         <div class="video-author">
                             <div class="small-profile-image" style="background-image: url('<?php echo ROOT_PATH; ?>img/login-page-bg-landscape.jpg')">
-
+                                <a href="#"></a>
                             </div>
                             <div class="author-name">
                                 <a href="#">Author name here</a>
@@ -50,17 +50,47 @@ require "../../components/header/header.php";
                 </div>
             </div>
             <div class="video-comments-container">
+                <h2>Pridaj komentár</h2>
                 <form class="video-comment-form" action="#">
                     <label for="video-comment-input" style="display: none"></label>
-                    <input type="text" name="video-comment" id="video-comment-input">
+                    <textarea name="video-comment" id="video-comment-input" placeholder="Začnite písať komentár..."></textarea>
                 </form>
-                <div class="comment-container">
-                    <div class="comment-author">
-                        <span>Komentátor</span>
-                        <span>pred 2 rokmi</span>
+                <div class="commments">
+                    <div class="comment-container">
+                        <div class="comment-author">
+                            <a href="#">Komentátor</a>
+                            <span>pred 2 rokmi</span>
+                        </div>
+                        <div class="comment-text">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, maxime minima. Assumenda corporis cumque doloremque doloribus expedita harum hic illo inventore iste laudantium nesciunt, officiis perspiciatis possimus tempora tempore voluptates.</p>
+                        </div>
                     </div>
-                    <div class="comment-text">
-                        <p></p>
+                    <div class="comment-container r-2">
+                        <div class="comment-author">
+                            <a href="#">Komentátor</a>
+                            <span>pred 2 rokmi</span>
+                        </div>
+                        <div class="comment-text">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, maxime minima. Assumenda corporis cumque doloremque doloribus expedita harum hic illo inventore iste laudantium nesciunt, officiis perspiciatis possimus tempora tempore voluptates.</p>
+                        </div>
+                    </div>
+                    <div class="comment-container r-3">
+                        <div class="comment-author">
+                            <a href="#">Komentátor</a>
+                            <span>pred 2 rokmi</span>
+                        </div>
+                        <div class="comment-text">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, maxime minima. Assumenda corporis cumque doloremque doloribus expedita harum hic illo inventore iste laudantium nesciunt, officiis perspiciatis possimus tempora tempore voluptates.</p>
+                        </div>
+                    </div>
+                    <div class="comment-container r-2">
+                        <div class="comment-author">
+                            <a href="#">Komentátor</a>
+                            <span>pred 2 rokmi</span>
+                        </div>
+                        <div class="comment-text">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, maxime minima. Assumenda corporis cumque doloremque doloribus expedita harum hic illo inventore iste laudantium nesciunt, officiis perspiciatis possimus tempora tempore voluptates.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -71,7 +101,183 @@ require "../../components/header/header.php";
                     <img src="<?php echo ROOT_PATH; ?>img/login-page-bg-landscape.jpg" alt="">
                 </div>
                 <div class="video-article-details">
-                    <h3 class="video-article-title">
+                    <h3 class="video-article-title" title="something">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
+                    </h3>
+                    <a href="#" class="video-article-author">
+                        Nightcore
+                    </a>
+                    <span class="video-article-views">
+                        183 tis. zhlidanutí
+                    </span>
+                </div>
+            </article>
+            <article class="video-article-container related-videos-video-container">
+                <div class="video-thumbnail">
+                    <img src="<?php echo ROOT_PATH; ?>img/login-page-bg-landscape.jpg" alt="">
+                </div>
+                <div class="video-article-details">
+                    <h3 class="video-article-title" title="something">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
+                    </h3>
+                    <a href="#" class="video-article-author">
+                        Nightcore
+                    </a>
+                    <span class="video-article-views">
+                        183 tis. zhlidanutí
+                    </span>
+                </div>
+            </article>
+            <article class="video-article-container related-videos-video-container">
+                <div class="video-thumbnail">
+                    <img src="<?php echo ROOT_PATH; ?>img/login-page-bg-landscape.jpg" alt="">
+                </div>
+                <div class="video-article-details">
+                    <h3 class="video-article-title" title="something">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
+                    </h3>
+                    <a href="#" class="video-article-author">
+                        Nightcore
+                    </a>
+                    <span class="video-article-views">
+                        183 tis. zhlidanutí
+                    </span>
+                </div>
+            </article>
+            <article class="video-article-container related-videos-video-container">
+                <div class="video-thumbnail">
+                    <img src="<?php echo ROOT_PATH; ?>img/login-page-bg-landscape.jpg" alt="">
+                </div>
+                <div class="video-article-details">
+                    <h3 class="video-article-title" title="something">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
+                    </h3>
+                    <a href="#" class="video-article-author">
+                        Nightcore
+                    </a>
+                    <span class="video-article-views">
+                        183 tis. zhlidanutí
+                    </span>
+                </div>
+            </article>
+            <article class="video-article-container related-videos-video-container">
+                <div class="video-thumbnail">
+                    <img src="<?php echo ROOT_PATH; ?>img/login-page-bg-landscape.jpg" alt="">
+                </div>
+                <div class="video-article-details">
+                    <h3 class="video-article-title" title="something">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
+                    </h3>
+                    <a href="#" class="video-article-author">
+                        Nightcore
+                    </a>
+                    <span class="video-article-views">
+                        183 tis. zhlidanutí
+                    </span>
+                </div>
+            </article>
+            <article class="video-article-container related-videos-video-container">
+                <div class="video-thumbnail">
+                    <img src="<?php echo ROOT_PATH; ?>img/login-page-bg-landscape.jpg" alt="">
+                </div>
+                <div class="video-article-details">
+                    <h3 class="video-article-title" title="something">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
+                    </h3>
+                    <a href="#" class="video-article-author">
+                        Nightcore
+                    </a>
+                    <span class="video-article-views">
+                        183 tis. zhlidanutí
+                    </span>
+                </div>
+            </article>
+            <article class="video-article-container related-videos-video-container">
+                <div class="video-thumbnail">
+                    <img src="<?php echo ROOT_PATH; ?>img/login-page-bg-landscape.jpg" alt="">
+                </div>
+                <div class="video-article-details">
+                    <h3 class="video-article-title" title="something">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
+                    </h3>
+                    <a href="#" class="video-article-author">
+                        Nightcore
+                    </a>
+                    <span class="video-article-views">
+                        183 tis. zhlidanutí
+                    </span>
+                </div>
+            </article>
+            <article class="video-article-container related-videos-video-container">
+                <div class="video-thumbnail">
+                    <img src="<?php echo ROOT_PATH; ?>img/login-page-bg-landscape.jpg" alt="">
+                </div>
+                <div class="video-article-details">
+                    <h3 class="video-article-title" title="something">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
+                    </h3>
+                    <a href="#" class="video-article-author">
+                        Nightcore
+                    </a>
+                    <span class="video-article-views">
+                        183 tis. zhlidanutí
+                    </span>
+                </div>
+            </article>
+            <article class="video-article-container related-videos-video-container">
+                <div class="video-thumbnail">
+                    <img src="<?php echo ROOT_PATH; ?>img/login-page-bg-landscape.jpg" alt="">
+                </div>
+                <div class="video-article-details">
+                    <h3 class="video-article-title" title="something">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
+                    </h3>
+                    <a href="#" class="video-article-author">
+                        Nightcore
+                    </a>
+                    <span class="video-article-views">
+                        183 tis. zhlidanutí
+                    </span>
+                </div>
+            </article>
+            <article class="video-article-container related-videos-video-container">
+                <div class="video-thumbnail">
+                    <img src="<?php echo ROOT_PATH; ?>img/login-page-bg-landscape.jpg" alt="">
+                </div>
+                <div class="video-article-details">
+                    <h3 class="video-article-title" title="something">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
+                    </h3>
+                    <a href="#" class="video-article-author">
+                        Nightcore
+                    </a>
+                    <span class="video-article-views">
+                        183 tis. zhlidanutí
+                    </span>
+                </div>
+            </article>
+            <article class="video-article-container related-videos-video-container">
+                <div class="video-thumbnail">
+                    <img src="<?php echo ROOT_PATH; ?>img/login-page-bg-landscape.jpg" alt="">
+                </div>
+                <div class="video-article-details">
+                    <h3 class="video-article-title" title="something">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
+                    </h3>
+                    <a href="#" class="video-article-author">
+                        Nightcore
+                    </a>
+                    <span class="video-article-views">
+                        183 tis. zhlidanutí
+                    </span>
+                </div>
+            </article>
+            <article class="video-article-container related-videos-video-container">
+                <div class="video-thumbnail">
+                    <img src="<?php echo ROOT_PATH; ?>img/login-page-bg-landscape.jpg" alt="">
+                </div>
+                <div class="video-article-details">
+                    <h3 class="video-article-title" title="something">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
                     </h3>
                     <a href="#" class="video-article-author">
@@ -90,7 +296,7 @@ require "../../components/header/header.php";
 require "../../components/page-ending.php";
 ?>
 
-<script type="text/javascript">
+<script>
     let sidebar = document.querySelector("aside.sidebar");
     let sidebarWidth = getComputedStyle(sidebar).width.split("px")[0];
 

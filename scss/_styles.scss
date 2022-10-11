@@ -1,0 +1,19 @@
+@mixin a-hover-white-gray {
+  text-decoration: none;
+  color: $white;
+  transition: $transition-all;
+
+  &:hover {
+    color: $light-secondary-color;
+  }
+}
+
+@mixin a-hover-gray-white {
+  text-decoration: none;
+  color: $light-secondary-color;
+  transition: $transition-all;
+
+  &:hover {
+    color: $white;
+  }
+}

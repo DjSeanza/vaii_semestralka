@@ -698,8 +698,15 @@ article.video-article-container div.video-article-details h3.video-article-title
     font-size: 1rem;
   }
 }
-article.video-article-container div.video-article-details a.video-article-author, article.video-article-container div.video-article-details span.video-article-views {
+article.video-article-container div.video-article-details a.video-article-author {
   text-decoration: none;
+  color: #6c6c6c;
+  transition: all 0.15s ease-in;
+}
+article.video-article-container div.video-article-details a.video-article-author:hover {
+  color: #ffffff;
+}
+article.video-article-container div.video-article-details a.video-article-author, article.video-article-container div.video-article-details span.video-article-views {
   color: #6c6c6c;
 }
 @media screen and (max-width: 767px) {
@@ -800,6 +807,12 @@ main.profile-main {
   justify-content: space-between;
   column-gap: 1rem;
 }
+@media screen and (max-width: 767px) {
+  main.profile-main {
+    flex-direction: column;
+    row-gap: 2rem;
+  }
+}
 main.profile-main div.left-video {
   flex: 1;
 }
@@ -811,6 +824,50 @@ main.profile-main div.left-video div.video-container video {
   width: 100%;
   height: 100%;
   background: antiquewhite;
+}
+main.profile-main div.related-videos {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  row-gap: 1rem;
+  width: clamp(200px, 35%, 400px);
+}
+@media screen and (max-width: 767px) {
+  main.profile-main div.related-videos {
+    width: 100%;
+  }
+}
+main.profile-main div.related-videos article.related-videos-video-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 1rem;
+  width: 100%;
+}
+@media screen and (max-width: 767px) {
+  main.profile-main div.related-videos article.related-videos-video-container {
+    width: 100%;
+  }
+}
+main.profile-main div.related-videos article.related-videos-video-container div.video-thumbnail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+}
+@media screen and (max-width: 767px) {
+  main.profile-main div.related-videos article.related-videos-video-container div.video-thumbnail {
+    width: 300px;
+  }
+}
+main.profile-main div.related-videos article.related-videos-video-container div.video-article-details h3 {
+  font-size: 1rem;
+}
+main.profile-main div.related-videos article.related-videos-video-container div.video-article-details a.video-article-author, main.profile-main div.related-videos article.related-videos-video-container div.video-article-details span.video-article-views {
+  font-size: 0.9rem;
 }
 
 main.profile-main div.under-video-container {
@@ -865,14 +922,11 @@ main.profile-main div.under-video-container div.content-info div.video-info div.
   font-weight: bold;
   font-size: 1.1rem;
   transform: scale(1);
-  transition: transform 0.25s ease-in-out;
+  transition: all 0.1s ease-in;
   position: relative;
 }
-main.profile-main div.under-video-container div.content-info div.video-info div.like-dislike-buttons-container button.like-button:hover {
-  transform: scale(1.05);
-}
-main.profile-main div.under-video-container div.content-info div.video-info div.like-dislike-buttons-container button.dislike-button:hover {
-  transform: scale(0.95);
+main.profile-main div.under-video-container div.content-info div.video-info div.like-dislike-buttons-container button.like-button:active, main.profile-main div.under-video-container div.content-info div.video-info div.like-dislike-buttons-container button.dislike-button:active {
+  transform: scale(0.9);
 }
 main.profile-main div.under-video-container div.content-info div.video-info div.like-dislike-buttons-container button img {
   content: "";
@@ -899,6 +953,11 @@ main.profile-main div.under-video-container div.author-description-info div.vide
   background-size: cover;
   overflow: hidden;
 }
+main.profile-main div.under-video-container div.author-description-info div.video-author-container div.video-author div.small-profile-image a {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 main.profile-main div.under-video-container div.author-description-info div.video-author-container div.video-author div.author-name a {
   text-decoration: none;
   color: #ffffff;
@@ -906,6 +965,71 @@ main.profile-main div.under-video-container div.author-description-info div.vide
 }
 main.profile-main div.under-video-container div.author-description-info div.video-author-container div.video-author div.author-name a:hover {
   color: #6c6c6c;
+}
+
+div.video-comments-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  width: 100%;
+}
+div.video-comments-container form.video-comment-form {
+  width: 100%;
+}
+div.video-comments-container form.video-comment-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #6c6c6c;
+  color: #ffffff;
+  resize: none;
+}
+div.video-comments-container form.video-comment-form textarea::placeholder {
+  color: #6c6c6c;
+}
+div.video-comments-container div.commments {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  row-gap: 2rem;
+  width: 100%;
+}
+div.video-comments-container div.commments div.comment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  row-gap: 1rem;
+}
+div.video-comments-container div.commments div.comment-container div.comment-author {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-height: 20px;
+  row-gap: 0.25rem;
+}
+div.video-comments-container div.commments div.comment-container div.comment-author a {
+  text-decoration: none;
+  color: #ffffff;
+  transition: all 0.15s ease-in;
+  font-weight: bold;
+}
+div.video-comments-container div.commments div.comment-container div.comment-author a:hover {
+  color: #6c6c6c;
+}
+div.video-comments-container div.commments div.comment-container div.comment-author span {
+  color: #6c6c6c;
+  font-size: 0.75rem;
+}
+div.video-comments-container div.commments div.comment-container.r-2 {
+  padding-left: 40px;
+}
+div.video-comments-container div.commments div.comment-container.r-3 {
+  padding-left: 80px;
 }
 
 .main {

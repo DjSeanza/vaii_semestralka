@@ -1,6 +1,9 @@
 $content-video-title-size: 1.5rem;
 $btn-img-width-height: 25px;
 $author-image: 50px;
+$comment-container-thread-padding: 40px;
+$video-article-width: 250px;
+$video-article-width-small: 300px;
 
 div.main-profile-container {
   width: 90%;
@@ -19,6 +22,11 @@ main.profile-main {
   @include flex(row, flex-start, space-between);
   column-gap: $rem-big;
 
+  @include mid-width {
+    flex-direction: column;
+    row-gap: $rem-very-big;
+  }
+
   div.left-video {
     flex: 1;
 
@@ -30,6 +38,45 @@ main.profile-main {
         width: 100%;
         height: 100%;
         background: antiquewhite;
+      }
+    }
+  }
+
+  div.related-videos {
+    @include flex(column, flex-start, center);
+    row-gap: $rem-big;
+    width: clamp(200px, 35%, 400px);
+
+    @include mid-width {
+      width: 100%;
+    }
+
+    article.related-videos-video-container {
+      @include flex-center();
+      column-gap: $rem-big;
+      width: 100%;
+
+      @include mid-width {
+        width: 100%;
+      }
+
+      div.video-thumbnail {
+        @include flex-center();
+        width: $video-article-width;
+
+        @include mid-width {
+          width: $video-article-width-small;
+        }
+      }
+
+      div.video-article-details {
+        h3 {
+          font-size: $rem-big;
+        }
+
+        a.video-article-author, span.video-article-views {
+          font-size: 0.9rem;
+        }
       }
     }
   }
@@ -75,15 +122,12 @@ main.profile-main div.under-video-container {
           font-weight: bold;
           font-size: 1.1rem;
           transform: scale(1);
-          transition: $transition-transform;
+          transition: all 0.1s ease-in;
           position: relative;
 
-          &.like-button:hover {
-            transform: scale(1.05);
-          }
 
-          &.dislike-button:hover {
-            transform: scale(0.95);
+          &.like-button:active, &.dislike-button:active {
+            transform: scale(0.9);
           }
 
           img {
@@ -112,18 +156,79 @@ main.profile-main div.under-video-container {
         background-repeat: no-repeat;
         background-size: cover;
         overflow: hidden;
+
+        a {
+          width: 100%;
+          height: 100%;
+          display: block;
+        }
       }
 
       div.author-name {
         a {
-          text-decoration: none;
-          color: $white;
-          transition: $transition-all;
-
-          &:hover {
-            color: $light-secondary-color;
-          }
+          @include a-hover-white-gray();
         }
+      }
+    }
+  }
+}
+
+div.video-comments-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: $rem-big;
+  width: 100%;
+
+  form.video-comment-form {
+    width: 100%;
+
+    textarea {
+      width: 100%;
+      padding: $rem-mid;
+      border: none;
+      background-color: transparent;
+      border-bottom: 1px solid $light-secondary-color;
+      color: $white;
+      resize: none;
+
+      &::placeholder {
+        color: $light-secondary-color;
+      }
+    }
+  }
+
+  div.commments {
+    @include flex(column, flex-start, center);
+    row-gap: $rem-very-big;
+    width: 100%;
+
+    div.comment-container {
+      @include flex(column, flex-start, center);
+      row-gap: $rem-big;
+
+      div.comment-author {
+        @include flex(column, flex-start, center);
+        width: 100%;
+        min-height: 20px;
+        row-gap: $rem-sm;
+
+        a {
+          @include a-hover-white-gray();
+          font-weight: bold;
+        }
+
+        span {
+          color: $light-secondary-color;
+          font-size: 0.75rem;
+        }
+      }
+
+      &.r-2 {
+        padding-left: $comment-container-thread-padding;
+      }
+
+      &.r-3 {
+        padding-left: calc($comment-container-thread-padding * 2);
       }
     }
   }

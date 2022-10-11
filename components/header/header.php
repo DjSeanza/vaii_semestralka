@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="header-mid">
-        <form action="">
+        <form action="#">
             <div>
                 <input type="text" placeholder="Search" class="p-2">
                 <button class="button pl-4 pr-4">
