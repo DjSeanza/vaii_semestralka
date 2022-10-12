@@ -571,7 +571,7 @@ main.login-main div.login-form-div div.login-register-question a {
   text-transform: uppercase;
   text-decoration: none;
   color: #271085;
-  transition: #4d26b7;
+  transition: all 0.15s ease-in;
   font-weight: bold;
 }
 main.login-main div.login-form-div div.login-register-question a:hover {

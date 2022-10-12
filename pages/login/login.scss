@@ -82,7 +82,7 @@ main.login-main {
         text-transform: uppercase;
         text-decoration: none;
         color: $primary-color;
-        transition: $light-primary-color;
+        transition: $transition-all;
         font-weight: bold;
 
         &:hover {
