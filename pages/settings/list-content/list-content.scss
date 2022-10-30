@@ -1,0 +1,138 @@
+$li-content-article-height: 150px;
+$list-content-article-image-width: 200px;
+$list-content-article-border-radius: 15px;
+$content-article-controls-button-width: 75px;
+
+main.main {
+  padding: $rem-big;
+
+  div.content-container {
+    @include flex(column, flex-start, center);
+    row-gap: $rem-big;
+    width: 100%;
+
+    button.add-content-button {
+      width: $content-article-controls-button-width;
+      background-color: $primary-color;
+      align-self: flex-end;
+      transition: $transition-all;
+      color: $white;
+      transform: scale(1);
+
+      &:hover {
+        background-color: $primary-hover-color;
+        transform: scale(1.05);
+      }
+    }
+
+    ul.content-ul {
+      @include flex(column, center, center);
+      row-gap: $rem-big;
+      width: 100%;
+
+      li.content-article-container {
+        @include flex(row, center, space-between);
+        column-gap: $rem-mid;
+        row-gap: $rem-mid;
+        width: 100%;
+        list-style: none;
+        padding: $rem-mid;
+        min-height: $li-content-article-height;
+        max-height: $li-content-article-height;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        @include small-width {
+          flex-direction: column;
+          align-items: flex-start;
+          row-gap: $rem-big;
+          max-height: none;
+        }
+
+        div.content-article-image {
+          // @TODO vyska ked sa zmensuje, opravit
+          aspect-ratio: 16 / 9;
+          width: $list-content-article-image-width;
+          overflow: hidden;
+          border-radius: $list-content-article-border-radius;
+
+          @include small-width {
+            width: 100%;
+          }
+
+          @include small-width-up {
+            width: clamp($li-content-article-height, 100%, 100%);
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        div.content-article-info {
+          @include flex(column, flex-start, space-around);
+          flex: 1;
+          height: 100%;
+
+          @include small-width {
+            padding: 0 $rem-big;
+          }
+
+          span.content-title {
+            @include line-clamp(2);
+            font-weight: bold;
+            font-size: 12pt;
+          }
+
+          div.content-article-detail {
+            @include flex(row, center, flex-start);
+            column-gap: $rem-big;
+            width: 100%;
+            font-size: 10pt;
+            color: $light-secondary-color;
+
+            div:nth-of-type(2) {
+              @include flex(row, center, flex-start);
+              column-gap: $rem-mid;
+            }
+          }
+        }
+
+        div.content-article-controls {
+          @include flex(row, center, center);
+          column-gap: $rem-big;
+
+          @include small-width {
+            padding: 0 $rem-big;
+          }
+
+          button.content-article-control-button {
+            width: $content-article-controls-button-width;
+            transform: scale(1);
+            transition: $transition-all;
+            color: $white;
+
+            &:hover {
+              transform: scale(1.05);
+            }
+
+            &.edit-button {
+              background: $light-secondary-color;
+            }
+
+            &.delete-button {
+              background-color: $highlight-color;
+
+              &:hover {
+                background-color: $highlight-hover-color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

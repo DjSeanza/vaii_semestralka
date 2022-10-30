@@ -38,6 +38,7 @@ body {
 @import "components/video-container/video-container";
 @import "pages/videos/videos";
 @import "pages/content/content";
+@import "pages/settings/list-content/list-content";
 
 .main {
   width: calc(100% - $sidebar-width);
@@ -46,9 +47,11 @@ body {
 
   @include mid-width {
     margin-left: $sidebar-width-small;
+    width: calc(100% - $sidebar-width-small);
   }
 
   @include small-width-up {
     margin-left: 0;
+    width: 100%;
   }
 }

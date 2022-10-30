@@ -291,14 +291,14 @@ require "../../components/header/header.php";
         </div>
     </main>
 </div>
-
-<?php
-require "../../components/page-ending.php";
-?>
-
 <script>
     let sidebar = document.querySelector("aside.sidebar");
     let sidebarWidth = getComputedStyle(sidebar).width.split("px")[0];
 
     sidebar.style.left = sidebarWidth * -1 + "px";
 </script>
+
+<?php
+require "../../components/page-ending.php";
+?>
+

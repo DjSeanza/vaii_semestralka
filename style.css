@@ -1032,6 +1032,152 @@ div.video-comments-container div.commments div.comment-container.r-3 {
   padding-left: 80px;
 }
 
+main.main {
+  padding: 1rem;
+}
+main.main div.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  row-gap: 1rem;
+  width: 100%;
+}
+main.main div.content-container button.add-content-button {
+  width: 75px;
+  background-color: #271085;
+  align-self: flex-end;
+  transition: all 0.15s ease-in;
+  color: #ffffff;
+  transform: scale(1);
+}
+main.main div.content-container button.add-content-button:hover {
+  background-color: #4a1eff;
+  transform: scale(1.05);
+}
+main.main div.content-container ul.content-ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 1rem;
+  width: 100%;
+}
+main.main div.content-container ul.content-ul li.content-article-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 0.5rem;
+  row-gap: 0.5rem;
+  width: 100%;
+  list-style: none;
+  padding: 0.5rem;
+  min-height: 150px;
+  max-height: 150px;
+}
+main.main div.content-container ul.content-ul li.content-article-container:hover {
+  cursor: pointer;
+}
+@media screen and (max-width: 575px) {
+  main.main div.content-container ul.content-ul li.content-article-container {
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 1rem;
+    max-height: none;
+  }
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-image {
+  aspect-ratio: 16/9;
+  width: 200px;
+  overflow: hidden;
+  border-radius: 15px;
+}
+@media screen and (max-width: 575px) {
+  main.main div.content-container ul.content-ul li.content-article-container div.content-article-image {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 0) and (max-width: 575px) {
+  main.main div.content-container ul.content-ul li.content-article-container div.content-article-image {
+    width: clamp(150px, 100%, 100%);
+  }
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-image img {
+  width: 100%;
+  height: 100%;
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  flex: 1;
+  height: 100%;
+}
+@media screen and (max-width: 575px) {
+  main.main div.content-container ul.content-ul li.content-article-container div.content-article-info {
+    padding: 0 1rem;
+  }
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-info span.content-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  font-size: 12pt;
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-info div.content-article-detail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 1rem;
+  width: 100%;
+  font-size: 10pt;
+  color: #6c6c6c;
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-info div.content-article-detail div:nth-of-type(2) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 0.5rem;
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 1rem;
+}
+@media screen and (max-width: 575px) {
+  main.main div.content-container ul.content-ul li.content-article-container div.content-article-controls {
+    padding: 0 1rem;
+  }
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-controls button.content-article-control-button {
+  width: 75px;
+  transform: scale(1);
+  transition: all 0.15s ease-in;
+  color: #ffffff;
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-controls button.content-article-control-button:hover {
+  transform: scale(1.05);
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-controls button.content-article-control-button.edit-button {
+  background: #6c6c6c;
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-controls button.content-article-control-button.delete-button {
+  background-color: #de3b7a;
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-controls button.content-article-control-button.delete-button:hover {
+  background-color: #ff68a3;
+}
+
 .main {
   width: calc(100% - 250px);
   margin-left: 250px;
@@ -1040,11 +1186,13 @@ div.video-comments-container div.commments div.comment-container.r-3 {
 @media screen and (max-width: 767px) {
   .main {
     margin-left: 62.5px;
+    width: calc(100% - 62.5px);
   }
 }
 @media screen and (min-width: 0) and (max-width: 575px) {
   .main {
     margin-left: 0;
+    width: 100%;
   }
 }
 
