@@ -205,6 +205,8 @@ div.video-comments-container {
     div.comment-container {
       @include flex(column, flex-start, center);
       row-gap: $rem-big;
+      position: relative;
+      width: 100%;
 
       div.comment-author {
         @include flex(column, flex-start, center);
@@ -221,6 +223,13 @@ div.video-comments-container {
           color: $light-secondary-color;
           font-size: 0.75rem;
         }
+      }
+
+      // @TODO dostylovat buttony
+      div.comment-buttons {
+        position: absolute;
+        right: 0;
+        top: $rem-mid;
       }
 
       &.r-2 {

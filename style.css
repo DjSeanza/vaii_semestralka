@@ -1002,6 +1002,8 @@ div.video-comments-container div.commments div.comment-container {
   align-items: flex-start;
   justify-content: center;
   row-gap: 1rem;
+  position: relative;
+  width: 100%;
 }
 div.video-comments-container div.commments div.comment-container div.comment-author {
   display: flex;
@@ -1024,6 +1026,11 @@ div.video-comments-container div.commments div.comment-container div.comment-aut
 div.video-comments-container div.commments div.comment-container div.comment-author span {
   color: #6c6c6c;
   font-size: 0.75rem;
+}
+div.video-comments-container div.commments div.comment-container div.comment-buttons {
+  position: absolute;
+  right: 0;
+  top: 0.5rem;
 }
 div.video-comments-container div.commments div.comment-container.r-2 {
   padding-left: 40px;

@@ -1,7 +1,17 @@
 <?php
-require "../../paths.php";
-require "../../components/head.php";
-require "../../components/header/header.php";
+include "../../paths.php";
+include "../../components/head.php";
+include "../../components/header/header.php";
+
+include "../../database/Connection.php";
+include "../../database/Comments.php";
+include "../../database/Authentication.php";
+
+$conn = new Connection();
+$comments = new Comments();
+$auth = new Authentication();
+
+echo $_COOKIE['user'];
 ?>
 
 <div class="main-profile-container">
@@ -56,15 +66,25 @@ require "../../components/header/header.php";
                     <textarea name="video-comment" id="video-comment-input" placeholder="Začnite písať komentár..."></textarea>
                 </form>
                 <div class="commments">
+                    <?php foreach ($comments->getAllComments() as $comment) { ?>
                     <div class="comment-container">
                         <div class="comment-author">
-                            <a href="#">Komentátor</a>
-                            <span>pred 2 rokmi</span>
+                            <a href="#"><?php echo $comment->getAuthor() ?></a>
+                            <span><?php echo $comment->getPostTime() ?></span>
                         </div>
                         <div class="comment-text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, maxime minima. Assumenda corporis cumque doloremque doloribus expedita harum hic illo inventore iste laudantium nesciunt, officiis perspiciatis possimus tempora tempore voluptates.</p>
+                            <p><?php echo $comment->getText() ?></p>
                         </div>
+                        <!-- @TODO dat naspat && $_COOKIE['user'] == $comment->getAuthor() -->
+
+                        <?php if (isset($_COOKIE['user'])) { ?>
+                        <div class="comment-buttons">
+                            <button class="button">Edit</button>
+                            <button class="button">Delete</button>
+                        </div>
+                        <?php } ?>
                     </div>
+                    <?php } ?>
                     <div class="comment-container r-2">
                         <div class="comment-author">
                             <a href="#">Komentátor</a>
