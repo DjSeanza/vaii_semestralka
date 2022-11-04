@@ -1,0 +1,22 @@
+/* Error: Undefined mixin.
+ *    ,
+ * 17 | /   @include small-width {
+ * 18 | |     grid-template-columns: 1fr;
+ * 19 | |     grid-template-rows: 1fr 1fr;
+ * 20 | |     grid-template-areas:
+ * 21 | |             "image"
+ * 22 | |             "image";
+ * 23 | \   }
+ *    '
+ *   login.scss 17:3  root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: Undefined mixin.\a    \2577 \a 17 \2502  \250c    @include small-width {\a 18 \2502  \2502      grid-template-columns: 1fr;\a 19 \2502  \2502      grid-template-rows: 1fr 1fr;\a 20 \2502  \2502      grid-template-areas:\a 21 \2502  \2502              "image"\a 22 \2502  \2502              "image";\a 23 \2502  \2514    }\a    \2575 \a   login.scss 17:3  root stylesheet';
+}

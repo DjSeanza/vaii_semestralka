@@ -1,0 +1,57 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@import "../../public/css/styles";
+@import "../../public/css/preferences";
+@import "../../public/css/layout";
+@import "../../public/css/colors";
+@import "../../public/css/responsive";
+
+:root {
+  --small-breakpoint: 576px;
+  --mid-breakpoint: 768px;
+}
+
+body {
+  background-color: $background-color;
+  color: $text-color;
+  font-family: 'Roboto', sans-serif;
+}
+
+.button {
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+@import "../../App/Components/header/header";
+@import "../../App/Components/nav/nav";
+@import "../../App/Components/sidebar/sidebar";
+@import "../../App/Views/Home/home";
+@import "../../App/Views/Auth/login";
+@import "../../App/Components/video-container/video-container";
+@import "../../App/Views/Content/listed-content";
+@import "../../App/Views/Content/content-page";
+@import "../../App/Views/Settings/list-content";
+
+.main {
+  width: calc(100% - $sidebar-width);
+  margin-left: $sidebar-width;
+  margin-top: $header-height;
+
+  @include mid-width {
+    margin-left: $sidebar-width-small;
+    width: calc(100% - $sidebar-width-small);
+  }
+
+  @include small-width-up {
+    margin-left: 0;
+    width: 100%;
+  }
+}

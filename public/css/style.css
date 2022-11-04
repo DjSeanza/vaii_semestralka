@@ -1,0 +1,1206 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* basic rems */
+/* margins and paddings */
+.p-1 {
+  padding: 0.25rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.p-3 {
+  padding: 0.75rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.pl-1 {
+  padding-left: 0.25rem;
+}
+
+.pl-2 {
+  padding-left: 0.5rem;
+}
+
+.pl-3 {
+  padding-left: 0.75rem;
+}
+
+.pl-4 {
+  padding-left: 1rem;
+}
+
+.pr-1 {
+  padding-right: 0.25rem;
+}
+
+.pr-2 {
+  padding-right: 0.5rem;
+}
+
+.pr-3 {
+  padding-right: 0.75rem;
+}
+
+.pr-4 {
+  padding-right: 1rem;
+}
+
+.pt-1 {
+  padding-top: 0.25rem;
+}
+
+.pt-2 {
+  padding-top: 0.5rem;
+}
+
+.pt-3 {
+  padding-top: 0.75rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
+}
+
+.pb-1 {
+  padding-bottom: 0.25rem;
+}
+
+.pb-2 {
+  padding-bottom: 0.5rem;
+}
+
+.pb-3 {
+  padding-bottom: 0.75rem;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
+.m-1 {
+  margin: 0.25rem;
+}
+
+.m-2 {
+  margin: 0.5rem;
+}
+
+.m-3 {
+  margin: 0.75rem;
+}
+
+.m-4 {
+  margin: 1rem;
+}
+
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.ml-3 {
+  margin-left: 0.75rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
+}
+
+.mr-1 {
+  margin-right: 0.25rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+.mr-3 {
+  margin-right: 0.75rem;
+}
+
+.mr-4 {
+  margin-right: 1rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+:root {
+  --small-breakpoint: 576px;
+  --mid-breakpoint: 768px;
+}
+
+body {
+  background-color: #181818;
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+}
+
+.button {
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+header.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+  height: 60px;
+  overflow: hidden;
+  column-gap: 1rem;
+  background-color: #202020;
+  position: fixed;
+  top: 0;
+  z-index: 101;
+}
+header.header div.header-mid, header.header div.header-left, header.header div.header-right {
+  height: 100%;
+}
+header.header div.header-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: clamp(150px, 20%, 300px);
+}
+@media screen and (max-width: 767px) {
+  header.header div.header-right {
+    min-width: 40px;
+  }
+}
+header.header div.header-right button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transform: scale(1);
+  transition: transform 0.25s ease-in-out;
+}
+header.header div.header-right button:hover {
+  transform: scale(1.05);
+}
+header.header div.header-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 0.5rem;
+  min-width: clamp(250px, 30%, 400px);
+  overflow: hidden;
+}
+@media screen and (max-width: 767px) {
+  header.header div.header-left {
+    min-width: 150px;
+    column-gap: 0;
+  }
+}
+header.header div.header-left div.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 200px;
+  height: 60px;
+}
+header.header div.header-left div.logo a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+header.header div.header-left div.logo a img {
+  padding: 0.25rem;
+  height: calc(60px - 0.5rem - 10px);
+}
+@media screen and (max-width: 767px) {
+  header.header div.header-left div.logo a img {
+    width: 100px;
+  }
+}
+header.header div.header-left button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+header.header div.header-left button img {
+  width: calc(40px - 30%);
+}
+header.header div.header-mid {
+  flex: 0 1 728px;
+}
+header.header div.header-mid form {
+  width: 100%;
+  height: 100%;
+}
+header.header div.header-mid form div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+}
+@media screen and (max-width: 767px) {
+  header.header div.header-mid form div {
+    justify-content: flex-end;
+  }
+}
+header.header div.header-mid form div input {
+  height: 40px;
+  flex: 2;
+  border-radius: 5px 0 0 5px;
+  border: 2px solid #2e2e2e;
+  background-color: #000000;
+  color: #ffffff;
+}
+@media screen and (max-width: 767px) {
+  header.header div.header-mid form div input {
+    display: none;
+  }
+}
+header.header div.header-mid form div button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  border-radius: 0 5px 5px 0;
+  flex: 0;
+  background-color: #2e2e2e;
+  transition: background 0.125s ease-in;
+}
+@media screen and (max-width: 767px) {
+  header.header div.header-mid form div button {
+    background: none;
+    border: none;
+    width: 40px;
+    padding: 0;
+  }
+}
+header.header div.header-mid form div button:hover {
+  background-color: #2c2c2c;
+}
+@media screen and (max-width: 767px) {
+  header.header div.header-mid form div button:hover {
+    background-color: transparent;
+  }
+}
+header.header div.header-mid form div button:hover input {
+  border: 2px solid #2c2c2c;
+}
+header.header div.header-mid form div button img {
+  height: calc(40px - 1rem);
+}
+
+nav.navigation {
+  width: 100%;
+}
+nav.navigation ul {
+  width: 100%;
+}
+@media screen and (max-width: 767px) {
+  nav.navigation ul {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+  }
+}
+nav.navigation ul li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 1rem;
+  list-style: none;
+  padding: 0.5rem;
+}
+@media screen and (max-width: 767px) {
+  nav.navigation ul li {
+    justify-content: center;
+    border-radius: 0;
+    padding: 1.5rem 0.5rem;
+  }
+}
+nav.navigation ul li.active {
+  background-color: #6c6c6c;
+}
+nav.navigation ul li:hover {
+  background-color: #6c6c6c;
+}
+nav.navigation ul li a {
+  font-size: 1.15em;
+  text-decoration: none;
+  color: #ffffff;
+  display: block;
+}
+@media screen and (max-width: 767px) {
+  nav.navigation ul li a {
+    display: none;
+  }
+}
+nav.navigation ul li img {
+  width: 30px;
+  height: 30px;
+}
+
+aside.sidebar {
+  width: 250px;
+  height: calc(100vh - 60px);
+  background: #202020;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding-right: 15px;
+  position: fixed;
+  left: 0;
+  top: 60px;
+  z-index: 100;
+}
+@media screen and (max-width: 767px) {
+  aside.sidebar {
+    width: 62.5px;
+    padding-right: 0;
+  }
+}
+@media screen and (min-width: 0) and (max-width: 575px) {
+  aside.sidebar {
+    width: 0;
+  }
+}
+aside.sidebar div.sidebar-container {
+  width: 100%;
+  margin-bottom: 1rem;
+  position: relative;
+  border-bottom: 1px solid #2e2e2e;
+  padding-bottom: 1rem;
+}
+@media screen and (max-width: 767px) {
+  aside.sidebar div.sidebar-container {
+    border-bottom: none;
+  }
+}
+aside.sidebar div.sidebar-login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 1rem;
+  padding-left: 0.5rem;
+}
+@media screen and (max-width: 767px) {
+  aside.sidebar div.sidebar-login-container {
+    display: none;
+  }
+}
+aside.sidebar div.sidebar-login-container button {
+  width: 100%;
+  text-transform: uppercase;
+  border: 1px solid #de3b7a;
+  background: transparent;
+  color: #de3b7a;
+  transform: scale(1);
+  font-weight: bold;
+  transition: all 0.15s ease-in;
+}
+aside.sidebar div.sidebar-login-container button:hover {
+  background: #de3b7a;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+main.sidebar-responsive-main {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+@media screen and (max-width: 767px) {
+  main.sidebar-responsive-main {
+    width: calc(100% - 62.5px);
+  }
+}
+@media screen and (max-width: 575px) {
+  main.sidebar-responsive-main {
+    width: 100%;
+  }
+}
+main.sidebar-responsive-main h2 {
+  margin-bottom: 0.5rem;
+}
+main.sidebar-responsive-main section.home-page-section {
+  width: 100%;
+  padding: 1rem;
+}
+main.sidebar-responsive-main section.home-page-section div.home-page-video-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 1rem;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+main.login-main {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "image image color color";
+  position: relative;
+}
+@media screen and (max-width: 575px) {
+  main.login-main {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "image" "image";
+  }
+}
+main.login-main div.login-bg {
+  background-image: url("../../public/images/Bg/login-page-bg-landscape.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 30%;
+  grid-area: image;
+}
+@media screen and (max-width: 575px) {
+  main.login-main div.login-bg {
+    background-image: url("../../public/images/Bg/login-page-bg-portrait-test.png");
+  }
+}
+main.login-main div.login-bg-color {
+  background-color: #180952;
+  grid-area: color;
+}
+@media screen and (max-width: 575px) {
+  main.login-main div.login-bg-color {
+    display: none;
+  }
+}
+main.login-main div.login-form-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 350px;
+  height: 400px;
+  background: #ffffff;
+  color: #000000;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  align-self: center;
+  position: absolute;
+  right: -175px;
+  border-radius: 20px;
+  padding: 2rem;
+}
+@media screen and (max-width: 575px) {
+  main.login-main div.login-form-div {
+    position: relative;
+    right: 0;
+    grid-area: 1/1;
+    justify-self: center;
+    background: transparent;
+    width: calc(100% - 1rem);
+    height: 200px;
+    padding: 0;
+    row-gap: 1rem;
+  }
+}
+main.login-main div.login-form-div h1 {
+  width: 100%;
+  text-align: center;
+  color: #271085;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+main.login-main div.login-form-div div.login-register-question a {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #271085;
+  transition: all 0.15s ease-in;
+  font-weight: bold;
+}
+main.login-main div.login-form-div div.login-register-question a:hover {
+  color: #4a1eff;
+}
+main.login-main div.login-form-div form.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-evenly;
+  row-gap: 1rem;
+  width: 100%;
+}
+main.login-main div.login-form-div form.login-form div.form-input-image-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 0.5rem;
+  width: 100%;
+}
+@media screen and (max-width: 575px) {
+  main.login-main div.login-form-div form.login-form div.form-input-image-div {
+    column-gap: 0;
+  }
+}
+main.login-main div.login-form-div form.login-form div.form-input-image-div label.input-image-div {
+  width: 30px;
+  height: 30px;
+}
+@media screen and (max-width: 575px) {
+  main.login-main div.login-form-div form.login-form div.form-input-image-div label.input-image-div {
+    height: 50px;
+    width: 50px;
+    background-color: #ffffff;
+    padding: 0.5rem;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+}
+main.login-main div.login-form-div form.login-form div.form-input-image-div label.input-image-div img {
+  width: 100%;
+  height: 100%;
+}
+main.login-main div.login-form-div form.login-form div.form-input-image-div input {
+  height: 30px;
+  padding: 0.5rem;
+  border: none;
+  position: relative;
+  flex-grow: 1;
+}
+@media screen and (max-width: 575px) {
+  main.login-main div.login-form-div form.login-form div.form-input-image-div input {
+    height: 50px;
+    background: #ffffff;
+    color: #000000;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+}
+main.login-main div.login-form-div form.login-form div.form-input-image-div input:focus {
+  border: 1px solid #271085;
+}
+main.login-main div.login-form-div form.login-form button {
+  text-transform: uppercase;
+  font-weight: bold;
+  background: #271085;
+  color: #ffffff;
+  transform: scale(1);
+  transition: all 0.15s ease-in;
+}
+main.login-main div.login-form-div form.login-form button:hover {
+  background: #4a1eff;
+  transform: scale(1.03);
+}
+
+article.video-article-container {
+  width: clamp(260px, 25vw, 360px);
+  cursor: pointer;
+  overflow: hidden;
+}
+@media screen and (max-width: 767px) {
+  article.video-article-container {
+    width: clamp(225px, 35vw, 360px);
+  }
+}
+@media screen and (min-width: 0) and (max-width: 575px) {
+  article.video-article-container {
+    width: clamp(150px, 35vw, 200px);
+  }
+}
+article.video-article-container div.video-thumbnail {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+article.video-article-container div.video-thumbnail img {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+article.video-article-container div.video-article-details {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25rem;
+}
+article.video-article-container div.video-article-details h3.video-article-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  height: 2.75rem;
+  line-height: 1.4rem;
+  font-size: 1.2rem;
+}
+@media screen and (max-width: 767px) {
+  article.video-article-container div.video-article-details h3.video-article-title {
+    font-size: 1rem;
+  }
+}
+article.video-article-container div.video-article-details a.video-article-author {
+  text-decoration: none;
+  color: #6c6c6c;
+  transition: all 0.15s ease-in;
+}
+article.video-article-container div.video-article-details a.video-article-author:hover {
+  color: #ffffff;
+}
+article.video-article-container div.video-article-details a.video-article-author, article.video-article-container div.video-article-details span.video-article-views {
+  color: #6c6c6c;
+}
+@media screen and (max-width: 767px) {
+  article.video-article-container div.video-article-details a.video-article-author, article.video-article-container div.video-article-details span.video-article-views {
+    font-size: 1rem;
+  }
+}
+
+main.sidebar-responsive-main {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+@media screen and (max-width: 767px) {
+  main.sidebar-responsive-main {
+    width: calc(100% - 62.5px);
+  }
+}
+@media screen and (max-width: 575px) {
+  main.sidebar-responsive-main {
+    width: 100%;
+  }
+}
+main.sidebar-responsive-main h2 {
+  margin-bottom: 0.5rem;
+}
+main.sidebar-responsive-main section.home-page-section {
+  width: 100%;
+  padding: 1rem;
+}
+main.sidebar-responsive-main section.home-page-section div.home-page-video-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 1rem;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+main.video-main {
+  padding: 2rem;
+}
+main.video-main h1.videos-h1 {
+  margin-bottom: 1rem;
+}
+
+div.videos-container {
+  width: 100%;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(260px, 25vw, 360px), 1fr));
+  grid-gap: 1rem 1rem;
+  align-items: center;
+  justify-items: center;
+}
+div.videos-container article.video-page {
+  width: clamp(clamp(260px, 25vw, 360px), 100%, clamp(260px, 25vw, 360px) + 100px);
+}
+@media screen and (max-width: 767px) {
+  div.videos-container article.video-page {
+    width: clamp(clamp(260px, 25vw, 360px) - 35px, 100%, clamp(260px, 25vw, 360px) + 100px);
+  }
+}
+@media screen and (min-width: 0) and (max-width: 575px) {
+  div.videos-container article.video-page {
+    width: clamp(150px, 100%, 100%);
+  }
+}
+@media screen and (max-width: 767px) {
+  div.videos-container {
+    grid-template-columns: repeat(auto-fit, minmax(clamp(225px, 35vw, 360px), 1fr));
+  }
+}
+@media screen and (min-width: 0) and (max-width: 575px) {
+  div.videos-container {
+    grid-template-columns: repeat(auto-fit, minmax(clamp(150px, 35vw, 200px), 1fr));
+  }
+}
+
+div.main-profile-container {
+  width: 90%;
+  min-height: 100px;
+  margin: calc(60px + 2rem) auto 0 auto;
+}
+
+div.profile-sidebar {
+  width: 250px;
+  height: calc(100vh - 60px);
+  position: absolute;
+  left: -250px;
+}
+
+main.profile-main {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  column-gap: 1rem;
+}
+@media screen and (max-width: 767px) {
+  main.profile-main {
+    flex-direction: column;
+    row-gap: 2rem;
+  }
+}
+main.profile-main div.left-video {
+  flex: 1;
+}
+main.profile-main div.left-video div.video-container {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+main.profile-main div.left-video div.video-container video {
+  width: 100%;
+  height: 100%;
+  background: antiquewhite;
+}
+main.profile-main div.related-videos {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  row-gap: 1rem;
+  width: clamp(200px, 35%, 400px);
+}
+@media screen and (max-width: 767px) {
+  main.profile-main div.related-videos {
+    width: 100%;
+  }
+}
+main.profile-main div.related-videos article.related-videos-video-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 1rem;
+  width: 100%;
+}
+@media screen and (max-width: 767px) {
+  main.profile-main div.related-videos article.related-videos-video-container {
+    width: 100%;
+  }
+}
+main.profile-main div.related-videos article.related-videos-video-container div.video-thumbnail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+}
+@media screen and (max-width: 767px) {
+  main.profile-main div.related-videos article.related-videos-video-container div.video-thumbnail {
+    width: 300px;
+  }
+}
+main.profile-main div.related-videos article.related-videos-video-container div.video-article-details h3 {
+  font-size: 1rem;
+}
+main.profile-main div.related-videos article.related-videos-video-container div.video-article-details a.video-article-author, main.profile-main div.related-videos article.related-videos-video-container div.video-article-details span.video-article-views {
+  font-size: 0.9rem;
+}
+
+main.profile-main div.under-video-container {
+  width: 100%;
+  margin-top: 1rem;
+}
+main.profile-main div.under-video-container div.content-info {
+  width: 100%;
+  border-bottom: 1px solid #6c6c6c;
+  padding-bottom: 0.5rem;
+}
+main.profile-main div.under-video-container div.content-info h1 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  min-height: 1.5rem;
+  max-height: 3.5rem;
+  font-size: 1.5rem;
+}
+main.profile-main div.under-video-container div.content-info div.video-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+}
+main.profile-main div.under-video-container div.content-info div.video-info div.video-basic-info {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1rem;
+  color: #6c6c6c;
+}
+main.profile-main div.under-video-container div.content-info div.video-info div.like-dislike-buttons-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 0.5rem;
+}
+main.profile-main div.under-video-container div.content-info div.video-info div.like-dislike-buttons-container button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 0.5rem;
+  background: transparent;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transform: scale(1);
+  transition: all 0.1s ease-in;
+  position: relative;
+}
+main.profile-main div.under-video-container div.content-info div.video-info div.like-dislike-buttons-container button.like-button:active, main.profile-main div.under-video-container div.content-info div.video-info div.like-dislike-buttons-container button.dislike-button:active {
+  transform: scale(0.9);
+}
+main.profile-main div.under-video-container div.content-info div.video-info div.like-dislike-buttons-container button img {
+  content: "";
+  width: 25px;
+  height: 25px;
+}
+main.profile-main div.under-video-container div.author-description-info {
+  width: 100%;
+  margin: 1rem 0;
+}
+main.profile-main div.under-video-container div.author-description-info div.video-author-container div.video-author {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+main.profile-main div.under-video-container div.author-description-info div.video-author-container div.video-author div.small-profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+main.profile-main div.under-video-container div.author-description-info div.video-author-container div.video-author div.small-profile-image a {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+main.profile-main div.under-video-container div.author-description-info div.video-author-container div.video-author div.author-name a {
+  text-decoration: none;
+  color: #ffffff;
+  transition: all 0.15s ease-in;
+}
+main.profile-main div.under-video-container div.author-description-info div.video-author-container div.video-author div.author-name a:hover {
+  color: #6c6c6c;
+}
+
+div.video-comments-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  width: 100%;
+}
+div.video-comments-container form.video-comment-form {
+  width: 100%;
+}
+div.video-comments-container form.video-comment-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #6c6c6c;
+  color: #ffffff;
+  resize: none;
+}
+div.video-comments-container form.video-comment-form textarea::placeholder {
+  color: #6c6c6c;
+}
+div.video-comments-container div.commments {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  row-gap: 2rem;
+  width: 100%;
+}
+div.video-comments-container div.commments div.comment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  row-gap: 1rem;
+  position: relative;
+  width: 100%;
+}
+div.video-comments-container div.commments div.comment-container div.comment-author {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-height: 20px;
+  row-gap: 0.25rem;
+}
+div.video-comments-container div.commments div.comment-container div.comment-author a {
+  text-decoration: none;
+  color: #ffffff;
+  transition: all 0.15s ease-in;
+  font-weight: bold;
+}
+div.video-comments-container div.commments div.comment-container div.comment-author a:hover {
+  color: #6c6c6c;
+}
+div.video-comments-container div.commments div.comment-container div.comment-author span {
+  color: #6c6c6c;
+  font-size: 0.75rem;
+}
+div.video-comments-container div.commments div.comment-container div.comment-buttons {
+  position: absolute;
+  right: 0;
+  top: 0.5rem;
+}
+div.video-comments-container div.commments div.comment-container.r-2 {
+  padding-left: 40px;
+}
+div.video-comments-container div.commments div.comment-container.r-3 {
+  padding-left: 80px;
+}
+
+main.main {
+  padding: 1rem;
+}
+main.main div.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  row-gap: 1rem;
+  width: 100%;
+}
+main.main div.content-container button.add-content-button {
+  width: 75px;
+  background-color: #271085;
+  align-self: flex-end;
+  transition: all 0.15s ease-in;
+  color: #ffffff;
+  transform: scale(1);
+}
+main.main div.content-container button.add-content-button:hover {
+  background-color: #4a1eff;
+  transform: scale(1.05);
+}
+main.main div.content-container ul.content-ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 1rem;
+  width: 100%;
+}
+main.main div.content-container ul.content-ul li.content-article-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 0.5rem;
+  row-gap: 0.5rem;
+  width: 100%;
+  list-style: none;
+  padding: 0.5rem;
+  min-height: 150px;
+  max-height: 150px;
+}
+main.main div.content-container ul.content-ul li.content-article-container:hover {
+  cursor: pointer;
+}
+@media screen and (max-width: 575px) {
+  main.main div.content-container ul.content-ul li.content-article-container {
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 1rem;
+    max-height: none;
+  }
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-image {
+  aspect-ratio: 16/9;
+  width: 200px;
+  overflow: hidden;
+  border-radius: 15px;
+}
+@media screen and (max-width: 575px) {
+  main.main div.content-container ul.content-ul li.content-article-container div.content-article-image {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 0) and (max-width: 575px) {
+  main.main div.content-container ul.content-ul li.content-article-container div.content-article-image {
+    width: clamp(150px, 100%, 100%);
+  }
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-image img {
+  width: 100%;
+  height: 100%;
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  flex: 1;
+  height: 100%;
+}
+@media screen and (max-width: 575px) {
+  main.main div.content-container ul.content-ul li.content-article-container div.content-article-info {
+    padding: 0 1rem;
+  }
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-info span.content-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  font-size: 12pt;
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-info div.content-article-detail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 1rem;
+  width: 100%;
+  font-size: 10pt;
+  color: #6c6c6c;
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-info div.content-article-detail div:nth-of-type(2) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 0.5rem;
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 1rem;
+}
+@media screen and (max-width: 575px) {
+  main.main div.content-container ul.content-ul li.content-article-container div.content-article-controls {
+    padding: 0 1rem;
+  }
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-controls button.content-article-control-button {
+  width: 75px;
+  transform: scale(1);
+  transition: all 0.15s ease-in;
+  color: #ffffff;
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-controls button.content-article-control-button:hover {
+  transform: scale(1.05);
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-controls button.content-article-control-button.edit-button {
+  background: #6c6c6c;
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-controls button.content-article-control-button.delete-button {
+  background-color: #de3b7a;
+}
+main.main div.content-container ul.content-ul li.content-article-container div.content-article-controls button.content-article-control-button.delete-button:hover {
+  background-color: #ff68a3;
+}
+
+.main {
+  width: calc(100% - 250px);
+  margin-left: 250px;
+  margin-top: 60px;
+}
+@media screen and (max-width: 767px) {
+  .main {
+    margin-left: 62.5px;
+    width: calc(100% - 62.5px);
+  }
+}
+@media screen and (min-width: 0) and (max-width: 575px) {
+  .main {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

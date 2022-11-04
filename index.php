@@ -1,14 +1,7 @@
 <?php
-require "paths.php";
-require "components/head.php";
-require "components/header/header.php";
-?>
+require "ClassLoader.php";
 
-<div class="main-container">
-    <?php
-        require "components/sidebar/sidebar.php";
-        require "pages/home/home.php";
-    ?>
-</div>
+use App\App;
 
-<?php require "components/page-ending.php"; ?>
+$app = new App();
+$app->run();
