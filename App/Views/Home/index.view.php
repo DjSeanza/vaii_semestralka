@@ -2,7 +2,7 @@
     <section class="home-page-section">
         <h2>Najnovšie</h2>
         <div class="home-page-video-container">
-            <article class="video-article-container">
+            <article class="video-article-container" onclick='location.href="?c=content"'>
                 <div class="video-thumbnail">
                     <img src="public/images/Bg//login-page-bg-landscape.jpg" alt="">
                 </div>
@@ -18,7 +18,7 @@
                     </span>
                 </div>
             </article>
-            <article class="video-article-container">
+            <article class="video-article-container" onclick='location.href="?c=content"'>
                 <div class="video-thumbnail">
                     <img src="public/images/Bg//login-page-bg-landscape.jpg" alt="">
                 </div>
@@ -34,7 +34,7 @@
                     </span>
                 </div>
             </article>
-            <article class="video-article-container">
+            <article class="video-article-container" onclick='location.href="?c=content"'>
                 <div class="video-thumbnail">
                     <img src="public/images/Bg//login-page-bg-landscape.jpg" alt="">
                 </div>
@@ -50,7 +50,7 @@
                     </span>
                 </div>
             </article>
-            <article class="video-article-container">
+            <article class="video-article-container" onclick='location.href="?c=content"'>
                 <div class="video-thumbnail">
                     <img src="public/images/Bg//login-page-bg-landscape.jpg" alt="">
                 </div>
@@ -66,7 +66,7 @@
                     </span>
                 </div>
             </article>
-            <article class="video-article-container">
+            <article class="video-article-container" onclick='location.href="?c=content"'>
                 <div class="video-thumbnail">
                     <img src="public/images/Bg//login-page-bg-landscape.jpg" alt="">
                 </div>
@@ -87,7 +87,7 @@
     <section class="home-page-section">
         <h2>Top Videá</h2>
         <div class="home-page-video-container">
-            <article class="video-article-container">
+            <article class="video-article-container" onclick='location.href="?c=content"'>
                 <div class="video-thumbnail">
                     <img src="public/images/Bg//login-page-bg-landscape.jpg" alt="">
                 </div>
@@ -103,7 +103,7 @@
                     </span>
                 </div>
             </article>
-            <article class="video-article-container">
+            <article class="video-article-container" onclick='location.href="?c=content"'>
                 <div class="video-thumbnail">
                     <img src="public/images/Bg//login-page-bg-landscape.jpg" alt="">
                 </div>
@@ -119,7 +119,7 @@
                     </span>
                 </div>
             </article>
-            <article class="video-article-container">
+            <article class="video-article-container" onclick='location.href="?c=content"'>
                 <div class="video-thumbnail">
                     <img src="public/images/Bg//login-page-bg-landscape.jpg" alt="">
                 </div>
@@ -135,7 +135,7 @@
                     </span>
                 </div>
             </article>
-            <article class="video-article-container">
+            <article class="video-article-container" onclick='location.href="?c=content"'>
                 <div class="video-thumbnail">
                     <img src="public/images/Bg//login-page-bg-landscape.jpg" alt="">
                 </div>
@@ -151,7 +151,7 @@
                     </span>
                 </div>
             </article>
-            <article class="video-article-container">
+            <article class="video-article-container" onclick='location.href="?c=content"'>
                 <div class="video-thumbnail">
                     <img src="public/images/Bg//login-page-bg-landscape.jpg" alt="">
                 </div>
@@ -172,7 +172,7 @@
     <section class="home-page-section">
         <h2>Kategórie</h2>
         <div class="home-page-video-container">
-            <article class="video-article-container">
+            <article class="video-article-container" onclick='location.href="?c=content"'>
                 <div class="video-thumbnail">
                     <img src="public/images/Bg//login-page-bg-landscape.jpg" alt="">
                 </div>
@@ -188,7 +188,7 @@
                     </span>
                 </div>
             </article>
-            <article class="video-article-container">
+            <article class="video-article-container" onclick='location.href="?c=content"'>
                 <div class="video-thumbnail">
                     <img src="public/images/Bg//login-page-bg-landscape.jpg" alt="">
                 </div>
@@ -204,7 +204,7 @@
                     </span>
                 </div>
             </article>
-            <article class="video-article-container">
+            <article class="video-article-container" onclick='location.href="?c=content"'>
                 <div class="video-thumbnail">
                     <img src="public/images/Bg//login-page-bg-landscape.jpg" alt="">
                 </div>
@@ -220,7 +220,7 @@
                     </span>
                 </div>
             </article>
-            <article class="video-article-container">
+            <article class="video-article-container" onclick='location.href="?c=content"'>
                 <div class="video-thumbnail">
                     <img src="public/images/Bg//login-page-bg-landscape.jpg" alt="">
                 </div>
@@ -236,7 +236,7 @@
                     </span>
                 </div>
             </article>
-            <article class="video-article-container">
+            <article class="video-article-container" onclick='location.href="?c=content"'>
                 <div class="video-thumbnail">
                     <img src="public/images/Bg//login-page-bg-landscape.jpg" alt="">
                 </div>

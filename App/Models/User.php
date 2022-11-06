@@ -1,35 +1,36 @@
 <?php
+namespace App\Models;
 
 use App\Core\Model;
 
 class User extends Model
 {
-    protected $user_id;
-    protected $login;
-    protected $password;
-    protected $profile_picture;
-    protected $email;
+    protected int $id;
+    protected string $login;
+    protected string $password;
+    protected string|null $profile_picture;
+    protected string|null $email;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
 
     /**
      * @return mixed
      */
-    public function getUserId()
-    {
-        return $this->user_id;
-    }
-
-    /**
-     * @param mixed $user_id
-     */
-    public function setUserId($user_id): void
-    {
-        $this->user_id = $user_id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLogin()
+    public function getLogin(): string
     {
         return $this->login;
     }
@@ -37,7 +38,7 @@ class User extends Model
     /**
      * @param mixed $login
      */
-    public function setLogin($login): void
+    public function setLogin(string $login): void
     {
         $this->login = $login;
     }
@@ -45,7 +46,7 @@ class User extends Model
     /**
      * @return mixed
      */
-    public function getPassword()
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -53,15 +54,15 @@ class User extends Model
     /**
      * @param mixed $password
      */
-    public function setPassword($password): void
+    public function setPassword(string $password): void
     {
         $this->password = $password;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      */
-    public function getProfilePicture()
+    public function getProfilePicture(): string|null
     {
         return $this->profile_picture;
     }
@@ -69,15 +70,15 @@ class User extends Model
     /**
      * @param mixed $profile_picture
      */
-    public function setProfilePicture($profile_picture): void
+    public function setProfilePicture(string|null $profile_picture): void
     {
         $this->profile_picture = $profile_picture;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      */
-    public function getEmail()
+    public function getEmail(): string|null
     {
         return $this->email;
     }
@@ -85,7 +86,7 @@ class User extends Model
     /**
      * @param mixed $email
      */
-    public function setEmail($email): void
+    public function setEmail(string|null $email): void
     {
         $this->email = $email;
     }

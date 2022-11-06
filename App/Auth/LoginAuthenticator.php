@@ -3,13 +3,14 @@
 namespace App\Auth;
 
 use App\Core\DB\Connection;
+use App\Models\User;
 use Exception;
 
 class LoginAuthenticator extends DummyAuthenticator
 {
     function login($login, $password): bool
     {
-        $sql = "SELECT login, password FROM users WHERE login = ?";
+        $sql = "SELECT login, password, id FROM users WHERE login = ?";
 
         $query = Connection::connect()->prepare($sql);
         $query->execute([$login]);
@@ -17,7 +18,7 @@ class LoginAuthenticator extends DummyAuthenticator
         $fetchedData = $query->fetch();
 
         if($fetchedData['login'] == $login && password_verify($password, $fetchedData['password'])) {
-            setcookie('user', $fetchedData['login'], time() + 7*24*60*60);
+            setcookie('user', $fetchedData['id'], time() + 7*24*60*60);
             return true;
         }
 
@@ -37,8 +38,17 @@ class LoginAuthenticator extends DummyAuthenticator
      */
     function getLoggedUserName(): string
     {
-        // the same as isset($_COOKIE['user']) ? $_COOKIE['user'] : throw new \Exception("User not logged in")
-        return $_COOKIE['user'] ?? throw new Exception("User not logged in");
+        $user = User::getOne($_COOKIE['user']);
+
+        if (!$user) {
+            throw new Exception("User not logged in");
+        }
+
+        return $user->getLogin();
+    }
+
+    function getLoggedUserId(): int {
+        return $_COOKIE['user'];
     }
 
     function isLogged(): bool

@@ -21,6 +21,7 @@ div.profile-sidebar {
 main.profile-main {
   @include flex(row, flex-start, space-between);
   column-gap: $rem-big;
+  padding-bottom: $rem-very-big;
 
   @include mid-width {
     flex-direction: column;
@@ -225,19 +226,30 @@ div.video-comments-container {
         }
       }
 
+      div.comment-text {
+        p {
+          &.editable {
+            padding: $rem-big;
+            border-bottom: 1px solid $light-secondary-color;
+          }
+        }
+      }
+
       // @TODO dostylovat buttony
       div.comment-buttons {
         position: absolute;
         right: 0;
         top: $rem-mid;
+        opacity: 0;
+        transition: $transition-all;
+      }
+
+      &:hover > div.comment-buttons {
+        opacity: 1;
       }
 
       &.r-2 {
         padding-left: $comment-container-thread-padding;
-      }
-
-      &.r-3 {
-        padding-left: calc($comment-container-thread-padding * 2);
       }
     }
   }

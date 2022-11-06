@@ -1,20 +1,18 @@
-<?php
-$current_url = basename($_SERVER['PHP_SELF']);
-?>
-
 <nav class="navigation">
     <ul>
-        <li class="button <?php if($current_url == "index.php") { echo "active"; } ?>">
+<!--        @TODO zmenit na Router-->
+<!--@TODO opravit prekliky na linky-->
+        <li class="button <?php if($router->getControllerName() == "Home") { echo "active"; } ?>">
             <img src="public/images/Icons/home-icon.svg" alt="">
-            <a href="">Domov</a>
+            <a href="?c=home">Domov</a>
         </li>
         <li class="button">
             <img src="public/images/Icons/explore-icon.svg" alt="">
             <a href="">Preskúmať</a>
         </li>
-        <li class="button">
+        <li class="button <?php if($router->getControllerName() == "Content" && $router->getAction() == "listedContent") { echo "active"; } ?>">
             <img src="public/images/Icons/category-icon.svg" alt="">
-            <a href="">Kategórie</a>
+            <a href="?c=content&a=listedContent">Kategórie</a>
         </li>
     </ul>
 </nav>

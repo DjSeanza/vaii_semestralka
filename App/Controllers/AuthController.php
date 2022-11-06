@@ -40,7 +40,7 @@ class AuthController extends AControllerBase
             }
         }
 
-        // @TODO ak sa nepodari prihlasit
+        // TODO ak sa nepodari prihlasit
         return $this->redirect('?c=auth');
     }
 

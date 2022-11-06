@@ -14,6 +14,11 @@ if ($router->getControllerName() != "Auth") {
 ?>
 
 <div class="web-content">
+    <?php
+        if ($router->getControllerName() != "Auth") {
+            include "App/Components/sidebar/sidebar.php";
+        }
+    ?>
     <?= $contentHTML ?>
 </div>
 
