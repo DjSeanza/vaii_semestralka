@@ -11,6 +11,7 @@ class Comment extends Model
     protected $post_time;
     protected $modification_time;
     protected $text;
+    protected $reply_to;
 
     /**
      * @throws \Exception
@@ -30,7 +31,7 @@ class Comment extends Model
     public function getReplies(): array
     {
         try {
-            return Reply::getAll("comment = ?", [$this->getId()]);
+            return Comment::getAll("reply_to = ?", [$this->getId()]);
         } catch (\Exception $e) {
             throw new \Exception('Error when getting replies: ' . $e->getMessage(), 0, $e);
         }
@@ -138,6 +139,22 @@ class Comment extends Model
     public function setText($text): void
     {
         $this->text = $text;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReplyTo()
+    {
+        return $this->reply_to;
+    }
+
+    /**
+     * @param mixed $reply_to
+     */
+    public function setReplyTo($reply_to): void
+    {
+        $this->reply_to = $reply_to;
     }
 
 

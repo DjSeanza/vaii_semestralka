@@ -33,7 +33,7 @@ class ContentController extends AControllerBase
             return $this->html(["error" => "Video not found."]);
         }
 
-        $commentsForVideo = Comment::getAll("video = ?", [$videoId]);
+        $commentsForVideo = Comment::getAll("video = ? && reply_to is null", [$videoId]);
 
         return $this->html(["video" => $video, "comments" => $commentsForVideo]);
     }
