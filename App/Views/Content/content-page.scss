@@ -2,6 +2,7 @@ $content-video-title-size: 1.5rem;
 $btn-img-width-height: 25px;
 $author-image: 50px;
 $comment-container-thread-padding: 40px;
+$comment-edit-button-width: 60px;
 $video-article-width: 250px;
 $video-article-width-small: 300px;
 
@@ -242,6 +243,25 @@ div.video-comments-container {
         top: $rem-mid;
         opacity: 0;
         transition: $transition-all;
+
+        button {
+          width: 60px;
+          color: $white;
+          transform: scale(1);
+          transition: $transition-all;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+
+          &:nth-child(1) {
+            background-color: $light-secondary-color;
+          }
+
+          &:nth-child(2) {
+            background-color: $highlight-color;
+          }
+        }
       }
 
       &:hover > div.comment-buttons {

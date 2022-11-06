@@ -66,6 +66,9 @@ use App\Models\Video;
             </div>
             <div class="video-comments-container">
                 <h2>Pridaj komentár</h2>
+                <?php if (!$auth->isLogged()) { ?>
+                    <span>Najprv sa musíte prihlásiť.</span>
+                <?php } else { ?>
                 <form class="video-comment-form" method="post" action="?c=content&a=storeComment">
                     <input type="hidden" name="author" value="<?php echo $auth->getLoggedUserId() ?>">
                     <input type="hidden" name="v" value="<?php echo $video->getId() ?>">
@@ -130,6 +133,7 @@ use App\Models\Video;
                     <?php }
                     } ?>
                 </div>
+                <?php } ?>
             </div>
         </div>
         <div class="related-videos">

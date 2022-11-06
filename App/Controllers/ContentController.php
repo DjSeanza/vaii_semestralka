@@ -6,7 +6,6 @@ use App\Core\Responses\Response;
 use App\Models\Comment;
 use App\Models\Reply;
 use App\Models\Video;
-use Cassandra\Date;
 use public\errors\Errors;
 
 class ContentController extends AControllerBase
@@ -59,7 +58,7 @@ class ContentController extends AControllerBase
 
         if ($author == null || $text == null || $video == null) {
             // TODO dorobit ak sa nenajde
-            //return $this->redirect("?c=content&a=content&v=" . $video->getId());
+            return $this->redirect("?c=content&a=content&v=" . $video->getId());
         }
 
         if ($comment->getId() == null) {

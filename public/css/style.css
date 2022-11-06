@@ -1039,6 +1039,21 @@ div.video-comments-container div.commments div.comment-container div.comment-but
   opacity: 0;
   transition: all 0.15s ease-in;
 }
+div.video-comments-container div.commments div.comment-container div.comment-buttons button {
+  width: 60px;
+  color: #ffffff;
+  transform: scale(1);
+  transition: all 0.15s ease-in;
+}
+div.video-comments-container div.commments div.comment-container div.comment-buttons button:hover {
+  transform: scale(1.05);
+}
+div.video-comments-container div.commments div.comment-container div.comment-buttons button:nth-child(1) {
+  background-color: #6c6c6c;
+}
+div.video-comments-container div.commments div.comment-container div.comment-buttons button:nth-child(2) {
+  background-color: #de3b7a;
+}
 div.video-comments-container div.commments div.comment-container:hover > div.comment-buttons {
   opacity: 1;
 }

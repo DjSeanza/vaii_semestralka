@@ -1,11 +1,4 @@
-<?php
-require "../../../paths.php";
-require "../../../components/head.php";
-require "../../../components/header/header.php";
-?>
-
 <div class="main-settings-container">
-    <?php require "../../../components/sidebar/sidebar.php"; ?>
     <main class="main">
         <div class="content-container">
             <button class="add-content-button button">Add</button>
@@ -140,7 +133,3 @@ require "../../../components/header/header.php";
         </div>
     </main>
 </div>
-
-<?php
-require "../../../components/page-ending.php";
-?>
