@@ -17,6 +17,11 @@
   --mid-breakpoint: 768px;
 }
 
+::selection {
+  background-color: $primary-color;
+  color: $white;
+}
+
 body {
   background-color: $background-color;
   color: $text-color;

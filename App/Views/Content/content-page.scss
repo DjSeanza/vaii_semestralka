@@ -5,11 +5,16 @@ $comment-container-thread-padding: 40px;
 $comment-edit-button-width: 60px;
 $video-article-width: 250px;
 $video-article-width-small: 300px;
+$comment-container-border-radius: 15px;
 
 div.main-profile-container {
   width: 90%;
   min-height: 100px;
   margin: calc($header-height + $rem-very-big) auto 0 auto;
+
+  @include small-width {
+    min-width: $min-width;
+  }
 }
 
 div.profile-sidebar {
@@ -27,10 +32,25 @@ main.profile-main {
   @include mid-width {
     flex-direction: column;
     row-gap: $rem-very-big;
+    width: 100%;
+  }
+
+  @include small-width {
+    min-width: $min-width;
+    width: 100%;
   }
 
   div.left-video {
     flex: 1;
+
+    @include mid-width {
+      width: 100%;
+    }
+
+    @include small-width {
+      width: 100%;
+      min-width: 300px;
+    }
 
     div.video-container {
       width: 100%;
@@ -51,6 +71,10 @@ main.profile-main {
 
     @include mid-width {
       width: 100%;
+    }
+
+    @include small-width {
+      min-width: $min-width;
     }
 
     article.related-videos-video-container {
@@ -181,8 +205,14 @@ div.video-comments-container {
   row-gap: $rem-big;
   width: 100%;
 
-  form.video-comment-form {
+  div.reply-form-container, div.edit-form-container {
     width: 100%;
+  }
+
+  form.video-comment-form {
+    @include flex(column, center, center);
+    width: 100%;
+    row-gap: $rem-big;
 
     textarea {
       width: 100%;
@@ -197,12 +227,33 @@ div.video-comments-container {
         color: $light-secondary-color;
       }
     }
+
+    button[type="submit"] {
+      background-color: $primary-color;
+      color: $white;
+      transition: $transition-all;
+      width: 100%;
+
+      &:hover {
+        background-color: $primary-hover-color;
+      }
+    }
   }
 
   div.commments {
     @include flex(column, flex-start, center);
     row-gap: $rem-very-big;
     width: 100%;
+
+    div.thread-comment-container {
+      @include flex(column, flex-start, center);
+      row-gap: $rem-big;
+      position: relative;
+      width: 100%;
+      padding: $rem-big;
+      background-color: $mid-secondary-color;
+      border-radius: $comment-container-border-radius;
+    }
 
     div.comment-container {
       @include flex(column, flex-start, center);
@@ -228,6 +279,9 @@ div.video-comments-container {
       }
 
       div.comment-text {
+        width: 100%;
+
+        /* @TODO asi odstranit, nebudem to robit cez editable */
         p {
           &.editable {
             padding: $rem-big;
@@ -236,7 +290,6 @@ div.video-comments-container {
         }
       }
 
-      // @TODO dostylovat buttony
       div.comment-buttons {
         position: absolute;
         right: 0;
@@ -244,22 +297,32 @@ div.video-comments-container {
         opacity: 0;
         transition: $transition-all;
 
+        @include small-width {
+          position: relative;
+          right: 0;
+          top: 0;
+          opacity: 1;
+        }
+
         button {
           width: 60px;
           color: $white;
-          transform: scale(1);
           transition: $transition-all;
 
-          &:hover {
-            transform: scale(1.05);
-          }
-
-          &:nth-child(1) {
+          &.edit-button, &.reply-button {
             background-color: $light-secondary-color;
+
+            &:hover {
+              background-color: $light-hover-secondary-color;
+            }
           }
 
-          &:nth-child(2) {
+          &.delete-button {
             background-color: $highlight-color;
+
+            &:hover {
+              background-color: $highlight-hover-color;
+            }
           }
         }
       }
@@ -270,6 +333,29 @@ div.video-comments-container {
 
       &.r-2 {
         padding-left: $comment-container-thread-padding;
+      }
+    }
+
+    div.reply-comment-container {
+      @include flex(column, flex-start, center);
+      row-gap: $rem-big;
+      position: relative;
+      width: 100%;
+
+      div.reply {
+        background-color: $secondary-color;
+        padding: $rem-big;
+        border-radius: $comment-container-border-radius;
+
+        div.comment-buttons {
+          right: $rem-big;
+          top: $rem-big;
+
+          @include small-width {
+            right: 0;
+            top: 0;
+          }
+        }
       }
     }
   }

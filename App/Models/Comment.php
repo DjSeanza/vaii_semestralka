@@ -37,12 +37,15 @@ class Comment extends Model
         }
     }
 
-    public function setAtributes(int $author, int $video, string $postTime, string $modificationTime = null, string $text ): void {
+    public function setAtributes(int $author, int $video, string $postTime, string $modificationTime = null, string $text, int $replyTo = null): void {
         $this->author = $author;
         $this->video = $video;
         $this->post_time = $postTime;
         $this->modification_time = $modificationTime;
         $this->text = $text;
+        if ($this->reply_to == null) {
+            $this->reply_to = $replyTo;
+        }
     }
 
     /**

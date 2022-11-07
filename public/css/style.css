@@ -173,6 +173,11 @@
   --mid-breakpoint: 768px;
 }
 
+::selection {
+  background-color: #271085;
+  color: #ffffff;
+}
+
 body {
   background-color: #181818;
   color: #ffffff;
@@ -792,6 +797,11 @@ div.main-profile-container {
   min-height: 100px;
   margin: calc(60px + 2rem) auto 0 auto;
 }
+@media screen and (max-width: 575px) {
+  div.main-profile-container {
+    min-width: 200px;
+  }
+}
 
 div.profile-sidebar {
   width: 250px;
@@ -812,10 +822,28 @@ main.profile-main {
   main.profile-main {
     flex-direction: column;
     row-gap: 2rem;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 575px) {
+  main.profile-main {
+    min-width: 200px;
+    width: 100%;
   }
 }
 main.profile-main div.left-video {
   flex: 1;
+}
+@media screen and (max-width: 767px) {
+  main.profile-main div.left-video {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 575px) {
+  main.profile-main div.left-video {
+    width: 100%;
+    min-width: 300px;
+  }
 }
 main.profile-main div.left-video div.video-container {
   width: 100%;
@@ -837,6 +865,11 @@ main.profile-main div.related-videos {
 @media screen and (max-width: 767px) {
   main.profile-main div.related-videos {
     width: 100%;
+  }
+}
+@media screen and (max-width: 575px) {
+  main.profile-main div.related-videos {
+    min-width: 200px;
   }
 }
 main.profile-main div.related-videos article.related-videos-video-container {
@@ -974,8 +1007,16 @@ div.video-comments-container {
   row-gap: 1rem;
   width: 100%;
 }
-div.video-comments-container form.video-comment-form {
+div.video-comments-container div.reply-form-container, div.video-comments-container div.edit-form-container {
   width: 100%;
+}
+div.video-comments-container form.video-comment-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  row-gap: 1rem;
 }
 div.video-comments-container form.video-comment-form textarea {
   width: 100%;
@@ -989,6 +1030,15 @@ div.video-comments-container form.video-comment-form textarea {
 div.video-comments-container form.video-comment-form textarea::placeholder {
   color: #6c6c6c;
 }
+div.video-comments-container form.video-comment-form button[type=submit] {
+  background-color: #271085;
+  color: #ffffff;
+  transition: all 0.15s ease-in;
+  width: 100%;
+}
+div.video-comments-container form.video-comment-form button[type=submit]:hover {
+  background-color: #4a1eff;
+}
 div.video-comments-container div.commments {
   display: flex;
   flex-direction: column;
@@ -996,6 +1046,18 @@ div.video-comments-container div.commments {
   justify-content: center;
   row-gap: 2rem;
   width: 100%;
+}
+div.video-comments-container div.commments div.thread-comment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  row-gap: 1rem;
+  position: relative;
+  width: 100%;
+  padding: 1rem;
+  background-color: #2e2e2e;
+  border-radius: 15px;
 }
 div.video-comments-container div.commments div.comment-container {
   display: flex;
@@ -1028,6 +1090,10 @@ div.video-comments-container div.commments div.comment-container div.comment-aut
   color: #6c6c6c;
   font-size: 0.75rem;
 }
+div.video-comments-container div.commments div.comment-container div.comment-text {
+  width: 100%;
+  /* @TODO asi odstranit, nebudem to robit cez editable */
+}
 div.video-comments-container div.commments div.comment-container div.comment-text p.editable {
   padding: 1rem;
   border-bottom: 1px solid #6c6c6c;
@@ -1039,26 +1105,60 @@ div.video-comments-container div.commments div.comment-container div.comment-but
   opacity: 0;
   transition: all 0.15s ease-in;
 }
+@media screen and (max-width: 575px) {
+  div.video-comments-container div.commments div.comment-container div.comment-buttons {
+    position: relative;
+    right: 0;
+    top: 0;
+    opacity: 1;
+  }
+}
 div.video-comments-container div.commments div.comment-container div.comment-buttons button {
   width: 60px;
   color: #ffffff;
-  transform: scale(1);
   transition: all 0.15s ease-in;
 }
-div.video-comments-container div.commments div.comment-container div.comment-buttons button:hover {
-  transform: scale(1.05);
-}
-div.video-comments-container div.commments div.comment-container div.comment-buttons button:nth-child(1) {
+div.video-comments-container div.commments div.comment-container div.comment-buttons button.edit-button, div.video-comments-container div.commments div.comment-container div.comment-buttons button.reply-button {
   background-color: #6c6c6c;
 }
-div.video-comments-container div.commments div.comment-container div.comment-buttons button:nth-child(2) {
+div.video-comments-container div.commments div.comment-container div.comment-buttons button.edit-button:hover, div.video-comments-container div.commments div.comment-container div.comment-buttons button.reply-button:hover {
+  background-color: #8d8d8d;
+}
+div.video-comments-container div.commments div.comment-container div.comment-buttons button.delete-button {
   background-color: #de3b7a;
+}
+div.video-comments-container div.commments div.comment-container div.comment-buttons button.delete-button:hover {
+  background-color: #ff68a3;
 }
 div.video-comments-container div.commments div.comment-container:hover > div.comment-buttons {
   opacity: 1;
 }
 div.video-comments-container div.commments div.comment-container.r-2 {
   padding-left: 40px;
+}
+div.video-comments-container div.commments div.reply-comment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  row-gap: 1rem;
+  position: relative;
+  width: 100%;
+}
+div.video-comments-container div.commments div.reply-comment-container div.reply {
+  background-color: #202020;
+  padding: 1rem;
+  border-radius: 15px;
+}
+div.video-comments-container div.commments div.reply-comment-container div.reply div.comment-buttons {
+  right: 1rem;
+  top: 1rem;
+}
+@media screen and (max-width: 575px) {
+  div.video-comments-container div.commments div.reply-comment-container div.reply div.comment-buttons {
+    right: 0;
+    top: 0;
+  }
 }
 
 main.main {

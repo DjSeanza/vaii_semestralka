@@ -23,6 +23,7 @@ class ContentController extends AControllerBase
         $videoId = $this->request()->getValue('v');
 
 //        @TODO vymysliet a dorobit errors
+//        @TODO asi ich dat ako 404 a presmerovat na tu stranku
         if ($videoId == null || $errorId == Errors::VIDEO_NOT_FOUND->value) {
             return $this->html(["error" => "Video not found."]);
         }
@@ -55,16 +56,28 @@ class ContentController extends AControllerBase
         $video = ( $videoId ? Video::getOne($videoId) : null);
         $author = $this->request()->getValue('author');
         $text = $this->request()->getValue('video-comment');
+        $replyTo = $this->request()->getValue("reply-to");
 
         if ($author == null || $text == null || $video == null) {
-            // TODO dorobit ak sa nenajde
+            // @TODO dorobit ak sa nenajde
             return $this->redirect("?c=content&a=content&v=" . $video->getId());
         }
 
-        if ($comment->getId() == null) {
-            $comment->setAtributes($author, $video->getId(), date('Y-m-d H:i:s'), null, $text);
+        // @TODO kontrola ci sa text vobec zmenil na edit
+        $text = rtrim($text, " \n\r\t\v\x00"); // remove last empty line from string
+
+        if ($commentId == null) {
+            if ($replyTo == null) {
+                $comment->setAtributes($author, $video->getId(), date('Y-m-d H:i:s'), null, $text);
+            } else {
+                $comment->setAtributes($author, $video->getId(), date('Y-m-d H:i:s'), null, $text, $replyTo);
+            }
         } else {
-            $comment->setAtributes($author, $video->getId(), $comment->getPostTime(), date('Y-m-d H:i:s'), $text);
+            if ($replyTo == null) {
+                $comment->setAtributes($author, $video->getId(), $comment->getPostTime(), date('Y-m-d H:i:s'), $text);
+            } else {
+                $comment->setAtributes($author, $video->getId(), $comment->getPostTime(), date('Y-m-d H:i:s'), $text, $replyTo);
+            }
         }
 
         $comment->save();
@@ -79,6 +92,7 @@ class ContentController extends AControllerBase
         $commentId = $this->request()->getValue('comment');
 
         if ($videoId == null) {
+//            @TODO errory nejako prerobit
             return $this->redirect('?c=content&e=' . Errors::VIDEO_NOT_FOUND->value);
         } else if ($commentId == null) {
             return $this->redirect('?c=home&e=' . Errors::COMMENT_NOT_FOUND->value);
@@ -87,32 +101,15 @@ class ContentController extends AControllerBase
         $commentToDelete = Comment::getOne($commentId);
 
         if ($commentToDelete) {
+            $replies = $commentToDelete->getReplies();
+            if ($replies) {
+                foreach ($replies as $reply) {
+                    $reply->delete();
+                }
+            }
+
             $commentToDelete->delete();
-        } else {
-//            @TODO dorobit errors
-            return $this->redirect('?c=content&a=content&v=' . $videoId . 'e=' . Errors::COMMENT_NOT_FOUND->value);
-        }
 
-        return $this->redirect('?c=content&a=content&v=' . $videoId);
-    }
-
-    /**
-     * @throws \Exception
-     */
-    public function deleteReply() {
-        $videoId = $this->request()->getValue('v');
-        $replyId = $this->request()->getValue('reply');
-
-        if ($videoId == null) {
-            return $this->redirect('?c=content&e=' . Errors::VIDEO_NOT_FOUND->value);
-        } else if ($replyId == null) {
-            return $this->redirect('?c=home&e=' . Errors::COMMENT_NOT_FOUND->value);
-        }
-
-        $replyToDelete = Reply::getOne($replyId);
-
-        if ($replyToDelete) {
-            $replyToDelete->delete();
         } else {
 //            @TODO dorobit errors
             return $this->redirect('?c=content&a=content&v=' . $videoId . 'e=' . Errors::COMMENT_NOT_FOUND->value);

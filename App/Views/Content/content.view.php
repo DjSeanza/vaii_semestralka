@@ -9,7 +9,6 @@ use App\Models\Video;
 
 // TODO ak nie je prihlaseny skus, vyhadzuje error
 ?>
-
 <div class="main-profile-container">
     <main class="profile-main">
         <?php if (isset($data['error']) && $data['error']) { ?>
@@ -69,11 +68,11 @@ use App\Models\Video;
                 <?php if (!$auth->isLogged()) { ?>
                     <span>Najprv sa musíte prihlásiť.</span>
                 <?php } else { ?>
-                <form class="video-comment-form" method="post" action="?c=content&a=storeComment">
+                <form class="video-comment-form" id="video-comment-form" method="post" action="?c=content&a=storeComment">
                     <input type="hidden" name="author" value="<?php echo $auth->getLoggedUserId() ?>">
                     <input type="hidden" name="v" value="<?php echo $video->getId() ?>">
                     <label for="video-comment-input" style="display: none"></label>
-                    <textarea name="video-comment" id="video-comment-input" placeholder="Začnite písať komentár..."></textarea>
+                    <textarea maxlength="65535" name="video-comment" id="video-comment-input" placeholder="Začnite písať komentár..."></textarea>
                     <button type="submit" class="button">Odoslať</button>
                 </form>
                 <div class="commments">
@@ -83,6 +82,7 @@ use App\Models\Video;
                     } else {
                         foreach ($comments as $comment) {
                     ?>
+                    <div class="thread-comment-container">
                         <div class="comment-container" id="comment-<?php echo $comment->getId() ?>">
                             <div class="comment-author">
                                 <a href="#"><?php echo $comment->getAuthorName(); ?></a>
@@ -90,50 +90,62 @@ use App\Models\Video;
                                     <span> <?php echo $comment->getPostTime(); ?> </span>
                                     <?php
                                     if ($comment->getModificationTime()) { ?>
-                                        <span title=<?php echo $comment->getModificationTime(); ?>>(Edited)</span>
-                                    <?php } ?>
+                                        <span title="<?php echo $comment->getModificationTime(); ?>">(Edited)</span>
+                                    <?php } // end modification time ?>
                                 </div>
                             </div>
-                            <div class="comment-text">
+                            <div class="comment-text" id="comment-text-<?php echo $comment->getId() ?>">
                                 <p><?php echo $comment->getText(); ?></p>
                             </div>
                             <?php if ($auth->isLogged() && $auth->getLoggedUserName() == $comment->getAuthorName()) { ?>
                                 <div class="comment-buttons">
-                                    <button type="button" class="button"
-                                            onclick="editComment(<?php echo $comment->getId() ?>, <?php echo $comment->getAuthor() ?>, <?php echo $video->getId() ?>)">Edit</button>
-                                    <button type="button" class="button"
+                                    <button type="button" class="button reply-button"
+                                            onclick='createReplyCommentForm("<?php echo $comment->getId() ?>", "<?php echo $comment->getText() ?>", "<?php echo $_COOKIE['user']; ?>", "<?php echo $comment->getVideo() ?>")'>Reply</button>
+                                    <button type="button" class="button edit-button"
+                                            onclick='createEditCommentForm("<?php echo $comment->getId() ?>", "<?php echo $comment->getText() ?>", "<?php echo $comment->getAuthor() ?>", "<?php echo $comment->getVideo() ?>")'>Edit</button>
+                                    <button type="button" class="button delete-button"
                                             onclick='location.href="?c=content&a=deleteComment&v=<?php echo $video->getId() ?>&comment=<?php echo $comment->getId() ?>"'>Delete</button>
                                 </div>
-                            <?php } ?>
-                        </div>
+                            <?php } // end comment buttons ?>
+                        </div> <!-- /comment container -->
+                            <div class="reply-comment-container" id="reply-to-comment-<?php echo $comment->getId() ?>">
                         <?php
                             $replies = $comment->getReplies();
 
                             if (isset($replies)) {
                                 foreach ($replies as $reply) {
                         ?>
-                            <div class="comment-container r-2" id="reply-<?php echo $reply->getId() ?>">
+                            <div class="comment-container reply r-2" id="comment-<?php echo $reply->getId() ?>">
                                 <div class="comment-author">
                                     <a href="#"><?php echo $reply->getAuthorName(); ?></a>
-                                    <span><?php echo $reply->getPostTime(); ?></span>
+                                    <div>
+                                        <span><?php echo $reply->getPostTime(); ?></span>
+                                        <?php
+                                        if ($reply->getModificationTime()) { ?>
+                                            <span title="<?php echo $comment->getModificationTime(); ?>">(Edited)</span>
+                                        <?php } // end modification time ?>
+                                    </div>
                                 </div>
-                                <div class="comment-text">
+                                <div class="comment-text" id="comment-text-<?php echo $reply->getId() ?>">
                                     <p><?php echo $reply->getText(); ?></p>
                                 </div>
                                 <?php if ($auth->isLogged() && $auth->getLoggedUserName() == $reply->getAuthorName()) { ?>
                                     <div class="comment-buttons">
-                                        <button type="button" class="button">Edit</button>
-                                        <button type="button" class="button"
-                                                onclick='location.href="?c=content&a=deleteReply&v=<?php echo $video->getId() ?>&reply=<?php echo $reply->getId() ?>"'>Delete</button>
+                                        <button type="button" class="button edit-button"
+                                                onclick='createEditCommentForm("<?php echo $reply->getId() ?>", "<?php echo $reply->getText() ?>", "<?php echo $reply->getAuthor() ?>", "<?php echo $reply->getVideo() ?>")'>Edit</button>
+                                        <button type="button" class="button delete-button"
+                                                onclick='location.href="?c=content&a=deleteComment&v=<?php echo $video->getId() ?>&comment=<?php echo $reply->getId() ?>"'>Delete</button>
                                     </div>
-                                <?php } ?>
-                            </div>
-                        <?php }
-                            } ?>
-                    <?php }
-                    } ?>
+                                <?php } // end comment buttons ?>
+                            </div> <!-- /comment container -->
+                        <?php } // end foreach replies
+                            } // end if isset replies ?>
+                        </div> <!-- /reply comment container -->
+                    </div>
+                    <?php } // end foreach comments
+                    } // end else if comments > 1 ?>
                 </div>
-                <?php } ?>
+                <?php } // end if user logged  ?>
             </div>
         </div>
         <div class="related-videos">
@@ -333,71 +345,15 @@ use App\Models\Video;
     </main>
 </div>
 <?php } } ?>
-<script>
-    function sendCommentData(data) {
-        const xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (xhttp.status === 200) {
-                console.log("success");
-            }
-        }
-        xhttp.open("GET", "?c=content&a=storeComment&ajax=ajax", true);
-        xhttp.setRequestHeader("Content-Type", "application/json");
-        xhttp.send(JSON.stringify(data));
-    }
-
-    function editComment(id, author, video) {
-        let commentContainer = document.querySelector("#comment-" + id + " div.comment-text");
-        let comment = document.querySelector("#comment-" + id + " div.comment-text p");
-
-        let form = document.createElement("form");
-        let commentTextInput = document.createElement("input");
-        let commentIdInput = document.createElement("input");
-        let commentAuthorInput = document.createElement("input");
-        let commentVideoIdInput = document.createElement("input");
-        let commentInputSubmit = document.createElement("button");
-
-        comment.setAttribute("contenteditable", "true");
-        comment.classList.add("editable");
-        comment.addEventListener('keydown', function (event) {
-            if (event.keyCode === 13 && !event.shiftKey) {
-                sendCommentData({comment: id, author: author, v: video, text: comment.innerHTML}, {ajax: "ajax"})
-        } }, true);
-
-        form.setAttribute("method", "post");
-        form.setAttribute("action", "?c=content&a=storeComment");
-        form.setAttribute("id", "comment-update");
-
-        commentTextInput.setAttribute("type", "hidden");
-        commentIdInput.setAttribute("type", "hidden");
-        commentAuthorInput.setAttribute("type", "hidden");
-        commentVideoIdInput.setAttribute("type", "hidden");
-
-        commentTextInput.setAttribute("name", "video-comment");
-        commentIdInput.setAttribute("name", "comment");
-        commentAuthorInput.setAttribute("name", "author");
-        commentVideoIdInput.setAttribute("name", "v");
-
-        commentTextInput.setAttribute("value", "This is my first comment. Yaaay!! Edited!!");
-        commentIdInput.setAttribute("value", id);
-        commentAuthorInput.setAttribute("value", author);
-        commentVideoIdInput.setAttribute("value", video);
-
-        commentInputSubmit.setAttribute("type", "submit");
-        commentInputSubmit.innerHTML = "Odoslať";
-        commentInputSubmit.classList.add("button");
-
-        form.appendChild(commentTextInput);
-        form.appendChild(commentInputSubmit);
-        form.appendChild(commentIdInput);
-        form.appendChild(commentAuthorInput);
-        form.appendChild(commentVideoIdInput);
-        commentContainer.appendChild(form);
-    }
-</script>
+<script src="public/js/comments/updateComment.js"></script>
+<script src="public/js/comments/createCommentForm.js"></script>
 <script>
     let sidebar = document.querySelector("aside.sidebar");
     let sidebarWidth = getComputedStyle(sidebar).width.split("px")[0];
 
     sidebar.style.left = sidebarWidth * -1 + "px";
+    sidebar.style.display = "none";
+</script>
+<script>
+    addEventListenerToForm("form#video-comment-form", "textarea#video-comment-input");
 </script>
