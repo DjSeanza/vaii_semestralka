@@ -13,13 +13,13 @@
                 <label for="username" class="input-image-div">
                     <img src="public/images/Icons/user-image.png" alt="">
                 </label>
-                <input type="text" id="username" name="login" placeholder="Používateľské meno" required>
+                <input type="text" id="username" name="login" maxlength="64" placeholder="Používateľské meno" required>
             </div>
             <div class="form-input-image-div">
                 <label for="password" class="input-image-div">
                     <img src="public/images/Icons/password-lock.svg" alt="">
                 </label>
-                <input type="password" id="password" name="password" placeholder="Heslo">
+                <input type="password" id="password" maxlength="64" name="password" placeholder="Heslo" required>
             </div>
             <button type="submit" class="button" name="submit">
                 Prihlásiť
