@@ -1,3 +1,5 @@
+<?php /** @var \App\Core\IAuthenticator $auth */ ?>
+
 <header class="header flex-row p-2">
     <div class="header-left">
         <button class="button">
@@ -19,10 +21,11 @@
             </div>
         </form>
     </div>
-    <div class="header-right">
-<!--        TODO tento login nezabudnut pomenit ked tak-->
-        <button class="button" onclick='location.href="?c=auth"'>
-
-        </button>
+    <div class="header-right" id="header-right">
+        <?php if ($auth->isLogged()) { ?>
+            <button class="button logged-in-button" type="button" onclick='openUserMenu()'></button>
+        <?php } else { ?>
+            <button class="button login-button" type="button" onclick='location.href="?c=auth"'>SIGN IN</button>
+        <?php } ?>
     </div>
 </header>

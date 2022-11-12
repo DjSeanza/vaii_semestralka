@@ -1,20 +1,68 @@
 $header-height: 60px;
-$button-header-size: 40px;
+$logged-button-header-size: 40px;
+$login-button-header-size: 100px;
 $search-height: 40px;
+$header-menu-width: 250px;
 
 header.header {
   @include flex();
   width: 100vw;
   height: $header-height;
-  overflow: hidden;
   column-gap: 1rem;
   background-color: $secondary-color;
   position: fixed;
   top: 0;
+  padding: $rem-mid $rem-very-big;
   z-index: 101;
+
+  @include small-width-up {
+    padding: $rem-sm;
+  }
 
   div.header-mid, div.header-left, div.header-right {
     height: 100%;
+    position: relative;
+  }
+
+  div#header-user-menu {
+    width: $header-menu-width;
+    position: absolute;
+    bottom: - calc(($header-height / 2) + 15px);
+    z-index: 2020;
+    background-color: $light-secondary-color;
+    min-width: 30px;
+
+    ul.header-user-ul-menu {
+      @include flex();
+      row-gap: $rem-mid;
+      width: 100%;
+
+      li {
+        @include flex(row, center, flex-start);
+        list-style: none;
+        min-height: 30px;
+        padding: $rem-mid;
+        width: 100%;
+        transition: $transition-all;
+
+        &:hover {
+          background-color: $light-hover-secondary-color;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      bottom: 100%;
+      right: 12px;
+      border: $rem-mid solid transparent;
+      border-top: none;
+      border-bottom-color: $light-secondary-color;
+    }
   }
 
   div.header-right {
@@ -22,18 +70,32 @@ header.header {
     min-width: clamp(150px, 20%, 300px);
 
     @include mid-width {
-      min-width: $button-header-size;
+      min-width: $login-button-header-size;
     }
 
     button {
-      width: $button-header-size;
-      height: $button-header-size;
-      border-radius: 50%;
       transform: scale(1);
       transition: $transition-transform;
 
       &:hover {
         transform: scale(1.05);
+      }
+    }
+
+    button.logged-in-button {
+      width: $logged-button-header-size;
+      height: $logged-button-header-size;
+      border-radius: 50%;
+    }
+
+    button.login-button {
+      width: $login-button-header-size;
+      background-color: $highlight-color;
+      color: $white;
+      font-weight: bold;
+
+      &:hover {
+        background-color: $highlight-hover-color;
       }
     }
   }
@@ -49,10 +111,19 @@ header.header {
       column-gap: 0;
     }
 
+    @include small-width-up {
+      min-width: $login-button-header-size;
+    }
+
     div.logo {
       @include flex(row, center, flex-start);
       width: 200px;
       height: $header-height;
+      padding-left: 5px;
+
+      @include small-width-up {
+        width: $login-button-header-size;
+      }
 
       a {
         @include flex();
@@ -70,21 +141,25 @@ header.header {
 
     button {
       @include flex(column, center, center);
-      width: $button-header-size;
-      height: $button-header-size;
+      width: $logged-button-header-size;
+      height: $logged-button-header-size;
       background: transparent;
       position: relative;
       overflow: hidden;
       padding: 0;
 
       img {
-        width: calc($button-header-size - 30%);
+        width: calc($logged-button-header-size - 30%);
       }
     }
   }
 
   div.header-mid {
     flex: 0 1 728px;
+
+    @include small-width-up {
+      flex: none;
+    }
 
     form {
       width: 100%;
@@ -123,8 +198,12 @@ header.header {
           @include mid-width {
             background: none;
             border: none;
-            width: $button-header-size;
+            width: $logged-button-header-size;
             padding: 0;
+          }
+
+          @include small-width-up {
+            width: 20px;
           }
 
           &:hover {
@@ -141,6 +220,10 @@ header.header {
 
           img {
             height: calc($search-height - 1rem);
+
+            @include small-width-up {
+              height: 20px;
+            }
           }
         }
       }
