@@ -99,9 +99,9 @@ use App\Models\Video;
                             </div>
                             <?php if ($auth->isLogged() && $auth->getLoggedUserName() == $comment->getAuthorName()) { ?>
                                 <div class="comment-buttons">
-                                    <button type="button" class="button reply-button"
+                                    <button type="button" class="button reply-button" id="reply-button-<?php echo $comment->getId() ?>"
                                             onclick='createReplyCommentForm("<?php echo $comment->getId() ?>", "<?php echo $comment->getText() ?>", "<?php echo $_COOKIE['user']; ?>", "<?php echo $comment->getVideo() ?>")'>Reply</button>
-                                    <button type="button" class="button edit-button"
+                                    <button type="button" class="button edit-button" id="edit-button-<?php echo $comment->getId() ?>"
                                             onclick='createEditCommentForm("<?php echo $comment->getId() ?>", "<?php echo $comment->getText() ?>", "<?php echo $comment->getAuthor() ?>", "<?php echo $comment->getVideo() ?>")'>Edit</button>
                                     <button type="button" class="button delete-button"
                                             onclick='location.href="?c=content&a=deleteComment&v=<?php echo $video->getId() ?>&comment=<?php echo $comment->getId() ?>"'>Delete</button>
@@ -131,9 +131,9 @@ use App\Models\Video;
                                 </div>
                                 <?php if ($auth->isLogged() && $auth->getLoggedUserName() == $reply->getAuthorName()) { ?>
                                     <div class="comment-buttons">
-                                        <button type="button" class="button edit-button"
+                                        <button type="button" class="button edit-button" id="reply-button-<?php echo $reply->getId() ?>"
                                                 onclick='createEditCommentForm("<?php echo $reply->getId() ?>", "<?php echo $reply->getText() ?>", "<?php echo $reply->getAuthor() ?>", "<?php echo $reply->getVideo() ?>")'>Edit</button>
-                                        <button type="button" class="button delete-button"
+                                        <button type="button" class="button delete-button" id="edit-button-<?php echo $reply->getId() ?>"
                                                 onclick='location.href="?c=content&a=deleteComment&v=<?php echo $video->getId() ?>&comment=<?php echo $reply->getId() ?>"'>Delete</button>
                                     </div>
                                 <?php } // end comment buttons ?>

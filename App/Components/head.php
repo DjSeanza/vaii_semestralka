@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="public/css/style.css">
 
     <script src="public/js/script.js"></script>
+    <script src="public/js/headerOpenUserMenu.js"></script>
 <!--    @TODO jquery dat prec asi-->
 <!--    <script src="public/js/jQuery.js"></script>-->
 </head>
