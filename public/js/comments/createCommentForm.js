@@ -48,6 +48,7 @@ function deleteAllCreatedForms(commentId, text, author, video) {
     let editForms = document.querySelectorAll("div.edit-form-container form.video-comment-form");
     let replyForms = document.querySelectorAll("div.reply-form-container");
 
+    // TODO after edit and click on another edit, message disappears (commentId treba inak vymysliet)
     editForms.forEach(editForm => {
         let textArea = document.querySelector("div.edit-form-container form.video-comment-form textarea#reply-textarea");
         let commentContainer = document.querySelector("div.thread-comment-container div#comment-text-" + commentId);

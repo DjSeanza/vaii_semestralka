@@ -3,11 +3,6 @@
     <div class="login-bg-color"></div>
     <div class="login-form-div">
         <h1>Prihlásenie</h1>
-        <?php if(isset($_COOKIE['user'])) {echo "Hello, " . $_COOKIE['user'];} ?>
-        <form action="?c=auth&a=logout" method="post">
-            <input type="hidden" name="signout" value="signout">
-            <button type="submit">Odhlas</button>
-        </form>
         <form action="?c=auth&a=log_in" method="post" class="login-form">
             <div class="form-input-image-div">
                 <label for="username" class="input-image-div">

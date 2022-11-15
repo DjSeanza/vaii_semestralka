@@ -95,6 +95,7 @@ use App\Models\Video;
                                 </div>
                             </div>
                             <div class="comment-text" id="comment-text-<?php echo $comment->getId() ?>">
+<!--                                TODO po zadani php neukazat container-->
                                 <p><?php echo $comment->getText(); ?></p>
                             </div>
                             <?php if ($auth->isLogged() && $auth->getLoggedUserName() == $comment->getAuthorName()) { ?>
