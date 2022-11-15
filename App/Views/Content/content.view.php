@@ -105,7 +105,7 @@ use App\Models\Video;
                                     <button type="button" class="button edit-button" id="edit-button-<?php echo $comment->getId() ?>"
                                             onclick='createEditCommentForm("<?php echo $comment->getId() ?>", "<?php echo $comment->getText() ?>", "<?php echo $comment->getAuthor() ?>", "<?php echo $comment->getVideo() ?>")'>Edit</button>
                                     <button type="button" class="button delete-button"
-                                            onclick='location.href="?c=content&a=deleteComment&v=<?php echo $video->getId() ?>&comment=<?php echo $comment->getId() ?>"'>Delete</button>
+                                            onclick='confirm("Naozaj chcete vymazať tento komentár?") ? location.href="?c=content&a=deleteComment&v=<?php echo $video->getId() ?>&comment=<?php echo $comment->getId() ?>" : ""'>Delete</button>
                                 </div>
                             <?php } // end comment buttons ?>
                         </div> <!-- /comment container -->
