@@ -1,18 +1,18 @@
 <nav class="navigation">
     <ul>
-<!--        @TODO zmenit na Router-->
 <!--@TODO opravit prekliky na linky-->
-        <li class="button <?php if($router->getControllerName() == "Home") { echo "active"; } ?>">
+        <li class="button <?php if($router->getControllerName() == "Home") { echo "active"; } ?>" onclick='location.href="?c=home"'>
             <img src="public/images/Icons/home-icon.svg" alt="">
-            <a href="?c=home">Domov</a>
+            <span>Domov</span>
         </li>
         <li class="button">
             <img src="public/images/Icons/explore-icon.svg" alt="">
-            <a href="">Preskúmať</a>
+            <span>Preskúmať</span>
         </li>
-        <li class="button <?php if($router->getControllerName() == "Content" && $router->getAction() == "listedContent") { echo "active"; } ?>">
+        <li class="button <?php if($router->getControllerName() == "Content" && $router->getAction() == "listedContent") { echo "active"; } ?>"
+            onclick='location.href="?c=content&a=listedContent"'>
             <img src="public/images/Icons/category-icon.svg" alt="">
-            <a href="?c=content&a=listedContent">Kategórie</a>
+            <span>Kategórie</span>
         </li>
     </ul>
 </nav>

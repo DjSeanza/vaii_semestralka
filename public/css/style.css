@@ -471,14 +471,14 @@ nav.navigation ul li.active {
 nav.navigation ul li:hover {
   background-color: #6c6c6c;
 }
-nav.navigation ul li a {
+nav.navigation ul li span {
   font-size: 1.15em;
   text-decoration: none;
   color: #ffffff;
   display: block;
 }
 @media screen and (max-width: 767px) {
-  nav.navigation ul li a {
+  nav.navigation ul li span {
     display: none;
   }
 }
