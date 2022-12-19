@@ -1,3 +1,4 @@
+@charset "UTF-8";
 *,
 *::after,
 *::before {
@@ -184,7 +185,7 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-.button {
+.button, main.login-main div.login-form-div form.login-form div.form-input-image-div label#file-label::before, main.login-main div.login-form-div form.register-form div.form-input-image-div label#file-label::before, main.login-main div.register-form-div form.login-form div.form-input-image-div label#file-label::before, main.login-main div.register-form-div form.register-form div.form-input-image-div label#file-label::before, main.register-main div.login-form-div form.login-form div.form-input-image-div label#file-label::before, main.register-main div.login-form-div form.register-form div.form-input-image-div label#file-label::before, main.register-main div.register-form-div form.login-form div.form-input-image-div label#file-label::before, main.register-main div.register-form-div form.register-form div.form-input-image-div label#file-label::before {
   border: none;
   border-radius: 5px;
   padding: 0.5rem;
@@ -583,7 +584,7 @@ main.sidebar-responsive-main section.home-page-section div.home-page-video-conta
   overflow-x: scroll;
 }
 
-main.login-main {
+main.login-main, main.register-main {
   width: 100vw;
   height: 100vh;
   display: grid;
@@ -593,13 +594,13 @@ main.login-main {
   position: relative;
 }
 @media screen and (max-width: 575px) {
-  main.login-main {
+  main.login-main, main.register-main {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas: "image" "image";
   }
 }
-main.login-main div.login-bg {
+main.login-main div.login-bg, main.login-main div.register-bg, main.register-main div.login-bg, main.register-main div.register-bg {
   background-image: url("../../public/images/Bg/login-page-bg-landscape.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -607,20 +608,25 @@ main.login-main div.login-bg {
   grid-area: image;
 }
 @media screen and (max-width: 575px) {
-  main.login-main div.login-bg {
+  main.login-main div.login-bg, main.login-main div.register-bg, main.register-main div.login-bg, main.register-main div.register-bg {
     background-image: url("../../public/images/Bg/login-page-bg-portrait-test.png");
   }
 }
-main.login-main div.login-bg-color {
+@media screen and (max-width: 575px) {
+  main.login-main div.register-bg, main.register-main div.register-bg {
+    background-position-y: 30%;
+  }
+}
+main.login-main div.login-bg-color, main.login-main div.register-bg-color, main.register-main div.login-bg-color, main.register-main div.register-bg-color {
   background-color: #180952;
   grid-area: color;
 }
 @media screen and (max-width: 575px) {
-  main.login-main div.login-bg-color {
+  main.login-main div.login-bg-color, main.login-main div.register-bg-color, main.register-main div.login-bg-color, main.register-main div.register-bg-color {
     display: none;
   }
 }
-main.login-main div.login-form-div {
+main.login-main div.login-form-div, main.login-main div.register-form-div, main.register-main div.login-form-div, main.register-main div.register-form-div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -638,7 +644,7 @@ main.login-main div.login-form-div {
   padding: 2rem;
 }
 @media screen and (max-width: 575px) {
-  main.login-main div.login-form-div {
+  main.login-main div.login-form-div, main.login-main div.register-form-div, main.register-main div.login-form-div, main.register-main div.register-form-div {
     position: relative;
     right: 0;
     grid-area: 1/1;
@@ -650,24 +656,24 @@ main.login-main div.login-form-div {
     row-gap: 1rem;
   }
 }
-main.login-main div.login-form-div h1 {
+main.login-main div.login-form-div h1, main.login-main div.register-form-div h1, main.register-main div.login-form-div h1, main.register-main div.register-form-div h1 {
   width: 100%;
   text-align: center;
   color: #271085;
   font-weight: bold;
   text-transform: uppercase;
 }
-main.login-main div.login-form-div div.login-register-question a {
+main.login-main div.login-form-div div.login-register-question a, main.login-main div.login-form-div div.register-login-question a, main.login-main div.register-form-div div.login-register-question a, main.login-main div.register-form-div div.register-login-question a, main.register-main div.login-form-div div.login-register-question a, main.register-main div.login-form-div div.register-login-question a, main.register-main div.register-form-div div.login-register-question a, main.register-main div.register-form-div div.register-login-question a {
   text-transform: uppercase;
   text-decoration: none;
   color: #271085;
   transition: all 0.15s ease-in;
   font-weight: bold;
 }
-main.login-main div.login-form-div div.login-register-question a:hover {
+main.login-main div.login-form-div div.login-register-question a:hover, main.login-main div.login-form-div div.register-login-question a:hover, main.login-main div.register-form-div div.login-register-question a:hover, main.login-main div.register-form-div div.register-login-question a:hover, main.register-main div.login-form-div div.login-register-question a:hover, main.register-main div.login-form-div div.register-login-question a:hover, main.register-main div.register-form-div div.login-register-question a:hover, main.register-main div.register-form-div div.register-login-question a:hover {
   color: #4a1eff;
 }
-main.login-main div.login-form-div form.login-form {
+main.login-main div.login-form-div form.login-form, main.login-main div.login-form-div form.register-form, main.login-main div.register-form-div form.login-form, main.login-main div.register-form-div form.register-form, main.register-main div.login-form-div form.login-form, main.register-main div.login-form-div form.register-form, main.register-main div.register-form-div form.login-form, main.register-main div.register-form-div form.register-form {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -675,7 +681,7 @@ main.login-main div.login-form-div form.login-form {
   row-gap: 1rem;
   width: 100%;
 }
-main.login-main div.login-form-div form.login-form div.form-input-image-div {
+main.login-main div.login-form-div form.login-form div.form-input-image-div, main.login-main div.login-form-div form.register-form div.form-input-image-div, main.login-main div.register-form-div form.login-form div.form-input-image-div, main.login-main div.register-form-div form.register-form div.form-input-image-div, main.register-main div.login-form-div form.login-form div.form-input-image-div, main.register-main div.login-form-div form.register-form div.form-input-image-div, main.register-main div.register-form-div form.login-form div.form-input-image-div, main.register-main div.register-form-div form.register-form div.form-input-image-div {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -684,16 +690,16 @@ main.login-main div.login-form-div form.login-form div.form-input-image-div {
   width: 100%;
 }
 @media screen and (max-width: 575px) {
-  main.login-main div.login-form-div form.login-form div.form-input-image-div {
+  main.login-main div.login-form-div form.login-form div.form-input-image-div, main.login-main div.login-form-div form.register-form div.form-input-image-div, main.login-main div.register-form-div form.login-form div.form-input-image-div, main.login-main div.register-form-div form.register-form div.form-input-image-div, main.register-main div.login-form-div form.login-form div.form-input-image-div, main.register-main div.login-form-div form.register-form div.form-input-image-div, main.register-main div.register-form-div form.login-form div.form-input-image-div, main.register-main div.register-form-div form.register-form div.form-input-image-div {
     column-gap: 0;
   }
 }
-main.login-main div.login-form-div form.login-form div.form-input-image-div label.input-image-div {
-  width: 30px;
+main.login-main div.login-form-div form.login-form div.form-input-image-div label.input-image-div, main.login-main div.login-form-div form.register-form div.form-input-image-div label.input-image-div, main.login-main div.register-form-div form.login-form div.form-input-image-div label.input-image-div, main.login-main div.register-form-div form.register-form div.form-input-image-div label.input-image-div, main.register-main div.login-form-div form.login-form div.form-input-image-div label.input-image-div, main.register-main div.login-form-div form.register-form div.form-input-image-div label.input-image-div, main.register-main div.register-form-div form.login-form div.form-input-image-div label.input-image-div, main.register-main div.register-form-div form.register-form div.form-input-image-div label.input-image-div {
+  min-width: 30px;
   height: 30px;
 }
 @media screen and (max-width: 575px) {
-  main.login-main div.login-form-div form.login-form div.form-input-image-div label.input-image-div {
+  main.login-main div.login-form-div form.login-form div.form-input-image-div label.input-image-div, main.login-main div.login-form-div form.register-form div.form-input-image-div label.input-image-div, main.login-main div.register-form-div form.login-form div.form-input-image-div label.input-image-div, main.login-main div.register-form-div form.register-form div.form-input-image-div label.input-image-div, main.register-main div.login-form-div form.login-form div.form-input-image-div label.input-image-div, main.register-main div.login-form-div form.register-form div.form-input-image-div label.input-image-div, main.register-main div.register-form-div form.login-form div.form-input-image-div label.input-image-div, main.register-main div.register-form-div form.register-form div.form-input-image-div label.input-image-div {
     height: 50px;
     width: 50px;
     background-color: #ffffff;
@@ -702,19 +708,20 @@ main.login-main div.login-form-div form.login-form div.form-input-image-div labe
     border-bottom-left-radius: 5px;
   }
 }
-main.login-main div.login-form-div form.login-form div.form-input-image-div label.input-image-div img {
+main.login-main div.login-form-div form.login-form div.form-input-image-div label.input-image-div img, main.login-main div.login-form-div form.register-form div.form-input-image-div label.input-image-div img, main.login-main div.register-form-div form.login-form div.form-input-image-div label.input-image-div img, main.login-main div.register-form-div form.register-form div.form-input-image-div label.input-image-div img, main.register-main div.login-form-div form.login-form div.form-input-image-div label.input-image-div img, main.register-main div.login-form-div form.register-form div.form-input-image-div label.input-image-div img, main.register-main div.register-form-div form.login-form div.form-input-image-div label.input-image-div img, main.register-main div.register-form-div form.register-form div.form-input-image-div label.input-image-div img {
   width: 100%;
   height: 100%;
 }
-main.login-main div.login-form-div form.login-form div.form-input-image-div input {
+main.login-main div.login-form-div form.login-form div.form-input-image-div input, main.login-main div.login-form-div form.login-form div.form-input-image-div label#file-label, main.login-main div.login-form-div form.register-form div.form-input-image-div input, main.login-main div.login-form-div form.register-form div.form-input-image-div label#file-label, main.login-main div.register-form-div form.login-form div.form-input-image-div input, main.login-main div.register-form-div form.login-form div.form-input-image-div label#file-label, main.login-main div.register-form-div form.register-form div.form-input-image-div input, main.login-main div.register-form-div form.register-form div.form-input-image-div label#file-label, main.register-main div.login-form-div form.login-form div.form-input-image-div input, main.register-main div.login-form-div form.login-form div.form-input-image-div label#file-label, main.register-main div.login-form-div form.register-form div.form-input-image-div input, main.register-main div.login-form-div form.register-form div.form-input-image-div label#file-label, main.register-main div.register-form-div form.login-form div.form-input-image-div input, main.register-main div.register-form-div form.login-form div.form-input-image-div label#file-label, main.register-main div.register-form-div form.register-form div.form-input-image-div input, main.register-main div.register-form-div form.register-form div.form-input-image-div label#file-label {
   height: 30px;
   padding: 0.5rem;
+  overflow: hidden;
   border: none;
   position: relative;
   flex-grow: 1;
 }
 @media screen and (max-width: 575px) {
-  main.login-main div.login-form-div form.login-form div.form-input-image-div input {
+  main.login-main div.login-form-div form.login-form div.form-input-image-div input, main.login-main div.login-form-div form.login-form div.form-input-image-div label#file-label, main.login-main div.login-form-div form.register-form div.form-input-image-div input, main.login-main div.login-form-div form.register-form div.form-input-image-div label#file-label, main.login-main div.register-form-div form.login-form div.form-input-image-div input, main.login-main div.register-form-div form.login-form div.form-input-image-div label#file-label, main.login-main div.register-form-div form.register-form div.form-input-image-div input, main.login-main div.register-form-div form.register-form div.form-input-image-div label#file-label, main.register-main div.login-form-div form.login-form div.form-input-image-div input, main.register-main div.login-form-div form.login-form div.form-input-image-div label#file-label, main.register-main div.login-form-div form.register-form div.form-input-image-div input, main.register-main div.login-form-div form.register-form div.form-input-image-div label#file-label, main.register-main div.register-form-div form.login-form div.form-input-image-div input, main.register-main div.register-form-div form.login-form div.form-input-image-div label#file-label, main.register-main div.register-form-div form.register-form div.form-input-image-div input, main.register-main div.register-form-div form.register-form div.form-input-image-div label#file-label {
     height: 50px;
     background: #ffffff;
     color: #000000;
@@ -722,10 +729,47 @@ main.login-main div.login-form-div form.login-form div.form-input-image-div inpu
     border-bottom-right-radius: 5px;
   }
 }
-main.login-main div.login-form-div form.login-form div.form-input-image-div input:focus {
+main.login-main div.login-form-div form.login-form div.form-input-image-div input:focus, main.login-main div.login-form-div form.login-form div.form-input-image-div label#file-label:focus, main.login-main div.login-form-div form.register-form div.form-input-image-div input:focus, main.login-main div.login-form-div form.register-form div.form-input-image-div label#file-label:focus, main.login-main div.register-form-div form.login-form div.form-input-image-div input:focus, main.login-main div.register-form-div form.login-form div.form-input-image-div label#file-label:focus, main.login-main div.register-form-div form.register-form div.form-input-image-div input:focus, main.login-main div.register-form-div form.register-form div.form-input-image-div label#file-label:focus, main.register-main div.login-form-div form.login-form div.form-input-image-div input:focus, main.register-main div.login-form-div form.login-form div.form-input-image-div label#file-label:focus, main.register-main div.login-form-div form.register-form div.form-input-image-div input:focus, main.register-main div.login-form-div form.register-form div.form-input-image-div label#file-label:focus, main.register-main div.register-form-div form.login-form div.form-input-image-div input:focus, main.register-main div.register-form-div form.login-form div.form-input-image-div label#file-label:focus, main.register-main div.register-form-div form.register-form div.form-input-image-div input:focus, main.register-main div.register-form-div form.register-form div.form-input-image-div label#file-label:focus {
   border: 1px solid #271085;
 }
-main.login-main div.login-form-div form.login-form button {
+main.login-main div.login-form-div form.login-form div.form-input-image-div label#file-label, main.login-main div.login-form-div form.register-form div.form-input-image-div label#file-label, main.login-main div.register-form-div form.login-form div.form-input-image-div label#file-label, main.login-main div.register-form-div form.register-form div.form-input-image-div label#file-label, main.register-main div.login-form-div form.login-form div.form-input-image-div label#file-label, main.register-main div.login-form-div form.register-form div.form-input-image-div label#file-label, main.register-main div.register-form-div form.login-form div.form-input-image-div label#file-label, main.register-main div.register-form-div form.register-form div.form-input-image-div label#file-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 0.25rem;
+  overflow: hidden;
+  padding: 0;
+}
+main.login-main div.login-form-div form.login-form div.form-input-image-div label#file-label::before, main.login-main div.login-form-div form.register-form div.form-input-image-div label#file-label::before, main.login-main div.register-form-div form.login-form div.form-input-image-div label#file-label::before, main.login-main div.register-form-div form.register-form div.form-input-image-div label#file-label::before, main.register-main div.login-form-div form.login-form div.form-input-image-div label#file-label::before, main.register-main div.login-form-div form.register-form div.form-input-image-div label#file-label::before, main.register-main div.register-form-div form.login-form div.form-input-image-div label#file-label::before, main.register-main div.register-form-div form.register-form div.form-input-image-div label#file-label::before {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  content: "Vyberte súbory";
+  background-color: #271085;
+  font-size: 0.75rem;
+  height: 30px;
+  padding: 0.25rem;
+  color: #ffffff;
+  transition: all 0.15s ease-in;
+}
+@media screen and (max-width: 575px) {
+  main.login-main div.login-form-div form.login-form div.form-input-image-div label#file-label::before, main.login-main div.login-form-div form.register-form div.form-input-image-div label#file-label::before, main.login-main div.register-form-div form.login-form div.form-input-image-div label#file-label::before, main.login-main div.register-form-div form.register-form div.form-input-image-div label#file-label::before, main.register-main div.login-form-div form.login-form div.form-input-image-div label#file-label::before, main.register-main div.login-form-div form.register-form div.form-input-image-div label#file-label::before, main.register-main div.register-form-div form.login-form div.form-input-image-div label#file-label::before, main.register-main div.register-form-div form.register-form div.form-input-image-div label#file-label::before {
+    height: 50px;
+  }
+}
+main.login-main div.login-form-div form.login-form div.form-input-image-div label#file-label:hover::before, main.login-main div.login-form-div form.register-form div.form-input-image-div label#file-label:hover::before, main.login-main div.register-form-div form.login-form div.form-input-image-div label#file-label:hover::before, main.login-main div.register-form-div form.register-form div.form-input-image-div label#file-label:hover::before, main.register-main div.login-form-div form.login-form div.form-input-image-div label#file-label:hover::before, main.register-main div.login-form-div form.register-form div.form-input-image-div label#file-label:hover::before, main.register-main div.register-form-div form.login-form div.form-input-image-div label#file-label:hover::before, main.register-main div.register-form-div form.register-form div.form-input-image-div label#file-label:hover::before {
+  background-color: #4a1eff;
+}
+main.login-main div.login-form-div form.login-form div.form-input-image-div label#file-label span, main.login-main div.login-form-div form.register-form div.form-input-image-div label#file-label span, main.login-main div.register-form-div form.login-form div.form-input-image-div label#file-label span, main.login-main div.register-form-div form.register-form div.form-input-image-div label#file-label span, main.register-main div.login-form-div form.login-form div.form-input-image-div label#file-label span, main.register-main div.login-form-div form.register-form div.form-input-image-div label#file-label span, main.register-main div.register-form-div form.login-form div.form-input-image-div label#file-label span, main.register-main div.register-form-div form.register-form div.form-input-image-div label#file-label span {
+  font-size: 0.75rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 15px;
+  flex: 1;
+}
+main.login-main div.login-form-div form.login-form button, main.login-main div.login-form-div form.register-form button, main.login-main div.register-form-div form.login-form button, main.login-main div.register-form-div form.register-form button, main.register-main div.login-form-div form.login-form button, main.register-main div.login-form-div form.register-form button, main.register-main div.register-form-div form.login-form button, main.register-main div.register-form-div form.register-form button {
   text-transform: uppercase;
   font-weight: bold;
   background: #271085;
@@ -733,7 +777,7 @@ main.login-main div.login-form-div form.login-form button {
   transform: scale(1);
   transition: all 0.15s ease-in;
 }
-main.login-main div.login-form-div form.login-form button:hover {
+main.login-main div.login-form-div form.login-form button:hover, main.login-main div.login-form-div form.register-form button:hover, main.login-main div.register-form-div form.login-form button:hover, main.login-main div.register-form-div form.register-form button:hover, main.register-main div.login-form-div form.login-form button:hover, main.register-main div.login-form-div form.register-form button:hover, main.register-main div.register-form-div form.login-form button:hover, main.register-main div.register-form-div form.register-form button:hover {
   background: #4a1eff;
   transform: scale(1.03);
 }
