@@ -1,9 +1,24 @@
+<?php
+/** @var array $data */
+
+use public\errors\Errors;
+
+if (isset($_GET['e'])) {
+    if ($_GET['e'] == Errors::REGISTER_FAILED->value) {
+        include "App/Components/toast/toast.php";
+        echo '<script src="public/js/toast/toast.js"></script>';
+//        TODO error text vymysliet
+        echo '<script>toastError("Neúspešná registrácia", "Zrejme ste zadali zlé údaje.")</script>';
+    }
+}
+?>
+
 <main class="register-main">
     <div class="register-bg"></div>
     <div class="register-bg-color"></div>
     <div class="register-form-div">
         <h1>Registrácia</h1>
-        <form action="?c=auth&a=register" method="post" class="register-form">
+        <form action="?c=auth&a=sign_up" method="post" class="register-form">
             <div class="form-input-image-div">
                 <label for="username" class="input-image-div">
                     <img src="public/images/Icons/user-image.png" alt="">

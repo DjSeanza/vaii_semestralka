@@ -1,0 +1,15 @@
+div.toast {
+  width: 300px;
+  height: unset;
+  overflow: hidden;
+  position: absolute;
+  border-radius: 10px;
+}
+div.toast.success {
+  background-color: green;
+}
+div.toast.error {
+  background-color: red;
+}
+
+/*# sourceMappingURL=toast.css.map */

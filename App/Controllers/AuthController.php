@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 
-use App\Auth\DummyAuthenticator;
 use App\Core\AControllerBase;
 use App\Core\DB\Connection;
 use App\Core\Responses\Response;
 use App\Core\Responses\ViewResponse;
+use public\errors\Errors;
 
 class AuthController extends AControllerBase
 {
@@ -26,7 +26,11 @@ class AuthController extends AControllerBase
         return $this->html();
     }
 
-    public function log_in() {
+    public function sign_up() {
+
+    }
+
+    public function log_in(): Response {
         $data = $this->app->getRequest()->getPost();
 
         if(isset($data['submit']) && isset($data['login']) && isset($data['password'])) {
@@ -40,8 +44,7 @@ class AuthController extends AControllerBase
             }
         }
 
-        // TODO ak sa nepodari prihlasit
-        return $this->redirect('?c=auth');
+        return $this->redirect('?c=auth&a=login&e=' . Errors::LOGIN_FAILED->value);
     }
 
     public function logout(): Response {

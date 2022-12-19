@@ -25,13 +25,13 @@ class ContentController extends AControllerBase
 //        @TODO vymysliet a dorobit errors
 //        @TODO asi ich dat ako 404 a presmerovat na tu stranku
         if ($videoId == null || $errorId == Errors::VIDEO_NOT_FOUND->value) {
-            return $this->html(["error" => "Video not found."]);
+            return $this->html(["error" => ["Video not found", "Video was not found. Apparently there is no such video ID."]]);
         }
 
         $video = Video::getOne($videoId);
 
         if (!isset($video)) {
-            return $this->html(["error" => "Video not found."]);
+            return $this->html(["error" => ["Video not found", "Video was not found. Apparently there is no such video ID."]]);
         }
 
         $commentsForVideo = Comment::getAll("video = ? && reply_to is null", [$videoId]);
@@ -58,12 +58,13 @@ class ContentController extends AControllerBase
         $text = $this->request()->getValue('video-comment');
         $replyTo = $this->request()->getValue("reply-to");
 
-        if ($author == null || $text == null || $video == null) {
-            // @TODO dorobit ak sa nenajde
-            return $this->redirect("?c=content&a=content&v=" . $video->getId());
+        if ($author == null || $text == null) {
+            return $this->redirect("?c=content&a=content&e=" . Errors::COMMENT_DETAILS_NOT_FOUND->value . "&v=" . $video->getId());
+        } else if ($video == null) {
+            return $this->redirect("?c=content&a=content&e=" . Errors::VIDEO_NOT_FOUND->value . "&v=" . $video->getId());
         }
 
-        // @TODO kontrola ci sa text vobec zmenil na edit
+        // https://www.php.net/manual/en/function.rtrim.php
         $text = rtrim($text, " \n\r\t\v\x00"); // remove last empty line from string
 
         if ($commentId == null) {

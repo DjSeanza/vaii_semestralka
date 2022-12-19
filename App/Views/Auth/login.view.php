@@ -1,3 +1,17 @@
+<?php
+/** @var array $data */
+
+use public\errors\Errors;
+
+if (isset($_GET['e'])) {
+    if ($_GET['e'] == Errors::LOGIN_FAILED->value) {
+        include "App/Components/toast/toast.php";
+        echo '<script src="public/js/toast/toast.js"></script>';
+        echo '<script>toastError("Neúspešné prihlásenie", "Zadali ste zlé meno alebo heslo.")</script>';
+    }
+}
+?>
+
 <main class="login-main">
     <div class="login-bg"></div>
     <div class="login-bg-color"></div>

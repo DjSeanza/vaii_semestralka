@@ -6,14 +6,19 @@
 
 use App\Models\Comment;
 use App\Models\Video;
+use public\errors\Errors;
 
 // TODO ak nie je prihlaseny skus, vyhadzuje error
 ?>
 <div class="main-profile-container">
     <main class="profile-main">
-        <?php if (isset($data['error']) && $data['error']) { ?>
+        <?php   if (isset($data['error']) && $data['error']) {
+                    include "App/Components/toast/toast.php";
+                    echo '<script src="public/js/toast/toast.js"></script>';
+                    echo '<script>toastError("' . $data['error'][0] . '", "' . $data['error'][1] . '")</script>';
+        ?>
             <div>
-                <span><?php echo $data['error'] ?></span>
+                <span><?php echo $data['error'][0] ?></span>
             </div>
         <?php } else { ?>
         <?php

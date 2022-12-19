@@ -1,0 +1,42 @@
+$toast-width: 300px;
+$toast-height: unset;
+$toast-right: 20px;
+
+div.toast {
+  width: $toast-width;
+  height: $toast-height;
+  overflow: hidden;
+  position: fixed;
+  border-radius: 10px;
+  padding: 10px;
+  visibility: hidden;
+  right: $toast-right;
+  z-index: 999;
+
+  &.success {
+    background-color: green;
+  }
+
+  &.error {
+    background-color: red;
+  }
+
+  &.show {
+    visibility: visible;
+    animation: fade-in 0.5s, fade-out 0.5s 2.5s;
+  }
+
+  p {
+    font-size: $rem-semi-big;
+  }
+}
+
+@keyframes fade-in {
+  from {right: -$toast-width; opacity: 0;}
+  to {right: $toast-right; opacity: 1;}
+}
+
+@keyframes fade-out {
+  from {right: $toast-right; opacity: 1;}
+  to {right: -$toast-width; opacity: 0;}
+}
