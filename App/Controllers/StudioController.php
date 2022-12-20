@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 
-class SettingsController extends AControllerBase
+class StudioController extends AControllerBase
 {
 
     public function index(): Response

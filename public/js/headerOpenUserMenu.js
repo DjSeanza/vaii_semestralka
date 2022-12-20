@@ -6,7 +6,8 @@ function openUserMenu() {
         button.innerHTML += '' +
             '<div id="header-user-menu">' +
             '<ul class="header-user-ul-menu">' +
-            '   <li onclick="location.href=\'?c=auth&a=logout\'">Logout</li>' +
+            '   <li onclick="location.href=\'?c=studio&a=listContent\'">Moje videá</li>' +
+            '   <li onclick="location.href=\'?c=auth&a=logout\'">Odhlásiť</li>' +
             '</ul>'
             '</div>';
     }

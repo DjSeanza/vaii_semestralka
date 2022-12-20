@@ -3,6 +3,7 @@ $logged-button-header-size: 40px;
 $login-button-header-size: 100px;
 $search-height: 40px;
 $header-menu-width: 250px;
+$number-of-items-in-menu: 2;
 
 header.header {
   @include flex();
@@ -27,13 +28,13 @@ header.header {
   div#header-user-menu {
     width: $header-menu-width;
     position: absolute;
-    bottom: - calc(($header-height / 2) + 15px);
+    bottom: - calc((($header-height / 2) + 15px) * $number-of-items-in-menu);
     z-index: 2020;
     background-color: $light-secondary-color;
     min-width: 30px;
 
     ul.header-user-ul-menu {
-      @include flex();
+      @include flex(column, center, space-between);
       row-gap: $rem-mid;
       width: 100%;
 

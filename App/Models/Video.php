@@ -13,6 +13,8 @@ class Video extends Model
     protected string $post_date;
     protected string $thumbnail;
     protected string $video;
+    protected int $category;
+    protected int $views;
 
     /**
      * @throws \Exception
@@ -150,5 +152,35 @@ class Video extends Model
         $this->video = $video;
     }
 
+    /**
+     * @return int
+     */
+    public function getCategory(): int
+    {
+        return $this->category;
+    }
 
+    /**
+     * @param int $category
+     */
+    public function setCategory(int $category): void
+    {
+        $this->category = $category;
+    }
+
+    /**
+     * @return int
+     */
+    public function getViews(): int
+    {
+        return $this->views;
+    }
+
+    /**
+     * @param int $views
+     */
+    public function setViews(int $views): void
+    {
+        $this->views = $views;
+    }
 }

@@ -218,14 +218,14 @@ header.header div.header-mid, header.header div.header-left, header.header div.h
 header.header div#header-user-menu {
   width: 250px;
   position: absolute;
-  bottom: -45px;
+  bottom: -90px;
   z-index: 2020;
   background-color: #6c6c6c;
   min-width: 30px;
 }
 header.header div#header-user-menu ul.header-user-ul-menu {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   row-gap: 0.5rem;
