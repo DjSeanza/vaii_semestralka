@@ -280,6 +280,9 @@ header.header div.header-right button.logged-in-button {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 header.header div.header-right button.login-button {
   width: 100px;

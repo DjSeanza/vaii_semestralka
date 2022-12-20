@@ -6,7 +6,7 @@
 
 use App\Models\Comment;
 use App\Models\Video;
-use public\errors\Errors;
+use App\Models\User;
 
 // TODO ak nie je prihlaseny skus, vyhadzuje error
 ?>
@@ -55,7 +55,7 @@ use public\errors\Errors;
                     <div class="video-author-container">
                         <div class="video-author">
 <!--                            @TODO background image opravit-->
-                            <div class="small-profile-image" style="background-image: url('public/images/Bg/login-page-bg-landscape.jpg')">
+                            <div class="small-profile-image" style='background-image: url("<?php echo User::getOne($auth->getLoggedUserId())->getProfilePicture() ?>")'>
                                 <a href="#"></a>
                             </div>
                             <div class="author-name">

@@ -22,8 +22,6 @@ class ContentController extends AControllerBase
         $errorId = $this->request()->getValue('e');
         $videoId = $this->request()->getValue('v');
 
-//        @TODO vymysliet a dorobit errors
-//        @TODO asi ich dat ako 404 a presmerovat na tu stranku
         if ($videoId == null || $errorId == Errors::VIDEO_NOT_FOUND->value) {
             return $this->html(["error" => ["Video not found", "Video was not found. Apparently there is no such video ID."]]);
         }

@@ -11,6 +11,21 @@ class User extends Model
     protected string|null $profile_picture;
     protected string|null $email;
 
+    public function setAttributes(string $login, string $password, string $email): void {
+        $this->login = $login;
+        $this->password = $password;
+        $this->email = $email;
+    }
+
+    /**
+     * @param string $login - login which we want to check number of logins for
+     * @return int - number of the same logins
+     * @throws \Exception
+     */
+    public static function getNumberOfUsersWithLogin(string $login): int {
+        return count(User::getAll("login = ?", [$login]));
+    }
+
     /**
      * @return int
      */
