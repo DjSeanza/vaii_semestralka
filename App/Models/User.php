@@ -10,11 +10,13 @@ class User extends Model
     protected string $password;
     protected string|null $profile_picture;
     protected string|null $email;
+    protected bool $is_admin;
 
     public function setAttributes(string $login, string $password, string $email): void {
         $this->login = $login;
         $this->password = $password;
         $this->email = $email;
+        $this->is_admin = false;
     }
 
     /**
@@ -106,5 +108,19 @@ class User extends Model
         $this->email = $email;
     }
 
+    /**
+     * @return bool
+     */
+    public function isIsAdmin(): bool
+    {
+        return $this->is_admin;
+    }
 
+    /**
+     * @param bool $is_admin
+     */
+    public function setIsAdmin(bool $is_admin): void
+    {
+        $this->is_admin = $is_admin;
+    }
 }
