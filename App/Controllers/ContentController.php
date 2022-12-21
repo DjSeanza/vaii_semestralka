@@ -20,16 +20,21 @@ class ContentController extends AControllerBase
      */
     public function content(): Response {
         $errorId = $this->request()->getValue('e');
+
+        if (isset($errorId)) {
+            return $this->html();
+        }
+
         $videoId = $this->request()->getValue('v');
 
         if ($videoId == null || $errorId == Errors::VIDEO_NOT_FOUND->value) {
-            return $this->html(["error" => ["Video not found", "Video was not found. Apparently there is no such video ID."]]);
+            return $this->redirect("?c=content&a=content&e=" . Errors::VIDEO_NOT_FOUND->value);
         }
 
         $video = Video::getOne($videoId);
 
         if (!isset($video)) {
-            return $this->html(["error" => ["Video not found", "Video was not found. Apparently there is no such video ID."]]);
+            return $this->redirect("?c=content&a=content&e=" . Errors::VIDEO_NOT_FOUND->value);
         }
 
         $commentsForVideo = Comment::getAll("video = ? && reply_to is null", [$videoId]);

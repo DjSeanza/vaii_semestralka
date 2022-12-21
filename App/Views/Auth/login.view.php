@@ -1,21 +1,5 @@
 <?php
 /** @var array $data */
-
-use public\errors\Errors;
-
-if (isset($_GET['s'])) {
-    include "App/Components/toast/toast.php";
-    echo '<script src="public/js/toast/toast.js"></script>';
-    echo '<script>toastSuccess("Registrácia úspešná", "Úspešne ste sa zaregistrovali.")</script>';
-}
-
-if (isset($_GET['e'])) {
-    include "App/Components/toast/toast.php";
-    echo '<script src="public/js/toast/toast.js"></script>';
-    if ($_GET['e'] == Errors::LOGIN_FAILED->value) {
-        echo '<script>toastError("Neúspešné prihlásenie", "Zadali ste zlé meno alebo heslo.")</script>';
-    }
-}
 ?>
 
 <main class="login-main">

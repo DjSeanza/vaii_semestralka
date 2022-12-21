@@ -12,13 +12,10 @@ use App\Models\User;
 ?>
 <div class="main-profile-container">
     <main class="profile-main">
-        <?php   if (isset($data['error']) && $data['error']) {
-                    include "App/Components/toast/toast.php";
-                    echo '<script src="public/js/toast/toast.js"></script>';
-                    echo '<script>toastError("' . $data['error'][0] . '", "' . $data['error'][1] . '")</script>';
+        <?php   if (isset($_GET['e']) && $_GET['e']) {
         ?>
             <div>
-                <span><?php echo $data['error'][0] ?></span>
+                <span>Video not found.</span>
             </div>
         <?php } else { ?>
         <?php

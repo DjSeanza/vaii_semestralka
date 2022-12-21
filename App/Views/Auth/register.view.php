@@ -1,32 +1,5 @@
 <?php
 /** @var array $data */
-
-use public\errors\Errors;
-
-if (isset($_GET['e'])) {
-    include "App/Components/toast/toast.php";
-    echo '<script src="public/js/toast/toast.js"></script>';
-    switch ($_GET['e']) {
-        case Errors::REGISTER_FAILED->value:
-            echo '<script>toastError("Neúspešná registrácia", "Údaje neboli zadané alebo boli zadané zle.")</script>';
-            break;
-        case Errors::UNEXPECTED_ERROR->value:
-            echo '<script>toastError("Neočakávaná chyba", "Ľutujeme, ale stala sa neočakávaná chyba.")</script>';
-            break;
-        case Errors::WRONG_FILE_FORMAT->value:
-            echo '<script>toastError("Zlý formát", "Nahrávajte prosím súbory len s formátom jpg, jpeg, png alebo svg.")</script>';
-            break;
-        case Errors::FILE_NOT_UPLOADED->value:
-            echo '<script>toastError("Súbor nenahratý", "Ľutujeme, ale súbor sa nenahral. Prosím skúste to ešte raz.")</script>';
-            break;
-        case Errors::FILE_TOO_LARGE->value:
-            echo '<script>toastError("Súbor nenahratý", "Váš súbor je príliš veľký. Maximálna veľkosť súboru je 5MB.")</script>';
-            break;
-        case Errors::USERNAME_EXISTS->value:
-            echo '<script>toastError("Používateľské meno existuje", "Ľutujeme, toto používateľské meno už existuje.")</script>';
-            break;
-    }
-}
 ?>
 
 <main class="register-main">
