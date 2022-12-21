@@ -44,9 +44,9 @@ class AuthController extends AControllerBase
             }
 
             $user->setAttributes($data['login'], password_hash($data['password'], PASSWORD_DEFAULT), $data['email']);
-            $fileUpload = new FileUpload($_FILES['profile-picture'],
+            $fileUpload = new FileUpload($_FILES,
                 FileDirectory::PROFILE_PICTURE,
-                    FileType::PROFILE_PICTURE,
+                    array(FileType::PROFILE_PICTURE),
                             $data['login']);
 
             $isUploaded = $fileUpload->uploadFile();
@@ -54,7 +54,7 @@ class AuthController extends AControllerBase
             if ($isUploaded instanceof Errors) {
                 return $this->redirect('?c=auth&a=register&e=' . $isUploaded->value);
             } else {
-                $user->setProfilePicture($isUploaded);
+                $user->setProfilePicture($isUploaded[0]);
             }
 
         } else {

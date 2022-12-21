@@ -6,69 +6,75 @@ use public\errors\Errors;
 
 class FileUpload
 {
-    const MAX_THUMBNAIL_SIZE = 500_000_000; // 500 000 000B = 5MB
-    const MAX_PROFILE_PICTURE_SIZE = 500_000_000; // 500 000 000B = 5MB
-    const MAX_CONTENT_SIZE = 500_000_000;
-    const IMAGE_EXTENSIONS = array("jpeg", "jpg", "png", "svg");
-    const VIDEO_EXTENSIONS = array("mp4", "3gp");
+    const MAX_THUMBNAIL_SIZE = 500_000_000; // = 5MB
+    const MAX_PROFILE_PICTURE_SIZE = 500_000_000; // = 5MB
+    const MAX_CONTENT_SIZE = 3_000_000_000; // == 30MB
+    const IMAGE_EXTENSIONS = array("jpeg", "jpg", "png", "svg", "webp");
+    const VIDEO_EXTENSIONS = array("mp4");
     private FileDirectory $baseDirectory;
+    private array $fileTypes;
     private string $userLogin;
-    private string|null $contentName;
-    private string $extension;
-    private array $file;
-    private int $maxFileSize;
+    private array $files;
 
     /**
      * @throws \Exception
      */
-    public function __construct(array $file, FileDirectory $baseDirectory, FileType $fileType, string $userLogin = null, string $contentName = null) {
+    public function __construct(array $files, FileDirectory $baseDirectory, array $fileTypes, string $userLogin = null) {
         $auth = new LoginAuthenticator();
-        $this->file = $file;
+        $this->files = $files;
         $this->baseDirectory = $baseDirectory;
         $this->userLogin = ( $userLogin == null ? $auth->getLoggedUserName() : $userLogin );
-        $this->contentName = $contentName;
-        $this->extension = $this->getExtension();
-        $this->maxFileSize($fileType);
+        $this->fileTypes = $fileTypes;
     }
 
-    public function uploadFile(): Errors|string {
+    public function uploadFile(): Errors|array {
         // TODO ak uploaduje dalsiu fotku, tak predoslu dat do nejakeho ineho suboru
         $fileTargetDirectory = $this->getDirectory();
+        $directories = array();
 
-        if (file_exists($fileTargetDirectory)) {
-            return Errors::UNEXPECTED_ERROR;
+        foreach ($this->files as $file) {
+            $extension = pathinfo($file["name"],PATHINFO_EXTENSION);
+            if (file_exists($fileTargetDirectory)) {
+                return Errors::UNEXPECTED_ERROR;
+            }
+
+            if(!in_array(strtolower($extension), self::IMAGE_EXTENSIONS) &&
+                !in_array(strtolower($extension), self::VIDEO_EXTENSIONS)) {
+                return Errors::WRONG_FILE_FORMAT;
+            }
+
+            foreach ($this->fileTypes as $fileType) {
+                if ($file["size"] > $this->maxFileSize($fileType)) {
+                    return Errors::FILE_TOO_LARGE;
+                }
+            }
+
+            // TODO delet eupload file ked zlyha
+            if (move_uploaded_file($file["tmp_name"], $fileTargetDirectory . "." . $extension)) {
+                $directories[] = $fileTargetDirectory . "." . $extension;
+            } else {
+                return Errors::FILE_NOT_UPLOADED;
+            }
         }
 
-        if(!in_array(strtolower($this->extension), self::IMAGE_EXTENSIONS) &&
-           !in_array(strtolower($this->extension), self::VIDEO_EXTENSIONS)) {
-            return Errors::WRONG_FILE_FORMAT;
-        }
-
-        if ($this->file["size"] > $this->maxFileSize) {
-            return Errors::FILE_TOO_LARGE;
-        }
-
-        if (move_uploaded_file($this->file["tmp_name"], $fileTargetDirectory)) {
-            return $fileTargetDirectory;
-        } else {
-            return Errors::FILE_NOT_UPLOADED;
-        }
+        return $directories;
     }
 
     private function getDirectory(): string {
         $randomString = FileUpload::getRandomString();
+        $randomUnixTimestamp = strtotime("now");
         $directoryToUpload = "";
-        if ($this->contentName == null) {
+        if ($this->baseDirectory == FileDirectory::PROFILE_PICTURE) {
             $directoryToUpload = $this->baseDirectory->value . $this->userLogin . "/";
         } else {
-            $directoryToUpload = $this->baseDirectory->value . $this->userLogin . "/" . $this->contentName . "/";
+            $directoryToUpload = $this->baseDirectory->value . $this->userLogin . "/" . $randomUnixTimestamp . "_" . $randomString . "/";
         }
 
         if (!is_dir($directoryToUpload) && !mkdir($directoryToUpload)){
             die("Nepodarilo sa vytvoriť súbor: $directoryToUpload");
         }
 
-        return $directoryToUpload . strtotime("now") . "_" . $randomString . "." . $this->extension;
+        return $directoryToUpload . $randomUnixTimestamp . "_" . $randomString;
     }
 
     private function getRandomString() {
@@ -77,21 +83,11 @@ class FileUpload
             ), 0, 5);
     }
 
-    private function getExtension(): string {
-        return pathinfo($this->file["name"],PATHINFO_EXTENSION);
-    }
-
-    private function maxFileSize(FileType $fileType): void {
-        switch ($fileType) {
-            case FileType::THUMBNAIL:
-                $this->maxFileSize = self::MAX_THUMBNAIL_SIZE;
-                break;
-            case FileType::PROFILE_PICTURE:
-                $this->maxFileSize = self::MAX_PROFILE_PICTURE_SIZE;
-                break;
-            case FileType::VIDEO:
-                $this->maxFileSize = self::MAX_CONTENT_SIZE;
-                break;
-        }
+    private function maxFileSize(FileType $fileType): int {
+        return match ($fileType) {
+            FileType::THUMBNAIL => self::MAX_THUMBNAIL_SIZE,
+            FileType::PROFILE_PICTURE => self::MAX_PROFILE_PICTURE_SIZE,
+            FileType::VIDEO => self::MAX_CONTENT_SIZE
+        };
     }
 }

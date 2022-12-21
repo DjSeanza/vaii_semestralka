@@ -10,17 +10,25 @@ class Video extends Model
     protected string $title;
     protected int $author;
     protected string $description;
-    protected string $post_date;
+    protected string|null $post_date;
     protected string $thumbnail;
     protected string $video;
     protected int $category;
-    protected int $views;
+    protected int|null $views;
+
+    public function setAttributes(string $title, string $description, int $category, int $author, string $post_date = null, int $views = null) {
+        $this->title = $title;
+        $this->description = $description;
+        $this->category = $category;
+        $this->author = $author;
+        $this->post_date = $post_date;
+        $this->views = $views;
+    }
 
     /**
      * @throws \Exception
      */
-    public function getComments(): array
-    {
+    public function getComments(): array {
         try {
             return Comment::getAll('video = ?', [$this->getId()]);
         } catch (\Exception $e) {
@@ -31,12 +39,22 @@ class Video extends Model
     /**
      * @throws \Exception
      */
-    public function getAuthorName(): string
-    {
+    public function getAuthorName(): string {
         try {
             return User::getOne($this->getAuthor())->getLogin();
         } catch (\Exception $e) {
             throw new \Exception('User not found: ' . $e->getMessage(), 0, $e);
+        }
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function getCategoryName(): string {
+        try {
+            return Category::getOne($this->getCategory())->getCategoryName();
+        } catch (\Exception $e) {
+            throw new \Exception('Category not found: ' . $e->getMessage(), 0, $e);
         }
     }
 

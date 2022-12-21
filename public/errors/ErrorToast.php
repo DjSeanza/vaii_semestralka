@@ -37,7 +37,7 @@ class ErrorToast
                     $toast = '<script>toastError("Neočakávaná chyba", "Ľutujeme, ale stala sa neočakávaná chyba.")</script>';
                     break;
                 case Errors::WRONG_FILE_FORMAT->value:
-                    $toast = '<script>toastError("Zlý formát", "Nahrávajte prosím súbory len s formátom jpg, jpeg, png alebo svg pre obrázky a mp4 alebo 3gp pre videá.")</script>';
+                    $toast = '<script>toastError("Zlý formát", "Nahrávajte prosím súbory len s formátom jpg, jpeg, png, svg alebo webp pre obrázky a mp4 pre videá.")</script>';
                     break;
                 case Errors::FILE_NOT_UPLOADED->value:
                     $toast = '<script>toastError("Súbor nenahratý", "Ľutujeme, ale súbor sa nenahral. Prosím skúste to ešte raz.")</script>';
