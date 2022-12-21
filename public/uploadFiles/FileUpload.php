@@ -1,6 +1,7 @@
 <?php
 namespace public\uploadFiles;
 
+use App\Auth\LoginAuthenticator;
 use public\errors\Errors;
 
 class FileUpload
@@ -17,10 +18,14 @@ class FileUpload
     private array $file;
     private int $maxFileSize;
 
-    public function __construct(array $file, FileDirectory $baseDirectory, string $userLogin, FileType $fileType, string $contentName = null) {
+    /**
+     * @throws \Exception
+     */
+    public function __construct(array $file, FileDirectory $baseDirectory, FileType $fileType, string $userLogin = null, string $contentName = null) {
+        $auth = new LoginAuthenticator();
         $this->file = $file;
         $this->baseDirectory = $baseDirectory;
-        $this->userLogin = $userLogin;
+        $this->userLogin = ( $userLogin == null ? $auth->getLoggedUserName() : $userLogin );
         $this->contentName = $contentName;
         $this->extension = $this->getExtension();
         $this->maxFileSize($fileType);

@@ -3,10 +3,11 @@
 namespace App\Auth;
 
 use App\Core\DB\Connection;
+use App\Core\IAuthenticator;
 use App\Models\User;
 use Exception;
 
-class LoginAuthenticator extends DummyAuthenticator
+class LoginAuthenticator implements IAuthenticator
 {
     function login($login, $password): bool
     {
@@ -57,4 +58,8 @@ class LoginAuthenticator extends DummyAuthenticator
     }
 
 
+    function getLoggedUserContext(): mixed
+    {
+        return null;
+    }
 }
