@@ -44,9 +44,8 @@ class AuthController extends AControllerBase
             }
 
             $user->setAttributes($data['login'], password_hash($data['password'], PASSWORD_DEFAULT), $data['email']);
-            $fileUpload = new FileUpload($_FILES,
+            $fileUpload = new FileUpload($_FILES['profile-picture'],
                 FileDirectory::PROFILE_PICTURE,
-                "profile-picture",
                 $data['login'],
                 FileType::PROFILE_PICTURE);
 

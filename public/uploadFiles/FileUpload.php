@@ -11,17 +11,15 @@ class FileUpload
     const IMAGE_EXTENSIONS = array("jpeg", "jpg", "png", "svg");
     const VIDEO_EXTENSIONS = array("mp4", "3gp");
     private FileDirectory $baseDirectory;
-    private string $nameInForm;
     private string $userLogin;
     private string|null $contentName;
     private string $extension;
-    private array $files;
+    private array $file;
     private int $maxFileSize;
 
-    public function __construct(array $files, FileDirectory $baseDirectory, string $nameInForm, string $userLogin, FileType $fileType, string $contentName = null) {
-        $this->files = $files;
+    public function __construct(array $file, FileDirectory $baseDirectory, string $userLogin, FileType $fileType, string $contentName = null) {
+        $this->file = $file;
         $this->baseDirectory = $baseDirectory;
-        $this->nameInForm = $nameInForm;
         $this->userLogin = $userLogin;
         $this->contentName = $contentName;
         $this->extension = $this->getExtension();
@@ -41,11 +39,11 @@ class FileUpload
             return Errors::WRONG_FILE_FORMAT;
         }
 
-        if ($this->files[$this->nameInForm]["size"] > $this->maxFileSize) {
+        if ($this->file["size"] > $this->maxFileSize) {
             return Errors::FILE_TOO_LARGE;
         }
 
-        if (move_uploaded_file($this->files[$this->nameInForm]["tmp_name"], $fileTargetDirectory)) {
+        if (move_uploaded_file($this->file["tmp_name"], $fileTargetDirectory)) {
             return $fileTargetDirectory;
         } else {
             return Errors::FILE_NOT_UPLOADED;
@@ -75,7 +73,7 @@ class FileUpload
     }
 
     private function getExtension(): string {
-        return pathinfo($this->files[$this->nameInForm]["name"],PATHINFO_EXTENSION);
+        return pathinfo($this->file["name"],PATHINFO_EXTENSION);
     }
 
     private function maxFileSize(FileType $fileType): void {
