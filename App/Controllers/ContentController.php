@@ -67,15 +67,15 @@ class ContentController extends AControllerBase
 
         if ($commentId == null) {
             if ($replyTo == null) {
-                $comment->setAtributes($author, $video->getId(), date('Y-m-d H:i:s'), null, $text);
+                $comment->setAtributes($author, $video->getId(), date('Y-m-d H:i:s'), $text);
             } else {
-                $comment->setAtributes($author, $video->getId(), date('Y-m-d H:i:s'), null, $text, $replyTo);
+                $comment->setAtributes($author, $video->getId(), date('Y-m-d H:i:s'), $text, null, $replyTo);
             }
         } else {
             if ($replyTo == null) {
-                $comment->setAtributes($author, $video->getId(), $comment->getPostTime(), date('Y-m-d H:i:s'), $text);
+                $comment->setAtributes($author, $video->getId(), $comment->getPostTime(), $text, date('Y-m-d H:i:s'));
             } else {
-                $comment->setAtributes($author, $video->getId(), $comment->getPostTime(), date('Y-m-d H:i:s'), $text, $replyTo);
+                $comment->setAtributes($author, $video->getId(), $comment->getPostTime(), $text, date('Y-m-d H:i:s'), $replyTo);
             }
         }
 
