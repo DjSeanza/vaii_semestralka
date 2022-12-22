@@ -6,7 +6,7 @@ use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 use App\Core\Responses\ViewResponse;
 use App\Models\User;
-use public\errors\Errors;
+use public\toast\Errors;
 use public\uploadFiles\FileDirectory;
 use public\uploadFiles\FileType;
 use public\uploadFiles\FileUpload;

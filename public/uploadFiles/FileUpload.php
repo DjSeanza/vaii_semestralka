@@ -2,7 +2,7 @@
 namespace public\uploadFiles;
 
 use App\Auth\LoginAuthenticator;
-use public\errors\Errors;
+use public\toast\Errors;
 
 class FileUpload
 {

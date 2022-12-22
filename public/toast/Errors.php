@@ -1,5 +1,5 @@
 <?php
-namespace public\errors;
+namespace public\toast;
 
 enum Errors: int
 {
@@ -14,4 +14,5 @@ enum Errors: int
     case FILE_NOT_UPLOADED = 9;
     case UNEXPECTED_ERROR = 10;
     case USERNAME_EXISTS = 11;
+    case USER_NO_CONTENT = 12;
 }

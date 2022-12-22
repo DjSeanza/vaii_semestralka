@@ -15,7 +15,7 @@ use App\Models\User;
         <?php   if (isset($_GET['e']) && $_GET['e']) {
         ?>
             <div>
-                <span>Video not found.</span>
+                <span>Video nenájdené.</span>
             </div>
         <?php } else { ?>
         <?php
@@ -25,7 +25,9 @@ use App\Models\User;
         ?>
         <div class="left-video">
             <div class="video-container">
-                <video src="<?php echo $video->getVideo() ?>"></video>
+                <video controls autoplay>
+                    <source src="<?php echo $video->getVideo() ?>">
+                </video>
             </div>
             <div class="under-video-container">
                 <div class="content-info">
@@ -33,7 +35,7 @@ use App\Models\User;
                     <div class="video-info">
                         <div class="video-basic-info">
 <!--                            @TODO views mozno odstranit, aj z css-->
-                            <span>1000 views</span>
+                            <span><?php echo $video->getViews() ?> views</span>
                             <span><?php echo $video->getPostDate() ?></span>
                         </div>
                         <div class="like-dislike-buttons-container">
@@ -125,7 +127,7 @@ use App\Models\User;
                                         <span><?php echo $reply->getPostTime(); ?></span>
                                         <?php
                                         if ($reply->getModificationTime()) { ?>
-                                            <span title="<?php echo $comment->getModificationTime(); ?>">(Edited)</span>
+                                            <span title="<?php echo $reply->getModificationTime(); ?>">(Edited)</span>
                                         <?php } // end modification time ?>
                                     </div>
                                 </div>

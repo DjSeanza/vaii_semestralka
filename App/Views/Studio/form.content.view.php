@@ -53,7 +53,7 @@ if (isset($data['video']) && $data['video']) {
         </label>
         <label for="content">
             <h2>Video</h2>
-            <input type="file" name="content" id="content" accept="application/mp4" <?php if(!$video) echo "required"; ?>>
+            <input type="file" name="content" id="content" accept="video/mp4" <?php if(!$video) echo "required"; ?>>
         </label>
         <?php
             if (isset($_GET['cid'])) {

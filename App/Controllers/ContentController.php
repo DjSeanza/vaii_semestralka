@@ -6,7 +6,7 @@ use App\Core\Responses\Response;
 use App\Models\Comment;
 use App\Models\Reply;
 use App\Models\Video;
-use public\errors\Errors;
+use public\toast\Errors;
 
 class ContentController extends AControllerBase
 {
@@ -96,7 +96,6 @@ class ContentController extends AControllerBase
         $commentId = $this->request()->getValue('comment');
 
         if ($videoId == null) {
-//            @TODO errory nejako prerobit
             return $this->redirect('?c=content&e=' . Errors::VIDEO_NOT_FOUND->value);
         } else if ($commentId == null) {
             return $this->redirect('?c=home&e=' . Errors::COMMENT_NOT_FOUND->value);
@@ -115,7 +114,6 @@ class ContentController extends AControllerBase
             $commentToDelete->delete();
 
         } else {
-//            @TODO dorobit errors
             return $this->redirect('?c=content&a=content&v=' . $videoId . 'e=' . Errors::COMMENT_NOT_FOUND->value);
         }
 

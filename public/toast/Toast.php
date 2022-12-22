@@ -1,8 +1,11 @@
 <?php
 
-namespace public\errors;
+namespace public\toast;
 
-class ErrorToast
+use public\toast\Errors;
+use public\toast\Successes;
+
+class Toast
 {
     private array $get;
     private static $errorToast;
@@ -13,7 +16,7 @@ class ErrorToast
 
     public static function getInstance(array $get) {
         if (self::$errorToast == null) {
-            self::$errorToast = new ErrorToast($get);
+            self::$errorToast = new Toast($get);
         }
         return self::$errorToast;
     }
@@ -63,9 +66,22 @@ class ErrorToast
                 case Errors::COMMENT_DETAILS_NOT_FOUND->value:
                     $toast = '<script>toastError("Nenájdené detaily komentára", "Ľutujeme, ale nepodarilo sa nám nájsť detaily komentára.")</script>';
                     break;
+                case Errors::USER_NO_CONTENT->value:
+                    $toast = '<script>toastError("Nenájdené videá", "Ľutujeme, ale ešte ste nenahrali žiadne videá.")</script>';
+                    break;
             }
         } else if ($this->isSuccess()){
-            $toast = '<script>toastSuccess("Registrácia úspešná", "Úspešne ste sa zaregistrovali.")</script>';
+            switch($this->get['s']) {
+                case Successes::REGISTRATION->value:
+                    $toast = '<script>toastSuccess("Registrácia úspešná", "Úspešne ste sa zaregistrovali.")</script>';
+                    break;
+                case Successes::CONTENT_ADDED->value:
+                    $toast = '<script>toastSuccess("Video pridané", "Úspešne ste pridali video.")</script>';
+                    break;
+                case Successes::CONTENT_DELETED->value:
+                    $toast = '<script>toastSuccess("Video odstránené", "Úspešne ste odstránili video.")</script>';
+                    break;
+            }
         }
 
         return $toast;

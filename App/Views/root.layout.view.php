@@ -2,7 +2,7 @@
 /** @var string $contentHTML */
 
 use App\Core\Router;
-use public\errors\ErrorToast;
+use public\toast\Toast;
 
 $router = new Router();
 
@@ -12,14 +12,13 @@ if ($router->getControllerName() != "Auth") {
     include "App/Components/header/header.php";
 }
 
-$errorToast = ErrorToast::getInstance($_GET);
+$errorToast = Toast::getInstance($_GET);
 $errorToast->setGet($_GET);
 if ($errorToast->isSuccess() || $errorToast->isError()) {
     include "App/Components/toast/toast.php";
     echo '<script src="public/js/toast/toast.js"></script>';
+    echo $errorToast->getToast();
 }
-
-echo $errorToast->getToast();
 
 ?>
 

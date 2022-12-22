@@ -5,13 +5,19 @@ use App\Core\Model;
 
 class Comment extends Model
 {
-    protected $id;
-    protected $author;
-    protected $video;
-    protected $post_time;
-    protected $modification_time;
-    protected $text;
-    protected $reply_to;
+    protected int $id;
+    protected int $author;
+    protected string $video;
+    protected string $post_time;
+    protected string|null $modification_time;
+    protected string $text;
+    protected int|null $reply_to;
+
+    public function __construct()
+    {
+        $this->reply_to = null;
+    }
+
 
     /**
      * @throws \Exception
@@ -49,113 +55,113 @@ class Comment extends Model
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
-     * @param mixed $id
+     * @param int $id
      */
-    public function setId($id): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getAuthor()
+    public function getAuthor(): int
     {
         return $this->author;
     }
 
     /**
-     * @param mixed $author
+     * @param int $author
      */
-    public function setAuthor($author): void
+    public function setAuthor(int $author): void
     {
         $this->author = $author;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getVideo()
+    public function getVideo(): string
     {
         return $this->video;
     }
 
     /**
-     * @param mixed $video
+     * @param string $video
      */
-    public function setVideo($video): void
+    public function setVideo(string $video): void
     {
         $this->video = $video;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getPostTime()
+    public function getPostTime(): string
     {
         return $this->post_time;
     }
 
     /**
-     * @param mixed $post_time
+     * @param string $post_time
      */
-    public function setPostTime($post_time): void
+    public function setPostTime(string $post_time): void
     {
         $this->post_time = $post_time;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getModificationTime()
+    public function getModificationTime(): string|null
     {
         return $this->modification_time;
     }
 
     /**
-     * @param mixed $modification_time
+     * @param string $modification_time
      */
-    public function setModificationTime($modification_time): void
+    public function setModificationTime(string $modification_time): void
     {
         $this->modification_time = $modification_time;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getText()
+    public function getText(): string
     {
         return $this->text;
     }
 
     /**
-     * @param mixed $text
+     * @param string $text
      */
-    public function setText($text): void
+    public function setText(string $text): void
     {
         $this->text = $text;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getReplyTo()
+    public function getReplyTo(): int|null
     {
         return $this->reply_to;
     }
 
     /**
-     * @param mixed $reply_to
+     * @param int $reply_to
      */
-    public function setReplyTo($reply_to): void
+    public function setReplyTo(int $reply_to): void
     {
         $this->reply_to = $reply_to;
     }
