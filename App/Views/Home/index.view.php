@@ -2,31 +2,25 @@
 /** @var array $data */
 /** @var Video[] $generatedVideos */
 /** @var Video[] $latestVideos */
+/** @var Video[] $topVideos */
+/** @var Category[] $categories */
 
+use App\Models\Category;
 use App\Models\Video;
 
 ?>
-
 <main class="main sidebar-responsive-main">
     <section class="home-page-section">
-        <h2>Kategórie</h2>
-        <div class="home-page-video-container">
-            <article class="video-article-container" onclick='location.href="?c=content&a=content&v=1"'>
-                <div class="video-thumbnail">
-                    <img src="public/images/Bg//login-page-bg-landscape.jpg" alt="">
-                </div>
-                <div class="video-article-details">
-                    <h3 class="video-article-title">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
-                    </h3>
-                    <a href="#" class="video-article-author">
-                        Nightcore
-                    </a>
-                    <span class="video-article-views">
-                        183 tis. zhlidanutí
-                    </span>
-                </div>
-            </article>
+        <div class="home-page-video-container category-container">
+            <?php if(isset($data['categories'])) {
+            $categories = $data['categories'];
+
+            foreach ($categories as $category) {
+            ?>
+            <div class="category-name-container" onclick="location.href='?c=content&a=listContent&cat=<?php echo $category->getId() ?>'">
+                <span class="category-name"><?php echo $category->getCategoryName() ?></span>
+            </div>
+            <?php } } ?>
         </div>
     </section>
     <section class="home-page-section">
@@ -102,7 +96,7 @@ use App\Models\Video;
                         <?php echo $generatedVideo->getAuthorName(); ?>
                     </a>
                     <span class="video-article-views">
-                        <?php echo $generatedVideo->getViews() ?> zhlidanutí
+                        <?php echo $generatedVideo->getViews() ?> zhliadnutí
                     </span>
                 </div>
             </article>
@@ -112,3 +106,11 @@ use App\Models\Video;
 
 </main>
 <script src="public/js/ajax/landingPage/landingPageDynamicContent.js"></script>
+<script>
+    let categories = document.querySelectorAll("span.category-name");
+    let container = document.querySelectorAll("div.category-name-container");
+
+    for (let i = 0; i < categories.length; i++) {
+        container[i].style.width = categories[i].getBoundingClientRect().width + "px";
+    }
+</script>

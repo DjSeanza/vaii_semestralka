@@ -6,6 +6,7 @@ use App\Core\AControllerBase;
 use App\Core\DB\Connection;
 use App\Core\DB\DebugStatement;
 use App\Core\Responses\Response;
+use App\Models\Category;
 use App\Models\Video;
 use PDO;
 
@@ -32,10 +33,13 @@ class HomeController extends AControllerBase
         $generatedVideos = $this->fetchAllVideos($queryGenerated);
         $latestVideos = $this->fetchAllVideos($queryLatest);
         $topVideos = $this->fetchAllVideos($queryTop);
+        // TODO ked tak nedat vsetky ale len random
+        $categories = Category::getAll();
 
         return $this->html(["generatedVideos" => $generatedVideos,
                             "latestVideos" => $latestVideos,
-                            "topVideos" => $topVideos], viewName: "index");
+                            "topVideos" => $topVideos,
+                            "categories" => $categories], viewName: "index");
     }
 
     /**

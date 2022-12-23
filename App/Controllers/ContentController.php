@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
+use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Reply;
 use App\Models\Video;
@@ -13,6 +14,23 @@ class ContentController extends AControllerBase
     public function index(): Response
     {
         return $this->redirect("?c=content&a=content");
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function listContent(): Response {
+        $categoryId = $this->request()->getValue("cat");
+
+        if ($categoryId) {
+            $category = Category::getOne($categoryId);
+            $videos = Video::getAll('category = ?', [$categoryId]);
+
+            return $this->html(["categoryName" => $category->getCategoryName(),
+                                "videos" => $videos], viewName: "listed.content");
+        }
+
+        return $this->html(viewName: "listed.content");
     }
 
     /**
