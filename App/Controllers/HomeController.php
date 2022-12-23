@@ -21,11 +21,21 @@ class HomeController extends AControllerBase
      */
     public function index(): Response
     {
-        $query = Connection::connect()->prepare("SELECT * FROM videos LIMIT 8");
-        $query->execute([]);
-        $generatedVideos = $this->fetchAllVideos($query);
+        $queryGenerated = Connection::connect()->prepare("SELECT * FROM videos LIMIT 8");
+        $queryLatest = Connection::connect()->prepare("SELECT * FROM videos ORDER BY id DESC LIMIT 8");
+        $queryTop = Connection::connect()->prepare("SELECT * FROM videos ORDER BY views DESC LIMIT 8");
 
-        return $this->html(["generatedVideos" => $generatedVideos], viewName: "index");
+        $queryGenerated->execute([]);
+        $queryLatest->execute([]);
+        $queryTop->execute([]);
+
+        $generatedVideos = $this->fetchAllVideos($queryGenerated);
+        $latestVideos = $this->fetchAllVideos($queryLatest);
+        $topVideos = $this->fetchAllVideos($queryTop);
+
+        return $this->html(["generatedVideos" => $generatedVideos,
+                            "latestVideos" => $latestVideos,
+                            "topVideos" => $topVideos], viewName: "index");
     }
 
     /**
