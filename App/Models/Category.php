@@ -6,8 +6,8 @@ use App\Core\Model;
 
 class Category extends Model
 {
-    private int $id;
-    private string $category_name;
+    protected int $id;
+    protected string $category_name;
 
     /**
      * @return int
