@@ -21,16 +21,40 @@ class ContentController extends AControllerBase
      */
     public function listContent(): Response {
         $categoryId = $this->request()->getValue("cat");
+        $userId = $this->request()->getValue("uid");
+        $error = $this->request()->getValue("e");
+
+        if ($error) {
+            return $this->html(viewName: "listed.content");
+        }
 
         if ($categoryId) {
             $category = Category::getOne($categoryId);
-            $videos = Video::getAll('category = ?', [$categoryId]);
+            if (!$category) {
+                return $this->redirect("?c=content&a=listContent&e=" . Errors::CATEGORY_NOT_FOUND->value);
+            }
 
-            return $this->html(["categoryName" => $category->getCategoryName(),
+            $videos = Video::getAll('category = ?', [$categoryId]);
+            if (!$videos) {
+                return $this->redirect("?c=content&a=listContent&e=" . Errors::VIDEO_NOT_FOUND->value);
+            }
+
+            return $this->html(["name" => $category->getCategoryName(),
                                 "videos" => $videos], viewName: "listed.content");
         }
 
-        return $this->html(viewName: "listed.content");
+        if ($userId) {
+            $videos = Video::getAll('author = ?', [$userId]);
+
+            if (!$videos) {
+                return $this->redirect("?c=content&a=listContent&e=" . Errors::VIDEO_NOT_FOUND->value);
+            }
+
+            return $this->html(["name" => $videos[0]->getAuthorName(),
+                "videos" => $videos], viewName: "listed.content");
+        } else {
+            return $this->redirect("?c=content&a=listContent&e=" . Errors::USER_NO_CONTENT->value);
+        }
     }
 
     /**

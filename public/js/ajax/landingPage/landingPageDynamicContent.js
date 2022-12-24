@@ -11,7 +11,7 @@ window.addEventListener("scroll", function() {
                     offset += 8;
                     let videos = JSON.parse(xhr.responseText);
                     videos.forEach(video => {
-                        createVideoContainer(video.video.id, video.video.title, video.author, video.video.views, video.video.thumbnail);
+                        createVideoContainer(video.video.id, video.video.title, video.author, video.video.author, video.video.views, video.video.thumbnail);
                     })
                 }
             };
@@ -24,7 +24,7 @@ window.addEventListener("scroll", function() {
     }
 });
 
-function createVideoContainer(idPar, titlePar, authorPar, viewsPar, thumbnailPar) {
+function createVideoContainer(idPar, titlePar, authorPar, authorIntPar, viewsPar, thumbnailPar) {
     let allVideosContainer = document.querySelector("div#generated-videos");
     const article = document.createElement('article');
     article.classList.add('video-article-container');
@@ -50,7 +50,7 @@ function createVideoContainer(idPar, titlePar, authorPar, viewsPar, thumbnailPar
     const author = document.createElement('a');
     author.classList.add('video-article-author');
     // TODO dat href ked dam aj autorov
-    author.href = '#';
+    author.href = '?c=content&a=listContent&uid=' + authorIntPar;
     author.textContent = authorPar;
 
     const views = document.createElement('span');

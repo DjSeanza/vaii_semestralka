@@ -7,10 +7,15 @@ use App\Models\Video;
 
 <div class="main-container">
     <main class="main sidebar-responsive-main video-main">
-        <?php if (isset($data['categoryName']) && isset($data['videos'])) {
-            $videos = $data['videos'];
+        <?php
+        if (isset($_GET['e'])) {
+            ?>
+            <span>Nepodarilo sa načítať.</span>
+        <?php } else {
+            if (isset($data['name']) && isset($data['videos'])) {
+                $videos = $data['videos'];
         ?>
-        <h1 class="videos-h1"><?php echo $data['categoryName'] ?></h1>
+        <h1 class="videos-h1"><?php echo $data['name'] ?></h1>
         <div class="videos-container">
             <?php foreach ($videos as $video) { ?>
             <article class="video-article-container video-page">
@@ -21,7 +26,7 @@ use App\Models\Video;
                     <h3 class="video-article-title">
                         <?php echo $video->getTitle() ?>
                     </h3>
-                    <a href="#" class="video-article-author">
+                    <a href="?c=content&a=listContent&uid=<?php echo $video->getAuthor() ?>" class="video-article-author">
                         <?php echo $video->getAuthorName() ?>
                     </a>
                     <span class="video-article-views">
@@ -29,7 +34,7 @@ use App\Models\Video;
                     </span>
                 </div>
             </article>
-            <?php } } ?>
+            <?php } } } ?>
         </div>
     </main>
 </div>

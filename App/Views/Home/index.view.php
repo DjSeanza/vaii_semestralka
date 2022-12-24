@@ -39,7 +39,7 @@ use App\Models\Video;
                     <h3 class="video-article-title">
                         <?php echo $lastVideo->getTitle() ?>
                     </h3>
-                    <a href="#" class="video-article-author">
+                    <a href="?c=content&a=listContent&uid=<?php echo $lastVideo->getAuthor() ?>" class="video-article-author">
                         <?php echo $lastVideo->getAuthorName() ?>
                     </a>
                     <span class="video-article-views">
@@ -66,7 +66,7 @@ use App\Models\Video;
                             <h3 class="video-article-title">
                                 <?php echo $topVideo->getTitle() ?>
                             </h3>
-                            <a href="#" class="video-article-author">
+                            <a href="?c=content&a=listContent&uid=<?php echo $topVideo->getAuthor() ?>" class="video-article-author">
                                 <?php echo $topVideo->getAuthorName() ?>
                             </a>
                             <span class="video-article-views">
@@ -92,7 +92,7 @@ use App\Models\Video;
                     <h3 class="video-article-title">
                         <?php echo $generatedVideo->getTitle() ?>
                     </h3>
-                    <a href="#" class="video-article-author">
+                    <a href="?c=content&a=listContent&uid=<?php echo $generatedVideo->getAuthor() ?>" class="video-article-author">
                         <?php echo $generatedVideo->getAuthorName(); ?>
                     </a>
                     <span class="video-article-views">

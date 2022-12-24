@@ -15,4 +15,5 @@ enum Errors: int
     case UNEXPECTED_ERROR = 10;
     case USERNAME_EXISTS = 11;
     case USER_NO_CONTENT = 12;
+    case CATEGORY_NOT_FOUND = 13;
 }
