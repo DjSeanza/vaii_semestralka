@@ -70,7 +70,7 @@ class Toast
                     $toast = '<script>toastError("Nenájdené videá", "Ľutujeme, ale ešte ste nenahrali žiadne videá.")</script>';
                     break;
                 case Errors::CATEGORY_NOT_FOUND->value:
-                    $toast = '<script>toastError("Kategoŕia nenájdená", "Ľutujeme, ale takúto kategóriu sme u nás nenašli.")</script>';
+                    $toast = '<script>toastError("Kategória nenájdená", "Ľutujeme, ale takúto kategóriu sme u nás nenašli.")</script>';
                     break;
             }
         } else if ($this->isSuccess()){

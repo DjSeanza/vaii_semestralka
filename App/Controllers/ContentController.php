@@ -6,6 +6,7 @@ use App\Core\Responses\Response;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Reply;
+use App\Models\User;
 use App\Models\Video;
 use public\toast\Errors;
 
@@ -41,20 +42,22 @@ class ContentController extends AControllerBase
 
             return $this->html(["name" => $category->getCategoryName(),
                                 "videos" => $videos], viewName: "listed.content");
-        }
+        } else if ($userId) {
+            $user = User::getOne($userId);
+            if (!$user) {
+                return $this->redirect("?c=content&a=listContent&e=" . Errors::USER_NO_CONTENT->value);
+            }
 
-        if ($userId) {
             $videos = Video::getAll('author = ?', [$userId]);
-
             if (!$videos) {
                 return $this->redirect("?c=content&a=listContent&e=" . Errors::VIDEO_NOT_FOUND->value);
             }
 
             return $this->html(["name" => $videos[0]->getAuthorName(),
                 "videos" => $videos], viewName: "listed.content");
-        } else {
-            return $this->redirect("?c=content&a=listContent&e=" . Errors::USER_NO_CONTENT->value);
         }
+
+        return $this->html(viewName: "listed.content");
     }
 
     /**
