@@ -31,7 +31,7 @@ use App\Models\Video;
 
                 foreach ($latestVideos as $lastVideo) {
             ?>
-            <article class="video-article-container" onclick='location.href="?c=content&a=content&v="<?php echo $lastVideo->getId() ?>'>
+            <article class="video-article-container" onclick='location.href="?c=content&a=content&v=<?php echo $lastVideo->getId() ?>"'>
                 <div class="video-thumbnail">
                     <img src="<?php echo $lastVideo->getThumbnail() ?>" alt="">
                 </div>
@@ -58,7 +58,7 @@ use App\Models\Video;
 
                 foreach ($topVideos as $topVideo) {
                     ?>
-                    <article class="video-article-container" onclick='location.href="?c=content&a=content&v="<?php echo $topVideo->getId() ?>'>
+                    <article class="video-article-container" onclick='location.href="?c=content&a=content&v=<?php echo $topVideo->getId() ?>"'>
                         <div class="video-thumbnail">
                             <img src="<?php echo $topVideo->getThumbnail() ?>" alt="">
                         </div>
@@ -84,7 +84,7 @@ use App\Models\Video;
 
                 foreach ($generatedVideos as $generatedVideo) {
             ?>
-            <article class="video-article-container" onclick='location.href="?c=content&a=content&v="<?php echo $generatedVideo->getId() ?>'>
+            <article class="video-article-container" onclick='location.href="?c=content&a=content&v=<?php echo $generatedVideo->getId() ?>"'>
                 <div class="video-thumbnail">
                     <img src="<?php echo $generatedVideo->getThumbnail() ?>" alt="">
                 </div>
