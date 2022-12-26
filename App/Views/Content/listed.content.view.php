@@ -18,7 +18,7 @@ use App\Models\Video;
         <h1 class="videos-h1"><?php echo $data['name'] ?></h1>
         <div class="videos-container">
             <?php foreach ($videos as $video) { ?>
-            <article class="video-article-container video-page">
+            <article class="video-article-container video-page" onclick="location.href='?c=content&a=content&v=<?php echo $video->getId() ?>'">
                 <div class="video-thumbnail">
                     <img src="<?php echo $video->getThumbnail() ?>" alt="">
                 </div>

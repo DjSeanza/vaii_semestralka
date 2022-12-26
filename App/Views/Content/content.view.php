@@ -2,6 +2,8 @@
 /** @var array $data */
 /** @var \App\Core\IAuthenticator $auth */
 /** @var Video $video */
+/** @var Video[] $authorVideos */
+/** @var Video[] $generatedVideos */
 /** @var Comment[] $comments */
 
 use App\Models\Comment;
@@ -154,203 +156,57 @@ use App\Models\User;
             </div>
         </div>
         <div class="related-videos">
+            <?php if (isset($data['authorVideos'])) {
+                $authorVideos = $data['authorVideos'];
+
+                foreach ($authorVideos as $authorVideo) {
+            ?>
             <article class="video-article-container related-videos-video-container">
                 <div class="video-thumbnail">
-                    <img src="public/images/Bg/login-page-bg-landscape.jpg" alt="">
+                    <img src="<?php echo $authorVideo->getThumbnail() ?>" alt="">
                 </div>
                 <div class="video-article-details">
                     <h3 class="video-article-title" title="something">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
+                        <?php echo $authorVideo->getTitle() ?>
                     </h3>
-                    <a href="#" class="video-article-author">
-                        Nightcore
+                    <a href="?c=content&a=listContent&uid=<?php echo $authorVideo->getAuthor() ?>" class="video-article-author">
+                        <?php echo $authorVideo->getAuthorName() ?>
                     </a>
                     <span class="video-article-views">
-                        183 tis. zhlidanutí
+                        <?php echo $authorVideo->getViews() ?> zhliadnutí
                     </span>
                 </div>
             </article>
-            <article class="video-article-container related-videos-video-container">
-                <div class="video-thumbnail">
-                    <img src="public/images/Bg/login-page-bg-landscape.jpg" alt="">
-                </div>
-                <div class="video-article-details">
-                    <h3 class="video-article-title" title="something">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
-                    </h3>
-                    <a href="#" class="video-article-author">
-                        Nightcore
-                    </a>
-                    <span class="video-article-views">
-                        183 tis. zhlidanutí
+            <?php } } ?>
+            <?php if (isset($data['generatedVideos'])) {
+                $generatedVideos = $data['generatedVideos'];
+
+                foreach ($generatedVideos as $generatedVideo) {
+                    ?>
+                    <article class="video-article-container related-videos-video-container">
+                        <div class="video-thumbnail">
+                            <img src="<?php echo $generatedVideo->getThumbnail() ?>" alt="">
+                        </div>
+                        <div class="video-article-details">
+                            <h3 class="video-article-title" title="something">
+                                <?php echo $generatedVideo->getTitle() ?>
+                            </h3>
+                            <a href="?c=content&a=listContent&uid=<?php echo $generatedVideo->getAuthor() ?>" class="video-article-author">
+                                <?php echo $generatedVideo->getAuthorName() ?>
+                            </a>
+                            <span class="video-article-views">
+                        <?php echo $generatedVideo->getViews() ?> zhliadnutí
                     </span>
-                </div>
-            </article>
-            <article class="video-article-container related-videos-video-container">
-                <div class="video-thumbnail">
-                    <img src="public/images/Bg/login-page-bg-landscape.jpg" alt="">
-                </div>
-                <div class="video-article-details">
-                    <h3 class="video-article-title" title="something">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
-                    </h3>
-                    <a href="#" class="video-article-author">
-                        Nightcore
-                    </a>
-                    <span class="video-article-views">
-                        183 tis. zhlidanutí
-                    </span>
-                </div>
-            </article>
-            <article class="video-article-container related-videos-video-container">
-                <div class="video-thumbnail">
-                    <img src="public/images/Bg/login-page-bg-landscape.jpg" alt="">
-                </div>
-                <div class="video-article-details">
-                    <h3 class="video-article-title" title="something">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
-                    </h3>
-                    <a href="#" class="video-article-author">
-                        Nightcore
-                    </a>
-                    <span class="video-article-views">
-                        183 tis. zhlidanutí
-                    </span>
-                </div>
-            </article>
-            <article class="video-article-container related-videos-video-container">
-                <div class="video-thumbnail">
-                    <img src="public/images/Bg/login-page-bg-landscape.jpg" alt="">
-                </div>
-                <div class="video-article-details">
-                    <h3 class="video-article-title" title="something">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
-                    </h3>
-                    <a href="#" class="video-article-author">
-                        Nightcore
-                    </a>
-                    <span class="video-article-views">
-                        183 tis. zhlidanutí
-                    </span>
-                </div>
-            </article>
-            <article class="video-article-container related-videos-video-container">
-                <div class="video-thumbnail">
-                    <img src="public/images/Bg/login-page-bg-landscape.jpg" alt="">
-                </div>
-                <div class="video-article-details">
-                    <h3 class="video-article-title" title="something">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
-                    </h3>
-                    <a href="#" class="video-article-author">
-                        Nightcore
-                    </a>
-                    <span class="video-article-views">
-                        183 tis. zhlidanutí
-                    </span>
-                </div>
-            </article>
-            <article class="video-article-container related-videos-video-container">
-                <div class="video-thumbnail">
-                    <img src="public/images/Bg/login-page-bg-landscape.jpg" alt="">
-                </div>
-                <div class="video-article-details">
-                    <h3 class="video-article-title" title="something">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
-                    </h3>
-                    <a href="#" class="video-article-author">
-                        Nightcore
-                    </a>
-                    <span class="video-article-views">
-                        183 tis. zhlidanutí
-                    </span>
-                </div>
-            </article>
-            <article class="video-article-container related-videos-video-container">
-                <div class="video-thumbnail">
-                    <img src="public/images/Bg/login-page-bg-landscape.jpg" alt="">
-                </div>
-                <div class="video-article-details">
-                    <h3 class="video-article-title" title="something">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
-                    </h3>
-                    <a href="#" class="video-article-author">
-                        Nightcore
-                    </a>
-                    <span class="video-article-views">
-                        183 tis. zhlidanutí
-                    </span>
-                </div>
-            </article>
-            <article class="video-article-container related-videos-video-container">
-                <div class="video-thumbnail">
-                    <img src="public/images/Bg/login-page-bg-landscape.jpg" alt="">
-                </div>
-                <div class="video-article-details">
-                    <h3 class="video-article-title" title="something">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
-                    </h3>
-                    <a href="#" class="video-article-author">
-                        Nightcore
-                    </a>
-                    <span class="video-article-views">
-                        183 tis. zhlidanutí
-                    </span>
-                </div>
-            </article>
-            <article class="video-article-container related-videos-video-container">
-                <div class="video-thumbnail">
-                    <img src="public/images/Bg/login-page-bg-landscape.jpg" alt="">
-                </div>
-                <div class="video-article-details">
-                    <h3 class="video-article-title" title="something">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
-                    </h3>
-                    <a href="#" class="video-article-author">
-                        Nightcore
-                    </a>
-                    <span class="video-article-views">
-                        183 tis. zhlidanutí
-                    </span>
-                </div>
-            </article>
-            <article class="video-article-container related-videos-video-container">
-                <div class="video-thumbnail">
-                    <img src="public/images/Bg/login-page-bg-landscape.jpg" alt="">
-                </div>
-                <div class="video-article-details">
-                    <h3 class="video-article-title" title="something">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
-                    </h3>
-                    <a href="#" class="video-article-author">
-                        Nightcore
-                    </a>
-                    <span class="video-article-views">
-                        183 tis. zhlidanutí
-                    </span>
-                </div>
-            </article>
-            <article class="video-article-container related-videos-video-container">
-                <div class="video-thumbnail">
-                    <img src="public/images/Bg/login-page-bg-landscape.jpg" alt="">
-                </div>
-                <div class="video-article-details">
-                    <h3 class="video-article-title" title="something">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit
-                    </h3>
-                    <a href="#" class="video-article-author">
-                        Nightcore
-                    </a>
-                    <span class="video-article-views">
-                        183 tis. zhlidanutí
-                    </span>
-                </div>
-            </article>
+                        </div>
+                    </article>
+                <?php } } ?>
         </div>
     </main>
 </div>
 <?php } } ?>
 <script src="public/js/ajax/comments/comments.js"></script>
+<script src="public/js/createVideoContainer/createVideoContainer.js"></script>
+<script src="public/js/ajax/contentPage/contentPageDynamicContent.js"></script>
 <script>
     let sidebar = document.querySelector("aside.sidebar");
     let sidebarWidth = getComputedStyle(sidebar).width.split("px")[0];

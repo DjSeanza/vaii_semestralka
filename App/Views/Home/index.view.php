@@ -105,6 +105,7 @@ use App\Models\Video;
     </section>
 
 </main>
+<script src="public/js/createVideoContainer/createVideoContainer.js"></script>
 <script src="public/js/ajax/landingPage/landingPageDynamicContent.js"></script>
 <script>
     let categories = document.querySelectorAll("span.category-name");

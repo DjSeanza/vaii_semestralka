@@ -30,9 +30,9 @@ class HomeController extends AControllerBase
         $queryLatest->execute([]);
         $queryTop->execute([]);
 
-        $generatedVideos = $this->fetchAllVideos($queryGenerated);
-        $latestVideos = $this->fetchAllVideos($queryLatest);
-        $topVideos = $this->fetchAllVideos($queryTop);
+        $generatedVideos = Video::fetchAllVideos($queryGenerated);
+        $latestVideos = Video::fetchAllVideos($queryLatest);
+        $topVideos = Video::fetchAllVideos($queryTop);
         // TODO ked tak nedat vsetky ale len random
         $categories = Category::getAll();
 
@@ -50,7 +50,7 @@ class HomeController extends AControllerBase
             $offset = $this->request()->getValue("offset");
             $query = Connection::connect()->prepare("SELECT * FROM videos LIMIT 8 OFFSET " . $offset);
             $query->execute([]);
-            $generatedVideos = $this->fetchAllVideos($query);
+            $generatedVideos = Video::fetchAllVideos($query);
 
             for ($i = 0; $i < count($generatedVideos); $i++) {
                 $generatedVideos[$i] = array("author" => $generatedVideos[$i]->getAuthorName(), "video" => $generatedVideos[$i]);
@@ -62,16 +62,5 @@ class HomeController extends AControllerBase
         return null;
     }
 
-    private function fetchAllVideos(DebugStatement $query): array {
-        $generatedVideos = array();
-        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $video = new Video();
-            $video->setId($row['id']);
-            $video->setThumbnail($row['thumbnail']);
-            $video->setAttributes($row['title'], $row['description'], intval($row['category']), intval($row['author']), $row['post_date'], intval($row['views']));
-            $generatedVideos[] = $video;
-        }
 
-        return $generatedVideos;
-    }
 }

@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Core\DB\DebugStatement;
 use App\Core\Model;
+use PDO;
 
 class Video extends Model
 {
@@ -56,6 +58,19 @@ class Video extends Model
         } catch (\Exception $e) {
             throw new \Exception('Category not found: ' . $e->getMessage(), 0, $e);
         }
+    }
+
+    public static function fetchAllVideos(DebugStatement $query): array {
+        $generatedVideos = array();
+        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+            $video = new Video();
+            $video->setId($row['id']);
+            $video->setThumbnail($row['thumbnail']);
+            $video->setAttributes($row['title'], $row['description'], intval($row['category']), intval($row['author']), $row['post_date'], intval($row['views']));
+            $generatedVideos[] = $video;
+        }
+
+        return $generatedVideos;
     }
 
     /**

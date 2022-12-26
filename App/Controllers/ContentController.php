@@ -86,8 +86,13 @@ class ContentController extends AControllerBase
         }
 
         $commentsForVideo = Comment::getAll("video = ? && reply_to is null", [$videoId]);
+        $authorVideos = $this->getAuthorLastVideos($video->getAuthor());
 
-        return $this->html(["video" => $video, "comments" => $commentsForVideo]);
+        $query = Connection::connect()->prepare("SELECT * FROM videos WHERE author != ? LIMIT 5");
+        $query->execute([$video->getAuthor()]);
+        $generatedVideos = Video::fetchAllVideos($query);
+
+        return $this->html(["video" => $video, "comments" => $commentsForVideo, "authorVideos" => $authorVideos, "generatedVideos" => $generatedVideos]);
     }
 
     public function listedContent(): Response {
@@ -180,9 +185,41 @@ class ContentController extends AControllerBase
     /**
      * @throws \Exception
      */
+    public function getNotAuthorVideos(): Response|null {
+        $offset = $this->request()->getValue("offset");
+        $videoId = $this->request()->getValue("v");
+        $video = Video::getOne($videoId);
+
+        if (!$video) {
+            return null;
+        }
+
+        $query = Connection::connect()->prepare("SELECT * FROM videos WHERE author != ? LIMIT 5 OFFSET " . $offset);
+        $query->execute([$video->getAuthor()]);
+        $generatedVideos = Video::fetchAllVideos($query);
+
+        for ($i = 0; $i < count($generatedVideos); $i++) {
+            $generatedVideos[$i] = array("author" => $generatedVideos[$i]->getAuthorName(), "video" => $generatedVideos[$i]);
+        }
+
+        return $this->json($generatedVideos);
+    }
+
+    /**
+     * @throws \Exception
+     */
     private function getLatestComment(): int {
         $latestComment = Connection::connect()->prepare("SELECT * FROM comments ORDER BY id DESC LIMIT 1");
         $latestComment->execute([]);
         return $latestComment->fetch()['id'];
+    }
+
+    /**
+     * @throws \Exception
+     */
+    private function getAuthorLastVideos(int $authorId): array {
+        $queryLatest = Connection::connect()->prepare("SELECT * FROM videos WHERE author = ? ORDER BY id DESC LIMIT 5");
+        $queryLatest->execute([$authorId]);
+        return Video::fetchAllVideos($queryLatest);
     }
 }
