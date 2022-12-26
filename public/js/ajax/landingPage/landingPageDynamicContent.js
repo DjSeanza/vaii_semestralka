@@ -6,7 +6,7 @@ window.addEventListener("scroll", function() {
         clearTimeout(timeout);
         timeout = setTimeout(function() {
             let xhr = new XMLHttpRequest();
-            xhr.onloadend = function() {
+            xhr.onload = function() {
                 if (xhr.status === 200) {
                     offset += 8;
                     let videos = JSON.parse(xhr.responseText);

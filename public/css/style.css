@@ -1247,13 +1247,13 @@ div.video-comments-container form.video-comment-form textarea {
 div.video-comments-container form.video-comment-form textarea::placeholder {
   color: #6c6c6c;
 }
-div.video-comments-container form.video-comment-form button[type=submit] {
+div.video-comments-container form.video-comment-form button[type=button] {
   background-color: #271085;
   color: #ffffff;
   transition: all 0.15s ease-in;
   width: 100%;
 }
-div.video-comments-container form.video-comment-form button[type=submit]:hover {
+div.video-comments-container form.video-comment-form button[type=button]:hover {
   background-color: #4a1eff;
 }
 div.video-comments-container div.commments {

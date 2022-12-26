@@ -1,7 +1,10 @@
 <?php
 namespace App\Controllers;
 
+use App\Config\Configuration;
 use App\Core\AControllerBase;
+use App\Core\DB\Connection;
+use App\Core\IAuthenticator;
 use App\Core\Responses\Response;
 use App\Models\Category;
 use App\Models\Comment;
@@ -130,7 +133,16 @@ class ContentController extends AControllerBase
         }
 
         $comment->save();
-        return $this->redirect("?c=content&a=content&v=" . $video->getId());
+        $username = User::getOne($author)->getLogin();
+        /** @var IAuthenticator $auth */
+        $auth = new(Configuration::AUTH_CLASS);
+        $newCommentId = null;
+        if (!$commentId) {
+            $newCommentId = $this->getLatestComment();
+            return $this->json(["commentId" => $newCommentId, "cookieName" => $auth->getLoggedUserName() ,"name" => $username, "comment" => $comment]);
+        }
+
+        return $this->json(["cookieName" => $auth->getLoggedUserName() ,"name" => $username, "comment" => $comment]);
     }
 
     /**
@@ -162,6 +174,15 @@ class ContentController extends AControllerBase
             return $this->redirect('?c=content&a=content&v=' . $videoId . 'e=' . Errors::COMMENT_NOT_FOUND->value);
         }
 
-        return $this->redirect('?c=content&a=content&v=' . $videoId);
+        return $this->json(["comment" => $commentToDelete]);
+    }
+
+    /**
+     * @throws \Exception
+     */
+    private function getLatestComment(): int {
+        $latestComment = Connection::connect()->prepare("SELECT * FROM comments ORDER BY id DESC LIMIT 1");
+        $latestComment->execute([]);
+        return $latestComment->fetch()['id'];
     }
 }

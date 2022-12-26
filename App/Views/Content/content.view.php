@@ -55,10 +55,10 @@ use App\Models\User;
                         <div class="video-author">
 <!--                            @TODO background image opravit-->
                             <div class="small-profile-image" style='background-image: url("<?php echo User::getOne($auth->getLoggedUserId())->getProfilePicture() ?>")'>
-                                <a href="#"></a>
+                                <a href="?c=content&a=listContent&uid=<?php echo $video->getAuthor() ?>"></a>
                             </div>
                             <div class="author-name">
-                                <a href="#"><?php echo $video->getAuthorName() ?></a>
+                                <a href="?c=content&a=listContent&uid=<?php echo $video->getAuthor() ?>"><?php echo $video->getAuthorName() ?></a>
                             </div>
                         </div>
                     </div>
@@ -72,12 +72,12 @@ use App\Models\User;
                 <?php if (!$auth->isLogged()) { ?>
                     <span>Najprv sa musíte prihlásiť.</span>
                 <?php } else { ?>
-                <form class="video-comment-form" id="video-comment-form" method="post" action="?c=content&a=storeComment">
+                <form class="video-comment-form" id="video-comment-form" action="?c=content&a=storeComment" method="post">
                     <input type="hidden" name="author" value="<?php echo $auth->getLoggedUserId() ?>">
                     <input type="hidden" name="v" value="<?php echo $video->getId() ?>">
                     <label for="video-comment-input" style="display: none"></label>
                     <textarea maxlength="65535" name="video-comment" id="video-comment-input" placeholder="Začnite písať komentár..."></textarea>
-                    <button type="submit" class="button">Odoslať</button>
+                    <button type="button" onclick="sendCommentData(document.querySelector('form#video-comment-form'))" class="button">Odoslať</button>
                 </form>
                 <div class="commments">
                     <?php
@@ -86,10 +86,10 @@ use App\Models\User;
                     } else {
                         foreach ($comments as $comment) {
                     ?>
-                    <div class="thread-comment-container">
+                    <div class="thread-comment-container" id="thread-<?php echo $comment->getId() ?>">
                         <div class="comment-container" id="comment-<?php echo $comment->getId() ?>">
                             <div class="comment-author">
-                                <a href="#"><?php echo $comment->getAuthorName(); ?></a>
+                                <a href="?c=content&a=listContent&uid=<?php echo $comment->getAuthor() ?>"><?php echo $comment->getAuthorName(); ?></a>
                                 <div>
                                     <span> <?php echo $comment->getPostTime(); ?> </span>
                                     <?php
@@ -109,7 +109,7 @@ use App\Models\User;
                                     <button type="button" class="button edit-button" id="edit-button-<?php echo $comment->getId() ?>"
                                             onclick='createEditCommentForm("<?php echo $comment->getId() ?>", "<?php echo $comment->getText() ?>", "<?php echo $comment->getAuthor() ?>", "<?php echo $comment->getVideo() ?>")'>Edit</button>
                                     <button type="button" class="button delete-button"
-                                            onclick='confirm("Naozaj chcete vymazať tento komentár?") ? location.href="?c=content&a=deleteComment&v=<?php echo $video->getId() ?>&comment=<?php echo $comment->getId() ?>" : ""'>Delete</button>
+                                            onclick='confirm("Naozaj chcete vymazať tento komentár?") ? deleteComment("<?php echo $comment->getVideo() ?>", "<?php echo $comment->getId() ?>") : ""'>Delete</button>
                                 </div>
                             <?php } // end comment buttons ?>
                         </div> <!-- /comment container -->
@@ -122,7 +122,7 @@ use App\Models\User;
                         ?>
                             <div class="comment-container reply r-2" id="comment-<?php echo $reply->getId() ?>">
                                 <div class="comment-author">
-                                    <a href="#"><?php echo $reply->getAuthorName(); ?></a>
+                                    <a href="?c=content&a=listContent&uid=<?php echo $reply->getAuthor() ?>"><?php echo $reply->getAuthorName(); ?></a>
                                     <div>
                                         <span><?php echo $reply->getPostTime(); ?></span>
                                         <?php
@@ -139,7 +139,7 @@ use App\Models\User;
                                         <button type="button" class="button edit-button" id="reply-button-<?php echo $reply->getId() ?>"
                                                 onclick='createEditCommentForm("<?php echo $reply->getId() ?>", "<?php echo $reply->getText() ?>", "<?php echo $reply->getAuthor() ?>", "<?php echo $reply->getVideo() ?>")'>Edit</button>
                                         <button type="button" class="button delete-button" id="edit-button-<?php echo $reply->getId() ?>"
-                                                onclick='location.href="?c=content&a=deleteComment&v=<?php echo $video->getId() ?>&comment=<?php echo $reply->getId() ?>"'>Delete</button>
+                                                onclick='confirm("Naozaj chcete vymazať tento komentár?") ? deleteComment("<?php echo $reply->getVideo() ?>", "<?php echo $reply->getId() ?>") : ""'>Delete</button>
                                     </div>
                                 <?php } // end comment buttons ?>
                             </div> <!-- /comment container -->
@@ -350,7 +350,6 @@ use App\Models\User;
     </main>
 </div>
 <?php } } ?>
-<script src="public/js/comments/updateComment.js"></script>
 <script src="public/js/comments/createCommentForm.js"></script>
 <script>
     let sidebar = document.querySelector("aside.sidebar");
