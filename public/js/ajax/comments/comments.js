@@ -81,6 +81,12 @@ function sendCommentData(form) {
     .then((response) => response.text())
     .then((responseText) => {
         let json = JSON.parse(responseText);
+
+        console.log(json);
+        if (json.e != null) {
+            window.location.replace("?c=content&a=content&e=" + json.e);
+        }
+
         let commentId = null;
         if (json.commentId == null) {
             commentId = json.comment.id;
@@ -90,7 +96,7 @@ function sendCommentData(form) {
 
         let authorInfo = createAuthorInfo(commentId, json.name, json.comment.post_time, json.comment.modification_time, json.comment.author);
         let commentText = createCommentText(commentId, json.comment.text);
-        let commentButtons = createCommentButtons(commentId, json.comment.text, json.comment.author, json.name, json.comment.video, json.cookieName, json.comment.reply_to);
+        let commentButtons = createCommentButtons(commentId, json.comment.text, json.comment.author, json.name, json.comment.video, json.cookieName, json.cookieId, json.comment.reply_to);
         let commentContainer = createCommentContainer(commentId, json.comment.reply_to, authorInfo, commentText, commentButtons);
 
         deleteAllCreatedForms(commentId, json.comment.text, json.comment.author, json.comment.video);
@@ -102,6 +108,14 @@ function deleteComment(videoId, commentId) {
     xhr.onload = function() {
         if (xhr.status === 200) {
             let json = JSON.parse(xhr.responseText);
+
+            if (json.e != null) {
+                if (json.a != null && json.v != null) {
+                    window.location.replace("?c=content&a=" + json.a + "&v=" + json.v + "&e=" + json.e);
+                }
+
+                window.location.replace("?c=content&e=" + json.e + "&v=1");
+            }
 
             if (json.comment.reply_to == null) {
                 let thread = document.querySelector("div#thread-" + json.comment.id);
@@ -218,8 +232,8 @@ function createCommentText(commentId, text) {
     return commentText;
 }
 
-function createCommentButtons(commentId, text, author, authorName, video, cookieAuthor, replyTo) {
-    if (cookieAuthor === authorName) {
+function createCommentButtons(commentId, text, author, authorName, video, cookieAuthorName, cookieAuthorId, replyTo) {
+    if (cookieAuthorName === authorName) {
         const commentButtons = document.createElement('div');
         commentButtons.className = 'comment-buttons';
 
@@ -228,14 +242,9 @@ function createCommentButtons(commentId, text, author, authorName, video, cookie
         editButton.className = 'button edit-button';
         editButton.id = 'edit-button-' + commentId;
         editButton.textContent = 'Edit';
-        editButton.addEventListener('click', () => {
-            createEditCommentForm(
-                commentId,
-                text,
-                author,
-                video
-            );
-        });
+        editButton.onclick = function() {
+            createEditCommentForm(commentId.toString(), text, author.toString(), video.toString());
+        }
 
         const deleteButton = document.createElement('button');
         deleteButton.type = 'button';
@@ -244,8 +253,8 @@ function createCommentButtons(commentId, text, author, authorName, video, cookie
         deleteButton.addEventListener('click', () => {
             if (confirm('Naozaj chcete vymazať tento komentár?')) {
                 deleteComment(
-                    video,
-                    commentId
+                    video.toString(),
+                    commentId.toString()
                 );
             }
         });
@@ -256,14 +265,9 @@ function createCommentButtons(commentId, text, author, authorName, video, cookie
             replyButton.className = 'button reply-button';
             replyButton.id = 'reply-button-' + commentId;
             replyButton.textContent = 'Reply';
-            replyButton.addEventListener('click', () => {
-                createReplyCommentForm(
-                    commentId,
-                    text,
-                    cookieAuthor,
-                    video
-                );
-            });
+            replyButton.onclick = function() {
+                createReplyCommentForm(commentId.toString(), text, cookieAuthorId, video.toString());
+            }
 
             commentButtons.appendChild(replyButton);
         }

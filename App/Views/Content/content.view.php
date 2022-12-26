@@ -350,7 +350,7 @@ use App\Models\User;
     </main>
 </div>
 <?php } } ?>
-<script src="public/js/comments/createCommentForm.js"></script>
+<script src="public/js/ajax/comments/comments.js"></script>
 <script>
     let sidebar = document.querySelector("aside.sidebar");
     let sidebarWidth = getComputedStyle(sidebar).width.split("px")[0];

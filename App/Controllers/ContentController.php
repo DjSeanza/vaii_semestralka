@@ -68,7 +68,7 @@ class ContentController extends AControllerBase
      */
     public function content(): Response {
         $errorId = $this->request()->getValue('e');
-
+// TODO ak vratim cisto html, tak vrati video not found
         if (isset($errorId)) {
             return $this->html();
         }
@@ -110,9 +110,9 @@ class ContentController extends AControllerBase
         $replyTo = $this->request()->getValue("reply-to");
 
         if ($author == null || $text == null) {
-            return $this->redirect("?c=content&a=content&e=" . Errors::COMMENT_DETAILS_NOT_FOUND->value . "&v=" . $video->getId());
+            return $this->json(["e" => Errors::COMMENT_DETAILS_NOT_FOUND->value]);
         } else if ($video == null) {
-            return $this->redirect("?c=content&a=content&e=" . Errors::VIDEO_NOT_FOUND->value . "&v=" . $video->getId());
+            return $this->json(["e" => Errors::VIDEO_NOT_FOUND->value]);
         }
 
         // https://www.php.net/manual/en/function.rtrim.php
@@ -139,7 +139,7 @@ class ContentController extends AControllerBase
         $newCommentId = null;
         if (!$commentId) {
             $newCommentId = $this->getLatestComment();
-            return $this->json(["commentId" => $newCommentId, "cookieName" => $auth->getLoggedUserName() ,"name" => $username, "comment" => $comment]);
+            return $this->json(["commentId" => $newCommentId, "cookieName" => $auth->getLoggedUserName(), "cookieId" => $auth->getLoggedUserId(),"name" => $username, "comment" => $comment]);
         }
 
         return $this->json(["cookieName" => $auth->getLoggedUserName() ,"name" => $username, "comment" => $comment]);
@@ -153,9 +153,9 @@ class ContentController extends AControllerBase
         $commentId = $this->request()->getValue('comment');
 
         if ($videoId == null) {
-            return $this->redirect('?c=content&e=' . Errors::VIDEO_NOT_FOUND->value);
+            return $this->json(["e" => Errors::VIDEO_NOT_FOUND->value]);
         } else if ($commentId == null) {
-            return $this->redirect('?c=home&e=' . Errors::COMMENT_NOT_FOUND->value);
+            return $this->json(["e" => Errors::COMMENT_NOT_FOUND->value]);
         }
         
         $commentToDelete = Comment::getOne($commentId);
@@ -171,7 +171,7 @@ class ContentController extends AControllerBase
             $commentToDelete->delete();
 
         } else {
-            return $this->redirect('?c=content&a=content&v=' . $videoId . 'e=' . Errors::COMMENT_NOT_FOUND->value);
+            return $this->json(["e" => Errors::COMMENT_NOT_FOUND->value, "v" => $videoId, "a" => "content"]);
         }
 
         return $this->json(["comment" => $commentToDelete]);
