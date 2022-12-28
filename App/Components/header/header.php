@@ -26,7 +26,7 @@ use \App\Models\User;
     </div>
     <div class="header-right" id="header-right">
         <?php if ($auth->isLogged()) { ?>
-            <button class="button logged-in-button" style='background-image: url("<?php echo User::getOne($auth->getLoggedUserId())->getProfilePicture() ?>")' type="button" onclick='openUserMenu()'></button>
+            <button class="button logged-in-button" style='background-image: url("<?php echo User::getOne($auth->getLoggedUserId())->getProfilePicture() ?>")' type="button" onclick='openUserMenu(<?php echo $auth->getLoggedUserId() ?>)'></button>
         <?php } else { ?>
             <button class="button login-button" type="button" onclick='location.href="?c=auth"'>SIGN IN</button>
         <?php } ?>

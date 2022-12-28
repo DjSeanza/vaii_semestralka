@@ -16,4 +16,5 @@ enum Errors: int
     case USERNAME_EXISTS = 11;
     case USER_NO_CONTENT = 12;
     case CATEGORY_NOT_FOUND = 13;
+    case USER_NOT_FOUND = 14;
 }

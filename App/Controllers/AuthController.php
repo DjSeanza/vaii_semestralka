@@ -7,6 +7,7 @@ use App\Core\Responses\Response;
 use App\Core\Responses\ViewResponse;
 use App\Models\User;
 use public\toast\Errors;
+use public\toast\Successes;
 use public\uploadFiles\FileDirectory;
 use public\uploadFiles\FileType;
 use public\uploadFiles\FileUpload;
@@ -67,6 +68,28 @@ class AuthController extends AControllerBase
 
         $user->save();
         return $this->redirect('?c=auth&a=login&s=1');
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function deleteUser(): Response {
+        $user_id = $this->request()->getValue("uid");
+
+        if (!$user_id) {
+            return $this->redirect('?c=home&e=' . Errors::USER_NOT_FOUND->value);
+        }
+
+        $user = User::getOne($user_id);
+
+        if ($user) {
+            unlink($user->getProfilePicture());
+            rmdir(dirname($user->getProfilePicture()));
+            $this->logout();
+            $user->delete();
+        }
+
+        return $this->redirect("?c=home&s=" . Successes::USER_DELETED->value);
     }
 
     public function log_in(): Response {

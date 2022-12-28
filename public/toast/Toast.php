@@ -72,6 +72,9 @@ class Toast
                 case Errors::CATEGORY_NOT_FOUND->value:
                     $toast = '<script>toastError("Kategória nenájdená", "Ľutujeme, ale takúto kategóriu sme u nás nenašli.")</script>';
                     break;
+                case Errors::USER_NOT_FOUND->value:
+                    $toast = '<script>toastError("Používateľ nenájdený", "Ľutujeme, ale takého používateľa sme u nás nenašli.")</script>';
+                    break;
             }
         } else if ($this->isSuccess()){
             switch($this->get['s']) {
@@ -83,6 +86,9 @@ class Toast
                     break;
                 case Successes::CONTENT_DELETED->value:
                     $toast = '<script>toastSuccess("Video odstránené", "Úspešne ste odstránili video.")</script>';
+                    break;
+                case Successes::USER_DELETED->value:
+                    $toast = '<script>toastSuccess("Používateľ odstránený", "Úspešne ste odstránili používateľa.")</script>';
                     break;
             }
         }

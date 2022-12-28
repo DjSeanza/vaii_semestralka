@@ -218,7 +218,7 @@ header.header div.header-mid, header.header div.header-left, header.header div.h
 header.header div#header-user-menu {
   width: 250px;
   position: absolute;
-  bottom: -90px;
+  bottom: -135px;
   z-index: 2020;
   background-color: #6c6c6c;
   min-width: 30px;
