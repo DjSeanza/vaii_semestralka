@@ -52,9 +52,21 @@ class LoginAuthenticator implements IAuthenticator
         return $_COOKIE['user'];
     }
 
-    function isLogged(): bool
-    {
+    function isLogged(): bool {
         return isset($_COOKIE['user']) && !empty($_COOKIE['user']);
+    }
+
+    /**
+     * @throws Exception
+     */
+    function isAdmin(): bool {
+        $user = User::getOne($_COOKIE['user']);
+
+        if (!$user) {
+            throw new Exception("User not logged in");
+        }
+
+        return $user->isIsAdmin();
     }
 
 

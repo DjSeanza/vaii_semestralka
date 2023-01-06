@@ -133,6 +133,8 @@ class StudioController extends AControllerBase
             unlink($content->getVideo());
             rmdir(dirname($content->getThumbnail()));
             $content->delete();
+        } else {
+            return $this->redirect('?c=studio&e=' . Errors::VIDEO_NOT_FOUND->value);
         }
 
         return $this->redirect("?c=studio&s=" . Successes::CONTENT_DELETED->value);

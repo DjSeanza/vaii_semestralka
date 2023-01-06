@@ -90,6 +90,12 @@ class Toast
                 case Successes::USER_DELETED->value:
                     $toast = '<script>toastSuccess("Používateľ odstránený", "Úspešne ste odstránili používateľa.")</script>';
                     break;
+                case Successes::CATEGORY_ADDED->value:
+                    $toast = '<script>toastSuccess("Kategória pridaná", "Úspešne ste pridali kategóriu.")</script>';
+                    break;
+                case Successes::CATEGORY_DELETED->value:
+                    $toast = '<script>toastSuccess("Kategória odstránená", "Úspešne ste odstránili kategóriu.")</script>';
+                    break;
             }
         }
 
