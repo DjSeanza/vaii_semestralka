@@ -1,0 +1,12 @@
+$category-list-item-height: 60px;
+
+main.main {
+  div.content-container {
+    ul.content-ul {
+      li.category-list-item {
+        min-height: $category-list-item-height;
+        max-height: $category-list-item-height;
+      }
+    }
+  }
+}

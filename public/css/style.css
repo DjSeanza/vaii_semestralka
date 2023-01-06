@@ -1524,6 +1524,11 @@ main.main div.content-container ul.content-ul li.content-article-container div.c
   background-color: #ff68a3;
 }
 
+main.main div.content-container ul.content-ul li.category-list-item {
+  min-height: 60px;
+  max-height: 60px;
+}
+
 .main {
   width: calc(100% - 250px);
   margin-left: 250px;

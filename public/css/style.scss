@@ -46,6 +46,7 @@ body {
 @import "../../App/Views/Content/content-page";
 @import "../../App/Views/Studio/list-content";
 @import "../../App/Views/Studio/form-content";
+@import "../../App/Views/Category/category";
 
 .main {
   width: calc(100% - $sidebar-width);

@@ -19,7 +19,7 @@ if ($data) {
             <button class="add-content-button button" onclick="location.href='?c=category&a=formCategory'">Add</button>
             <ul class="content-ul">
                 <?php foreach ($categories as $category) { ?>
-                    <li class="category-list-item">
+                    <li class="category-list-item content-article-container">
                         <span class="category-list-name"><?php echo $category->getCategoryName() ?></span>
                         <div class="content-article-controls">
                             <button class="content-article-control-button button edit-button" onclick="location.href='?c=category&a=formCategory&cid=<?php echo $category->getId() ?>'">Edit</button>
