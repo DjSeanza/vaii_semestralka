@@ -85,6 +85,10 @@ class ContentController extends AControllerBase
             return $this->redirect("?c=content&a=content&e=" . Errors::VIDEO_NOT_FOUND->value);
         }
 
+        $videoViews = $video->getViews();
+        $video->setViews($videoViews + 1);
+        $video->save();
+
         $commentsForVideo = Comment::getAll("video = ? && reply_to is null", [$videoId]);
         $authorVideos = $this->getAuthorLastVideos($video->getAuthor());
 

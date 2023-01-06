@@ -37,7 +37,7 @@ use App\Models\User;
                     <div class="video-info">
                         <div class="video-basic-info">
 <!--                            @TODO views mozno odstranit, aj z css-->
-                            <span><?php echo $video->getViews() ?> views</span>
+                            <span><?php echo $video->getViews() ?> zhliadnutí</span>
                             <span><?php echo $video->getPostDate() ?></span>
                         </div>
                         <div class="like-dislike-buttons-container">
