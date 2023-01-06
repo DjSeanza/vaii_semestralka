@@ -18,7 +18,7 @@ if ($data) {
             <button class="add-content-button button" onclick="location.href='?c=studio&a=formContent'">Add</button>
             <ul class="content-ul">
                 <?php foreach ($videos as $video) { ?>
-                    <li class="content-article-container">
+                    <li class="content-article-container" onclick="location.href='?c=content&a=content&v=<?php echo $video->getId() ?>'">
                         <div class="content-article-image">
                             <img src="<?php echo $video->getThumbnail() ?>" alt="Content Image">
                         </div>
