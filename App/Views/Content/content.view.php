@@ -161,7 +161,7 @@ use App\Models\User;
 
                 foreach ($authorVideos as $authorVideo) {
             ?>
-            <article class="video-article-container related-videos-video-container">
+            <article class="video-article-container related-videos-video-container" onclick="location.href='?c=content&a=content&v=<?php echo $authorVideo->getId() ?>'">
                 <div class="video-thumbnail">
                     <img src="<?php echo $authorVideo->getThumbnail() ?>" alt="">
                 </div>

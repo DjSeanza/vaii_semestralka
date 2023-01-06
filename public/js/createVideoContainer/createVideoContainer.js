@@ -1,16 +1,11 @@
-// TODO pridat onclick ak je na related videos + pridat class ak je na related videos
-
 function createVideoContainer(idPar, titlePar, authorPar, authorIntPar, viewsPar, thumbnailPar, mainContainer) {
     let allVideosContainer = document.querySelector(mainContainer);
     const article = document.createElement('article');
     article.classList.add('video-article-container');
     if (mainContainer === 'div.related-videos') {
         article.classList.add('related-videos-video-container');
-        article.onclick = function () {
-            location.href='?c=content&a=content&v=' + idPar;
-        }
     }
-    article.setAttribute('onclick', "location.href='?c=content&a=content&v='" + idPar);
+    article.setAttribute('onclick', `location.href='?c=content&a=content&v=${idPar}'`);
 
     const thumbnail = document.createElement('div');
     thumbnail.classList.add('video-thumbnail');
